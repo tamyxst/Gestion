@@ -130,7 +130,6 @@ class DB_contacto{
             echo "No se ha podido";
             return null;
         } 
-        //$r = $resultado->fetch(PDO::FETCH_ASSOC); 
         return $resultado;
     }
     

@@ -11,7 +11,7 @@ class Conexion{
    ****************************************************************************************** */
     public static function conectar(){
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=localhost;dbname=gestion"; //dwes
+        $dsn = "mysql:host=localhost;dbname=gestion"; 
         $usuario = 'root'; //root
         $contrasena = 'root'; //root
         try{

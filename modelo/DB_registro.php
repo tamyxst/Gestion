@@ -48,6 +48,7 @@ class DB_registro{
        return $lastId;
  
     }
+    
     /*=============Registros==================*/
     //Todos los campos son obligatorios.
     public static function obtieneIncidencias() {
@@ -71,43 +72,6 @@ class DB_registro{
         return $registro;
     }
     
-    //OTROS REGISTROS
-    public static function obtieneOtrosRegistros() {
-        $consulta ="select * from registros where tipo_reg=:tipo_reg";
-        $valores[":tipo_reg"]='otro';
-        $resultado = self::ejecutaConsulta($consulta, $valores);
-        while ($reg= $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
-            $registros[] = new Registro($reg);
-        }
-        return $registros;
-    }
-    
-    public static function obtieneRegistro($id_contacto) {
-        $consulta ="select * from registros where tipo_reg=:tipo_reg";
-        $valores[":tipo_reg"]='otro';
-        $resultado = self::ejecutaConsulta($consulta, $valores);
-        $reg = $resultado->fetch();
-            $registro = new Registro($reg);
-        
-        return $registro;
-    }
-    
-    /*
-     *PENDIENTE INNER REGISTROS DEL CLIENTE
-     */
-    public static function buscarIncidencia($dni){
-        $consulta ="select * from contactos where dni=:dni ";
-        $valores[":dni"]=$dni;
-        $resultado = self::ejecutaConsulta($consulta, $valores);
-        $c = $resultado->fetch();
-        if($c!=null){
-            $cliente = new Contacto($c);
-        }
-        return $cliente;
-    }
-    
     public static function anadirIncidencia($valores_1,$prioridad,$archivar){
         try{
             $consulta_1 ="insert into registros (fecha, estado, material, observaciones, imagen, id_contacto, id_usuario_r, tipo_reg values (?,?,?,?,?,?,?,?)";            //Devuelve el id de la ultima inserccion-
@@ -115,7 +79,7 @@ class DB_registro{
             
             //Se ingresa el telefono con el mismo id
             $consulta_2 ="insert into incidencias (id_incidencia, prioridad, archivar) values (?,?,?)";
-            //$valores_2 = array('id_contacto' => (int) $lastId, 'telefono'=> $telefono);
+            
             $valores_2[]=$lastId;
             $valores_2[]=$prioridad;
             $valores_2[]=$archivar;
@@ -124,7 +88,6 @@ class DB_registro{
             echo "No se ha podido";
             return null;
         } 
-        //$r = $resultado->fetch(PDO::FETCH_ASSOC); 
         return $resultado;
     }
     
@@ -147,73 +110,26 @@ class DB_registro{
         return $resultado;
     }
     
-    public static function eliminarProveedor($id_contacto){
-        try{
-            $consulta_1 ="DELETE FROM telcontactos WHERE id_contacto=?";
-            $valores[]=$id_contacto;
-            self::ejecutaConsulta($consulta_1, $valores);
-            $consulta_2="DELETE FROM proveedores WHERE id_proveedor=?";
-            self::ejecutaConsulta($consulta_2,$valores);
-            $consulta_3 ="DELETE FROM contactos WHERE id_contacto=?";
-            $resultado = self::ejecutaConsulta($consulta_3, $valores);
-            
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
+    //OTROS REGISTROS
+    public static function obtieneOtrosRegistros() {
+        $consulta ="select * from registros where tipo_reg=:tipo_reg";
+        $valores[":tipo_reg"]='otro';
+        $resultado = self::ejecutaConsulta($consulta, $valores);
+        while ($reg= $resultado->fetch()) {
+        //Se crea un objeto de la clase Producto y lo añadimos al array.
+        //$p tiene filas.
+            $registros[] = new Registro($reg);
+        }
+        return $registros;
     }
     
-    
-    public static function anadirCliente($valores_1,$telefono){
-        try{
-            $consulta_1 ="insert into contactos (dni, nombre, direccion, ciudad, cod_postal, email, tipo) values (?,?,?,?,?,?,?)";
-            //Devuelve el id de la ultima inserccion-
-            $lastId = self::ejecutaConsultaDev($consulta_1, $valores_1);
-            //Se ingresa el telefono con el mismo id
-            $consulta_2 ="insert into telcontactos (id_contacto, telefono) values (?,?)";
-            //$valores_2 = array('id_contacto' => (int) $lastId, 'telefono'=> $telefono);
-            $valores_2[]=$lastId;
-            $valores_2[]=$telefono;
-            $resultado = self::ejecutaConsulta($consulta_2, $valores_2);
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-
-        //$r = $resultado->fetch(PDO::FETCH_ASSOC); 
-        return $resultado;
-    }
-    
-    
-    public static function editarCliente($valores_1,$telefono,$id_contacto){
-        try{
-            $consulta_1 ="UPDATE contactos SET dni=?, nombre=?,direccion=?,ciudad=?, cod_postal=?, email=? WHERE id_contacto=?";
-            
-            self::ejecutaConsulta($consulta_1, $valores_1);
-            $consulta_2 ="UPDATE telcontactos SET telefono=? WHERE id_contacto=?";
-            $valores_2[]=$telefono;
-            $valores_2[]=$id_contacto;
-            $resultado = self::ejecutaConsulta($consulta_2, $valores_2);
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
-    }
-    
-    public static function eliminarCliente($id_contacto){
-        try{
-            $consulta_1 ="DELETE FROM telcontactos WHERE id_contacto=?";
-            $valores[]=$id_contacto;
-            self::ejecutaConsulta($consulta_1, $valores);
-            $consulta_2 ="DELETE FROM contactos WHERE id_contacto=?";
-            $resultado = self::ejecutaConsulta($consulta_2, $valores);
-            
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
+    public static function obtieneRegistro($id_contacto) {
+        $consulta ="select * from registros where tipo_reg=:tipo_reg";
+        $valores[":tipo_reg"]='otro';
+        $resultado = self::ejecutaConsulta($consulta, $valores);
+        $reg = $resultado->fetch();
+            $registro = new Registro($reg);
+        
+        return $registro;
     }
 }

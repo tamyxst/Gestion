@@ -94,37 +94,23 @@ FIN;
     }
     
     /**
-     * retorna un array con todos los proecutos (objetos)
+     * retorna un array con todos los Usuarios (objetos)
      */
     public static function obtieneUsuarios() {
         $consulta ="select * from usuarios";
         $resultado = self::ejecutaConsulta($consulta);
         
         while ($u = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
+        //Se crea un objeto de la clase Usuario y lo añadimos al array.
         //$p tiene filas.
             $usuarios[] = new Usuario($u);
         }
         return $usuarios;
     }
     
-    /**
-     * retorna un array con todos los proecutos (objetos)
-     */
-    public static function obtieneProductos() {
-        $consulta ="select * from producto";
-        $resultado = self::ejecutaConsulta($consulta);
-        
-        while ($p = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
-            $productos[] = new Producto($p);
-        }
-        return $productos;
-    }
+   
     
     /*=============MENSAJES==================*/
-    
     /**
      * retorna un array con todos los mensajes sin leer para el Sidebar.
      */
@@ -137,8 +123,6 @@ FIN;
         $resultado = self::ejecutaConsulta($consulta, $valores);
         
         while ($m = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $mensajes[] = new Mensaje($m);
         }
         return $mensajes;
@@ -155,8 +139,6 @@ FIN;
         $valores = array('id_usuario' =>$id_usuario);
         $resultado = self::ejecutaConsulta($consulta, $valores);
         while ($m = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $mensajes[] = new Mensaje($m);
         }
         return $mensajes;
@@ -170,8 +152,6 @@ FIN;
         $valores = array('id_mensaje' =>$id_mensaje,'id_usuario' =>$id_usuario);
         $resultado = self::ejecutaConsulta($consulta, $valores);
         while ($m = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $mensaje[] = new Mensaje($m);
         }
         return $mensaje;
@@ -234,8 +214,6 @@ FIN;
         $valores = array('tipo' =>'cliente');
         $resultado = self::ejecutaConsulta($consulta, $valores);
         while ($cl = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $clientes[] = new Contacto($cl);
         }
         return $clientes;
@@ -246,8 +224,6 @@ FIN;
         $valores = array('id_contacto' =>$id_contacto,'tipo' =>"cliente");
         $resultado = self::ejecutaConsulta($consulta, $valores);
         while ($cl = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $cliente[] = new Contacto($cl);
         }
         return $cliente;
@@ -258,8 +234,6 @@ FIN;
         $consulta ="select * from contactos where dni=:dni ";
         $resultado = self::ejecutaConsulta($consulta, $dni);
         while ($cl = $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
             $cliente[] = new Contacto($cl);
         }
         return $cliente;
@@ -280,8 +254,6 @@ FIN;
             echo "No se ha podido";
             return null;
         } 
-
-        //$r = $resultado->fetch(PDO::FETCH_ASSOC); 
         return $resultado;
     }
     
