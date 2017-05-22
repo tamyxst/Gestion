@@ -10,13 +10,12 @@
     <ul class="dropdown-menu">
         <li class="header">Tu tienes {$numMensajes} mensajes</li>
             <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   {foreach from=$mensajes item=$m}
                       <li><!-- start message -->
                                 <a href="gestion-mensajes.php?id={$m->getIdMensaje()}">   
                           <div class="pull-left">
-                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
                           </div>
                           <h4>
                             {$m->getNombreEmisor()}

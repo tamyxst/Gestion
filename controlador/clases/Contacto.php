@@ -19,11 +19,7 @@ class Contacto {
     protected $contacto;
     
     public function __construct($row) {
-        if($row['tipo']=='cliente'){
-            $this->id_contacto = $row['id_contacto'];
-        }else{
-            $this->id_contacto = $row['id_proveedor'];
-        }
+        $this->id_contacto = $row['id_contacto'];
         $this->dni = $row['dni'];
         $this->nombre = $row['nombre'];
         $this->direccion= $row['direccion'];

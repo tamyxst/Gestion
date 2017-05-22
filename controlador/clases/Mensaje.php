@@ -1,11 +1,5 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+require_once('Fecha.php');
 class Mensaje {
 
     protected $id_mensaje;
@@ -20,8 +14,7 @@ class Mensaje {
         $this->id_mensaje = $row['id_mensaje'];
         $this->mensaje = $row['mensaje'];
         $this->archivar = $row['archivar'];
-        //$this->fecha = $this->cambiaFnormal($row['fecha']);
-        $this->fecha = $row['fecha'];
+        $this->fecha = new Fecha($row['fecha']);
         $this->destinatario = $row['destinatario'];
         $this->id_usuario_m = $row['id_usuario_m'];
         $this->nombreEmisor = $this->nombreEmi($this->id_usuario_m);
@@ -40,7 +33,7 @@ class Mensaje {
     }
 
     public function getFecha() {
-        return $this->fecha;
+        return $this->fecha->getFecha();
     }
 
     public function getDestinatario() {
@@ -60,16 +53,6 @@ class Mensaje {
         return $nombre;
     }
 
-    public function cambiaFnormal($fecha) {
-        $fechaN = date("d-m-Y H:i:s'", strtotime($fecha));
-        return $fechaN;
-    }
-
-    public function cambiaFmysql($fecha) {
-        $fechaSql = date("Y-m-d H:i:s'", strtotime($fecha));
-        return $fechaSql;
-    }
-
     public function getMensajeCorto() {
         if (strlen($this->mensaje) >= 32) {
             $msj = substr($this->mensaje, 0, 32);
@@ -79,37 +62,6 @@ class Mensaje {
         }
         return $cadena;
     }
-
-    public function time_elapsed_string($datetime, $full = false) {
-        $now = new DateTime;
-        $ago = new DateTime($datetime);
-        $diff = $now->diff($ago);
-
-        $diff->w = floor($diff->d / 7);
-        $diff->d -= $diff->w * 7;
-
-        $string = array(
-            'y' => 'año',
-            'm' => 'mes',
-            'w' => 'semana',
-            'd' => 'dia',
-            'h' => 'hora',
-            'i' => 'minuto',
-            's' => 'segundo',
-        );
-        foreach ($string as $k => &$v) {
-            if ($diff->$k) {
-                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-            } else {
-                unset($string[$k]);
-            }
-        }
-
-        if (!$full)
-            $string = array_slice($string, 0, 1);
-        return $string ? ' hace ' . implode(', ', $string) : 'justo ahora';
-    }
-
 }
 
 ?>

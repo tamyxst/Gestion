@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-24 18:56:05
+/* Smarty version 3.1.30, created on 2017-05-19 18:38:04
   from "/var/www/html/gestion/vista/templates/mensajes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fe2e25e5dea9_14845271',
+  'unifunc' => 'content_591f1f6cedd603_79897337',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e2cad93c2e2bd7c4f88281dc7873a5f563abf1d' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/mensajes.tpl',
-      1 => 1493052897,
+      1 => 1495211778,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58fe2e25e5dea9_14845271 (Smarty_Internal_Template $_smarty_tpl) {
+function content_591f1f6cedd603_79897337 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <li class="dropdown messages-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -36,7 +36,6 @@ function content_58fe2e25e5dea9_14845271 (Smarty_Internal_Template $_smarty_tpl)
         <li class="header">Tu tienes <?php echo $_smarty_tpl->tpl_vars['numMensajes']->value;?>
  mensajes</li>
             <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mensajes']->value, 'm');
@@ -47,7 +46,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['m']->value) {
                                 <a href="gestion-mensajes.php?id=<?php echo $_smarty_tpl->tpl_vars['m']->value->getIdMensaje();?>
 ">   
                           <div class="pull-left">
-                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
                           </div>
                           <h4>
                             <?php echo $_smarty_tpl->tpl_vars['m']->value->getNombreEmisor();?>

@@ -36,7 +36,7 @@
       <div class="icon">
         <i class="ion ion-person-add"></i>
       </div>
-      <a href="#" class="small-box-footer">Ir a Registros <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="gestion-pedidos.php" class="small-box-footer">Ir a Pedidos <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -44,13 +44,12 @@
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">
-        <h3>65</h3>
-
+        <h3>{$numIncidencias}</h3>
         <p>Incidencias</p>
       </div>
       <div class="icon">
         <i class="ion ion-pie-graph"></i>
       </div>
-      <a href="#" class="small-box-footer">Más Información <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="gestion-incidencias.php" class="small-box-footer">Ir a Incidencias <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>

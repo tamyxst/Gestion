@@ -172,10 +172,10 @@
                     </div>
                     <div class="col-lg-6 col-xs-12">
                          <div class="form-group">
-                             <label class="control-label" for="contactoo">Persona contacto <span class="asterisco">*</span></label>
+                             <label class="control-label" for="contacto">Persona contacto <span class="asterisco">*</span></label>
                              <div class="input-group">
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                 <input type="text" id="contacto" name="contacto" class="form-control">
+                                 <input type="text" id="contacto" name="contacto" class="form-control" placeholder="Contacto">
                              </div>
                          </div>
                     </div>
@@ -188,99 +188,107 @@
                </form>
               </div>
                               
-              {if empty ($proveedor)}<div class="tab-pane" id="detalle">{else}<div class="active tab-pane" id="detalle">{/if}
-        {if empty($mostrarProveedores)}
-        <p>No hay datos disponibles</p>
-        {else}
+          {if empty ($proveedor)}<div class="tab-pane" id="detalle">{else}<div class="active tab-pane" id="detalle">{/if}
           <div class="row">
             <div class="col-lg-6">
-                <h3>Detalle proveedores</h3>
-        {if empty($proveedor)}
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Cif</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getDniContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Razón social</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getNombreContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getDireccionContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getCodPostalContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getEmailContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getTelefonoContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Sector</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getSector()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Persona contacto</b>
-                    <div class="pull-right">{$mostrarProveedores[0]->getPersonaContacto()}</div>
-                </li>
-            </ul>
-        {else}
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Cif</b>
-                    <div class="pull-right">{$proveedor->getDniContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Razón social</b>
-                    <div class="pull-right">{$proveedor->getNombreContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right">{$proveedor->getDireccionContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right">{$proveedor->getCiudadContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right">{$proveedor->getEmailContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right">{$proveedor->getTelefonoContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Sector</b>
-                    <div class="pull-right">{$proveedor->getSector()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Persona contacto</b>
-                    <div class="pull-right">{$proveedor->getPersonaContacto()}</div>
-                </li>
-            </ul>
-        {/if}
-            <div class="pull-right">
-                {if empty($proveedor)}
-                    <button type="button" onclick="editar('{$mostrarProveedores[0]->getIdContacto()}')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                {else}
-                     <button type="button" onclick="editar('{$proveedor->getIdContacto()}')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                {/if}
-                <form class="pull-right" action="gestion-proveedores.php" method="post"> 
-                    {if empty($proveedor)}
-                        <input type="hidden" name="id_contacto" value="{$mostrarProveedores[0]->getIdContacto()}">
-                    {else}
-                        <input type="hidden" name="id_contacto" value="{$proveedor->getIdContacto()}">
-                    {/if}
-                    <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
-                </form>
+            <h3>Editar proveedores</h3>
+            <form id="formeditar" novalidate action="gestion-proveedores.php" method="post"> 
+            <div class="row">
+                <div class="col-lg-6">
+                   <div class="form-group">
+                       <label class="control-label" for="dni_e">Cif <span class="asterisco">*</span></label>
+                          <div class="input-group">	 
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                             <input type="text" class="form-control" id="dni_e" value="{if !empty ($proveedor)}{$proveedor->getDniContacto()}{/if}" name="dni_e" maxlength="9" placeholder="10000000X">
+                          </div>
+                      </div>
+                 </div>
+                 <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label" for="nombre_e">Razón social <span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="nombre_e" name="nombre_e" value="{if !empty ($proveedor)}{$proveedor->getNombreContacto()}{/if}" class="form-control" placeholder="Nombre Apellidos" minlength="3">
+                    </div>
+                    </div>
+                 </div>
+                 <div class="col-lg-6">
+                   <div class="form-group">
+                      <label class="control-label" for="direccion_e">Dirección<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="direccion_e" name="direccion_e" value="{if !empty ($proveedor)}{$proveedor->getDireccionContacto()}{/if}" class="form-control" placeholder="Dirección completa" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                   <div class="form-group">
+                      <label class="control-label" for="ciudad_e">Ciudad<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="ciudad_e" name="ciudad_e" class="form-control" value="{if !empty ($proveedor)}{$proveedor->getCiudadContacto()}{/if}" placeholder="Ciudad" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="cod_postal_e">Código postal <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                             <input type="text" id="cod_postal_e" name="cod_postal_e" value="{if !empty ($proveedor)}{$proveedor->getCodPostalContacto()}{/if}" class="form-control" placeholder="50000" maxlength="5">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email_e">Email <span class="asterisco">*</span></label>
+
+                        <div class="input-group">	 
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
+                            <input type="email" id="email_e" name="email_e" value="{if !empty ($proveedor)}{$proveedor->getEmailContacto()}{/if}" class="form-control" placeholder="Email">
+                        </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="telefono_e">Teléfono <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="tel" id="telefono_e" name="telefono_e" value="{if !empty ($proveedor)}{$proveedor->getTelefonoContacto()}{/if}" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="sector_e">Sector <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="text" id="sector_e" name="sector_e" value="{if !empty ($proveedor)}{$proveedor->getSector()}{/if}" class="form-control" placeholder="Sector">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="contacto_e">Persona contacto <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="text" id="contacto_e" name="contacto_e" value="{if !empty ($proveedor)}{$proveedor->getPersonaContacto()}{/if}" class="form-control" placeholder="Contacto">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group pull-right">
+                        <input type="hidden" id="id_contacto_e" name="id_contacto_e" value="{if !empty ($proveedor)}{$proveedor->getIdContacto()}{/if}">
+                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar proveedor</button> 
+                        <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </div>
+                        
+                </div>
             </div>
+           </form>
+          </div>  
+            <div class="col-lg-6">
+                <h3>Registros</h3>
             <div class="row">
                     <div class="col-lg-6">
                         <div class="progress-group">
@@ -292,104 +300,8 @@
                       </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-lg-6">
-            <h3>Editar proveedores</h3>
-            <form id="formn" novalidate action="gestion-proveedores.php" method="post"> 
-            <div class="row">
-                <input type="hidden" class="form-control" id="id_contacto_e" name="id_contacto">
-                <div class="col-lg-6">
-                   <div class="form-group">
-                       <label class="control-label" for="dni">Cif <span class="asterisco">*</span></label>
-                          <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                             <input type="text" class="form-control" id="dni_e" name="dni" maxlength="9" placeholder="10000000X">
-                          </div>
-                      </div>
-                 </div>
-                 <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                      <label class="control-label" for="nombre">Razón social <span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="nombre_e" name="nombre" class="form-control" placeholder="Nombre Apellidos" minlength="3">
-                    </div>
-                    </div>
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                      <label class="control-label" for="direccion">Dirección<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="direccion_e" name="direccion" id="direccion" class="form-control" placeholder="Dirección completa" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                   <div class="form-group">
-                      <label class="control-label" for="ciudad">Ciudad<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="ciudad_e" name="ciudad" class="form-control" placeholder="Ciudad" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="cod_postal">Código postal <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                             <input type="text" id="cod_postal_e" name="cod_postal" class="form-control" placeholder="50000" maxlength="5">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="control-label" for="temail">Email <span class="asterisco">*</span></label>
-
-                        <div class="input-group">	 
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
-                            <input type="email" id="email_e" name="email" class="form-control" placeholder="Email">
-                        </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="telefono">Teléfono <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="tel" id="telefono_e" name="telefono" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="sector">Sector <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="text" id="sector_e" name="sector" class="form-control">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="contacto">Persona contacto <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="text" id="contacto_e" name="contacto" class="form-control">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-12"> 
-                    <div class="form-group pull-right">
-                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
-                    </div>  
-                </div>
             </div>
-           </form>
-          </div>
         </div>
-       {/if}
     </div>
   </div>
   </div>

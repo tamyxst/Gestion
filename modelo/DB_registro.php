@@ -74,7 +74,7 @@ class DB_registro{
     
     public static function anadirIncidencia($valores_1,$prioridad,$archivar){
         try{
-            $consulta_1 ="insert into registros (fecha, estado, material, observaciones, imagen, id_contacto, id_usuario_r, tipo_reg values (?,?,?,?,?,?,?,?)";            //Devuelve el id de la ultima inserccion-
+            $consulta_1 ="insert into registros (fecha, estado, material, observaciones, imagen, id_contacto, id_usuario_r, tipo_reg) values (?,?,?,?,?,?,?,?)";            //Devuelve el id de la ultima inserccion-
             $lastId = self::ejecutaConsultaDev($consulta_1, $valores_1);
             
             //Se ingresa el telefono con el mismo id
@@ -91,9 +91,9 @@ class DB_registro{
         return $resultado;
     }
     
-    public static function editarIncidencia($valores_1,$prioridad,$archivar,$id_incidencia){
+    public static function editarIncidenciaCI($valores_1,$prioridad,$archivar,$id_incidencia){
         try{
-            $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?,imagen=?, id_usuario_r=?, WHERE id_registro=?";
+            $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?,imagen=?, id_usuario_r=? WHERE id_registro=?";
             
             self::ejecutaConsulta($consulta_1, $valores_1);
             $consulta_2 ="UPDATE incidencias SET prioridad=?, archivar=? WHERE id_incidencia=?";
@@ -102,6 +102,40 @@ class DB_registro{
             $valores_2[]=$id_incidencia;
             
             $resultado=self::ejecutaConsulta($consulta_2, $valores_2);
+            
+        }catch(PDOException $e){
+            echo "No se ha podido";
+            return null;
+        } 
+        return $resultado;
+    }
+    
+    public static function editarIncidenciaSI($valores_1,$prioridad,$archivar,$id_incidencia){
+        try{
+            $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?, id_usuario_r=?, WHERE id_registro=?";
+            
+            self::ejecutaConsulta($consulta_1, $valores_1);
+            $consulta_2 ="UPDATE incidencias SET prioridad=?, archivar=? WHERE id_incidencia=?";
+            $valores_2[]=$prioridad;
+            $valores_2[]=$archivar;
+            $valores_2[]=$id_incidencia;
+            
+            $resultado=self::ejecutaConsulta($consulta_2, $valores_2);
+            
+        }catch(PDOException $e){
+            echo "No se ha podido";
+            return null;
+        } 
+        return $resultado;
+    }
+    
+    //Modifica las imagenes almacenadas en el registro
+    public static function editarIncidenciaImagen($imagen,$id_registro){
+        try{
+            $consulta_1 ="UPDATE registros SET imagen=? WHERE id_registro=?";
+            $valores[]=$imagen;
+            $valores[]=$id_registro;
+            $resultado=self::ejecutaConsulta($consulta_1, $valores);
             
         }catch(PDOException $e){
             echo "No se ha podido";
@@ -133,3 +167,4 @@ class DB_registro{
         return $registro;
     }
 }
+?>

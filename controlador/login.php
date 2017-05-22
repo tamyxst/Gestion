@@ -13,31 +13,30 @@ $smarty->cache_dir = '.././vista/cache/';
 if (isset($_POST['enviar'])) {
     $usuario = filter_input(INPUT_POST, 'usuario');
     $password = filter_input(INPUT_POST, 'password');
-    if ((empty($usuario)) || (empty($password))) 
-        $smarty->assign('error','Debes introducir un nombre de usuario y una contraseña');
-    else {
+    if ((empty($usuario)) || (empty($password))) {
+        $smarty->assign('error', 'Debes introducir un nombre de usuario y una contraseña');
+    } else {
         // Compruebo las credenciales con la base de datos
         if (DB::verificaUsuario($usuario, $password)) {
             session_start();
-            
-             if(! isset($_COOKIE[$usuario])){
+
+            if (!isset($_COOKIE[$usuario])) {
                 //Si el usuario accede por primera vez se crea la cookie.
                 setcookie($usuario, time(), time() + 3600);
             }
-            
+
             //Creo la variable de sesión
-            $_SESSION['usuario']=$usuario;
-            $datosUsuario=DB::dameDatosUsuario($usuario);
-            
+            $_SESSION['usuario'] = $usuario;
+            $datosUsuario = DB::dameDatosUsuario($usuario);
+
             //Creo más variables de sesión para utilizarlas.
-            $_SESSION['id_usuario']=$datosUsuario->getIdUsuario();
-            
-           
+            $_SESSION['id_usuario'] = $datosUsuario->getIdUsuario();
+
+
             header("Location: inicio.php");
-        }
-        else {
+        } else {
             // Si las credenciales no son válidas, se vuelven a pedir
-            $smarty->assign('error','Usuario o contraseña no válidos!');
+            $smarty->assign('error', 'Usuario o contraseña no válidos!');
         }
     }
 }

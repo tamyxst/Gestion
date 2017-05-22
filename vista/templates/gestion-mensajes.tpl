@@ -74,5 +74,6 @@
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
 <script src="../dist/js/gestion.js"></script>
+
 </body>
 </html>

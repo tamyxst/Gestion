@@ -12,6 +12,7 @@ $(document).ready(function(){
         });
     //Valido formulario
     validarFormuContacto();
+    validarFormuEditar();
     /*DataTables*/
     $('#tabmen').DataTable( {
 	"pageLength": 5,
@@ -62,6 +63,7 @@ function validarFormuContacto(){
 	    required: true	
         },
 	telefono : "required",
+        id_contacto: "required",
     },
     messages: { 
 	dni: "El campo dni/cif es obligatorio",
@@ -70,7 +72,8 @@ function validarFormuContacto(){
         ciudad: "El campo ciudad es obligatorio",
 	cod_postal: "El campo código postal es obligatorio",
         email: "El campo es obligatorio",
-        telefono: "El campo teléfono es obligatorio"
+        telefono: "El campo teléfono es obligatorio",
+        id_contacto: "No hay ningún usuario seleccionado"
 	},
     errorLabelContainer: "#errores",
     wrapper: "li",
@@ -83,6 +86,45 @@ function validarFormuContacto(){
     }
    })
 }
+
+function validarFormuEditar(){	
+   $("#formeditar").validate({
+     rules: { 
+        dni_e: "required",
+        nombre_e : "required",
+	direccion_e : "required",
+	ciudad_e: "required",
+        cod_postal_e:{
+            required: true,
+            number:true
+        },
+	email_e:{
+	    required: true	
+        },
+	telefono_e : "required",
+        id_contacto_e: "required",
+    },
+    messages: { 
+	dni_e: "El campo dni/cif es obligatorio",
+	nombre_e: "El campo nombre completo es obligatorio",
+	direccion_e: "El campo dirección es obligatorio",
+        ciudad_e: "El campo ciudad es obligatorio",
+	cod_postal_e: "El campo código postal es obligatorio",
+        email_e: "El campo es obligatorio",
+        telefono_e: "El campo teléfono es obligatorio"
+	},
+    errorLabelContainer: "#errores",
+    wrapper: "li",
+    invalidHandler: function(event, validator) {
+    // 'this' refers to the form
+    var errors = validator.numberOfInvalids();
+    if (errors) {
+        $(".errores_formu").css('display','block');
+    }
+    }
+   })        
+}
+
 function ocultarFormError(){
     $(".errores_formu").css('display','none');
 }

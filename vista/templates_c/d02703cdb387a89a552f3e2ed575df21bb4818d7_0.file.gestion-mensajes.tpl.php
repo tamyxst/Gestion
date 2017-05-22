@@ -1,31 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-26 21:33:05
+/* Smarty version 3.1.30, created on 2017-05-20 20:38:23
   from "/var/www/html/gestion/vista/templates/gestion-mensajes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5900f5f1be8bb1_05455364',
+  'unifunc' => 'content_59208d1f019c80_68052336',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd02703cdb387a89a552f3e2ed575df21bb4818d7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-mensajes.tpl',
-      1 => 1493233270,
+      1 => 1495305435,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:mensajes.tpl' => 1,
-    'file:cuenta-usuario.tpl' => 1,
-    'file:buscador.tpl' => 1,
-    'file:menu-lateral.tpl' => 1,
+    'file:header.tpl' => 1,
     'file:contenido-mensajes.tpl' => 1,
   ),
 ),false)) {
-function content_5900f5f1be8bb1_05455364 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59208d1f019c80_68052336 (Smarty_Internal_Template $_smarty_tpl) {
 echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 
 <!DOCTYPE html>
@@ -64,50 +61,9 @@ echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
-  <header class="main-header">
-    <a href="inicio.php" class="logo">
-      <span class="logo-mini"><b>ALGO</b></span>
-      <span class="logo-lg"><b>Admin</b>ALGO</span>
-    </a>
-    <nav class="navbar navbar-static-top">
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only"></span>
-      </a>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Mensajes-->
-          <?php $_smarty_tpl->_subTemplateRender("file:mensajes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+  <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-          <!-- Cuenta Usuario -->
-          <?php $_smarty_tpl->_subTemplateRender("file:cuenta-usuario.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <aside class="main-sidebar">
-    <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
-</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
-        </div>
-      </div>
-      <!-- Menú lateral-->
-        <?php $_smarty_tpl->_subTemplateRender("file:buscador.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-        <?php $_smarty_tpl->_subTemplateRender("file:menu-lateral.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-    </section>
-  </aside>
   <div class="content-wrapper">
     <!-- Contenido header -->
     <section class="content-header">
@@ -174,6 +130,7 @@ echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 <?php echo '<script'; ?>
  src="../dist/js/gestion.js"><?php echo '</script'; ?>
 >
+
 </body>
 </html>
 <?php }

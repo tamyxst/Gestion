@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-06 12:57:00
+/* Smarty version 3.1.30, created on 2017-05-15 20:08:17
   from "/var/www/html/gestion/vista/templates/contenido-proveedores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_590dabfc0333c2_28575338',
+  'unifunc' => 'content_5919ee9171e737_18015138',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a82427fcc8180dd7682c354302d66f95c69cac1a' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-proveedores.tpl',
-      1 => 1494068212,
+      1 => 1494871694,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_590dabfc0333c2_28575338 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5919ee9171e737_18015138 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -215,10 +215,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                     </div>
                     <div class="col-lg-6 col-xs-12">
                          <div class="form-group">
-                             <label class="control-label" for="contactoo">Persona contacto <span class="asterisco">*</span></label>
+                             <label class="control-label" for="contacto">Persona contacto <span class="asterisco">*</span></label>
                              <div class="input-group">
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                 <input type="text" id="contacto" name="contacto" class="form-control">
+                                 <input type="text" id="contacto" name="contacto" class="form-control" placeholder="Contacto">
                              </div>
                          </div>
                     </div>
@@ -231,119 +231,127 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                </form>
               </div>
                               
-              <?php if (empty($_smarty_tpl->tpl_vars['proveedor']->value)) {?><div class="tab-pane" id="detalle"><?php } else { ?><div class="active tab-pane" id="detalle"><?php }?>
-        <?php if (empty($_smarty_tpl->tpl_vars['mostrarProveedores']->value)) {?>
-        <p>No hay datos disponibles</p>
-        <?php } else { ?>
+          <?php if (empty($_smarty_tpl->tpl_vars['proveedor']->value)) {?><div class="tab-pane" id="detalle"><?php } else { ?><div class="active tab-pane" id="detalle"><?php }?>
           <div class="row">
             <div class="col-lg-6">
-                <h3>Detalle proveedores</h3>
-        <?php if (empty($_smarty_tpl->tpl_vars['proveedor']->value)) {?>
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Cif</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getDniContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Razón social</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getNombreContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getDireccionContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getCodPostalContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getEmailContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getTelefonoContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Sector</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getSector();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Persona contacto</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getPersonaContacto();?>
-</div>
-                </li>
-            </ul>
-        <?php } else { ?>
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Cif</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getDniContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Razón social</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getNombreContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getDireccionContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getCiudadContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getEmailContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getTelefonoContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Sector</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getSector();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Persona contacto</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getPersonaContacto();?>
-</div>
-                </li>
-            </ul>
-        <?php }?>
-            <div class="pull-right">
-                <?php if (empty($_smarty_tpl->tpl_vars['proveedor']->value)) {?>
-                    <button type="button" onclick="editar('<?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getIdContacto();?>
-')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                <?php } else { ?>
-                     <button type="button" onclick="editar('<?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getIdContacto();?>
-')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                <?php }?>
-                <form class="pull-right" action="gestion-proveedores.php" method="post"> 
-                    <?php if (empty($_smarty_tpl->tpl_vars['proveedor']->value)) {?>
-                        <input type="hidden" name="id_contacto" value="<?php echo $_smarty_tpl->tpl_vars['mostrarProveedores']->value[0]->getIdContacto();?>
-">
-                    <?php } else { ?>
-                        <input type="hidden" name="id_contacto" value="<?php echo $_smarty_tpl->tpl_vars['proveedor']->value->getIdContacto();?>
-">
-                    <?php }?>
-                    <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
-                </form>
+            <h3>Editar proveedores</h3>
+            <form id="formeditar" novalidate action="gestion-proveedores.php" method="post"> 
+            <div class="row">
+                <div class="col-lg-6">
+                   <div class="form-group">
+                       <label class="control-label" for="dni_e">Cif <span class="asterisco">*</span></label>
+                          <div class="input-group">	 
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                             <input type="text" class="form-control" id="dni_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getDniContacto();
+}?>" name="dni_e" maxlength="9" placeholder="10000000X">
+                          </div>
+                      </div>
+                 </div>
+                 <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label" for="nombre_e">Razón social <span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="nombre_e" name="nombre_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getNombreContacto();
+}?>" class="form-control" placeholder="Nombre Apellidos" minlength="3">
+                    </div>
+                    </div>
+                 </div>
+                 <div class="col-lg-6">
+                   <div class="form-group">
+                      <label class="control-label" for="direccion_e">Dirección<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="direccion_e" name="direccion_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getDireccionContacto();
+}?>" class="form-control" placeholder="Dirección completa" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                   <div class="form-group">
+                      <label class="control-label" for="ciudad_e">Ciudad<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="ciudad_e" name="ciudad_e" class="form-control" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getCiudadContacto();
+}?>" placeholder="Ciudad" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="cod_postal_e">Código postal <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                             <input type="text" id="cod_postal_e" name="cod_postal_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getCodPostalContacto();
+}?>" class="form-control" placeholder="50000" maxlength="5">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email_e">Email <span class="asterisco">*</span></label>
+
+                        <div class="input-group">	 
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
+                            <input type="email" id="email_e" name="email_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getEmailContacto();
+}?>" class="form-control" placeholder="Email">
+                        </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="telefono_e">Teléfono <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="tel" id="telefono_e" name="telefono_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getTelefonoContacto();
+}?>" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="sector_e">Sector <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="text" id="sector_e" name="sector_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getSector();
+}?>" class="form-control" placeholder="Sector">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="contacto_e">Persona contacto <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="text" id="contacto_e" name="contacto_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getPersonaContacto();
+}?>" class="form-control" placeholder="Contacto">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group pull-right">
+                        <input type="hidden" id="id_contacto_e" name="id_contacto_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['proveedor']->value)) {
+echo $_smarty_tpl->tpl_vars['proveedor']->value->getIdContacto();
+}?>">
+                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar proveedor</button> 
+                        <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </div>
+                        
+                </div>
             </div>
+           </form>
+          </div>  
+            <div class="col-lg-6">
+                <h3>Registros</h3>
             <div class="row">
                     <div class="col-lg-6">
                         <div class="progress-group">
@@ -355,104 +363,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                       </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-lg-6">
-            <h3>Editar proveedores</h3>
-            <form id="formn" novalidate action="gestion-proveedores.php" method="post"> 
-            <div class="row">
-                <input type="hidden" class="form-control" id="id_contacto_e" name="id_contacto">
-                <div class="col-lg-6">
-                   <div class="form-group">
-                       <label class="control-label" for="dni">Cif <span class="asterisco">*</span></label>
-                          <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                             <input type="text" class="form-control" id="dni_e" name="dni" maxlength="9" placeholder="10000000X">
-                          </div>
-                      </div>
-                 </div>
-                 <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                      <label class="control-label" for="nombre">Razón social <span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="nombre_e" name="nombre" class="form-control" placeholder="Nombre Apellidos" minlength="3">
-                    </div>
-                    </div>
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                      <label class="control-label" for="direccion">Dirección<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="direccion_e" name="direccion" id="direccion" class="form-control" placeholder="Dirección completa" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                   <div class="form-group">
-                      <label class="control-label" for="ciudad">Ciudad<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="ciudad_e" name="ciudad" class="form-control" placeholder="Ciudad" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="cod_postal">Código postal <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                             <input type="text" id="cod_postal_e" name="cod_postal" class="form-control" placeholder="50000" maxlength="5">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="control-label" for="temail">Email <span class="asterisco">*</span></label>
-
-                        <div class="input-group">	 
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
-                            <input type="email" id="email_e" name="email" class="form-control" placeholder="Email">
-                        </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="telefono">Teléfono <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="tel" id="telefono_e" name="telefono" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="sector">Sector <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="text" id="sector_e" name="sector" class="form-control">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="contacto">Persona contacto <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="text" id="contacto_e" name="contacto" class="form-control">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-12"> 
-                    <div class="form-group pull-right">
-                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
-                    </div>  
-                </div>
             </div>
-           </form>
-          </div>
         </div>
-       <?php }?>
     </div>
   </div>
   </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-02 21:15:37
+/* Smarty version 3.1.30, created on 2017-05-19 17:02:45
   from "/var/www/html/gestion/vista/templates/sidebar-inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5908dad94a18a9_77997101',
+  'unifunc' => 'content_591f09155efd50_05169762',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '99d0f199be883d37b8e0207f22417cbeee755523' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/sidebar-inicio.tpl',
-      1 => 1493752533,
+      1 => 1495206090,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5908dad94a18a9_77997101 (Smarty_Internal_Template $_smarty_tpl) {
+function content_591f09155efd50_05169762 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="col-lg-3 col-xs-6">
     <!-- Caja clientes -->
@@ -62,7 +62,7 @@ function content_5908dad94a18a9_77997101 (Smarty_Internal_Template $_smarty_tpl)
       <div class="icon">
         <i class="ion ion-person-add"></i>
       </div>
-      <a href="#" class="small-box-footer">Ir a Registros <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="gestion-pedidos.php" class="small-box-footer">Ir a Pedidos <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -70,14 +70,14 @@ function content_5908dad94a18a9_77997101 (Smarty_Internal_Template $_smarty_tpl)
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">
-        <h3>65</h3>
-
+        <h3><?php echo $_smarty_tpl->tpl_vars['numIncidencias']->value;?>
+</h3>
         <p>Incidencias</p>
       </div>
       <div class="icon">
         <i class="ion ion-pie-graph"></i>
       </div>
-      <a href="#" class="small-box-footer">Más Información <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="gestion-incidencias.php" class="small-box-footer">Ir a Incidencias <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div><?php }
 }

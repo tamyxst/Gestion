@@ -40,7 +40,7 @@
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
         </div>
         <div class="pull-left info">
           <p>{$usuario}</p>
@@ -85,7 +85,7 @@
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../plugins/atle/js/app.js"></script>
-<script src="../plugins/atle/js/pages/dashboard.js"></script>
+<!--script src="../plugins/atle/js/pages/dashboard.js"></script>-->
 <script src="../plugins/atle/js/demo.js"></script>
 </body>
 </html>

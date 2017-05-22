@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-06 14:15:39
+/* Smarty version 3.1.30, created on 2017-05-15 20:07:14
   from "/var/www/html/gestion/vista/templates/contenido-clientes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_590dbe6bd76279_16748936',
+  'unifunc' => 'content_5919ee520f23d1_23586191',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e58ff06bf4c1bac1b779b14e29d6ec557d7516a7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-clientes.tpl',
-      1 => 1494069449,
+      1 => 1494871630,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_590dbe6bd76279_16748936 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5919ee520f23d1_23586191 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -72,13 +72,13 @@ function content_590dbe6bd76279_16748936 (Smarty_Internal_Template $_smarty_tpl)
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <?php if (empty($_smarty_tpl->tpl_vars['cliente']->value)) {?>
-              <li class="active"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
-              <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
-              <li><a href="#detalle" data-toggle="tab">Detalle</a></li>
+              <li id="p_listado" class="active"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
+              <li id="p_nuevo"><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
+              <li id="p_detalle"><a href="#detalle" data-toggle="tab">Detalle</a></li>
               <?php } else { ?>
-              <li><a href="#listado" data-toggle="tab">Listado clientes</a></li>
-              <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
-              <li class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
+              <li id="p_listado"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
+              <li id="p_nuevo"><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
+              <li id="p_detalle" class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
               <?php }?>
             </ul>
             <div class="tab-content">
@@ -139,8 +139,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                 </div>
                  
               <div class="tab-pane" id="nuevo">
-                <form id="formn" novalidate action="gestion-clientes.php" method="post">         
-                
+                  <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Añadir cliente</h3>
+                    </div>
+                </div>
+                <form id="formn" novalidate action="gestion-clientes.php" method="post">  
                 <div class="row">
                    <div class="col-lg-6">
                        <div class="form-group">
@@ -216,98 +220,102 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
               </div>
                               
               <?php if (empty($_smarty_tpl->tpl_vars['cliente']->value)) {?><div class="tab-pane" id="detalle"><?php } else { ?><div class="active tab-pane" id="detalle"><?php }?>
-        <?php if (empty($_smarty_tpl->tpl_vars['mostrarClientes']->value)) {?>
-        <p>No hay mensajes disponibles</p>
-        <?php } else { ?>
           <div class="row">
             <div class="col-lg-6">
-                <h3>Detalle clientes</h3>
-        <?php if (empty($_smarty_tpl->tpl_vars['cliente']->value)) {?>
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Dni</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getDniContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Apellidos, Nombre</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getNombreContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getDireccionContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getCodPostalContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getEmailContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getTelefonoContacto();?>
-</div>
-                </li>
-            </ul>
-        <?php } else { ?>
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Dni</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getDniContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Apellidos, Nombre</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getNombreContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getDireccionContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getCiudadContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getEmailContacto();?>
-</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getTelefonoContacto();?>
-</div>
-                </li>
-            </ul>
-        <?php }?>
-            <div class="pull-right">
-                <?php if (empty($_smarty_tpl->tpl_vars['cliente']->value)) {?>
-                    <button type="button" onclick="editar('<?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getIdContacto();?>
-')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                <?php } else { ?>
-                     <button type="button" onclick="editar('<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getIdContacto();?>
-')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                <?php }?>
-                <form class="pull-right" action="gestion-clientes.php" method="post"> 
-                    <?php if (empty($_smarty_tpl->tpl_vars['cliente']->value)) {?>
-                        <input type="hidden" name="id_contacto" value="<?php echo $_smarty_tpl->tpl_vars['mostrarClientes']->value[0]->getIdContacto();?>
-">
-                    <?php } else { ?>
-                        <input type="hidden" name="id_contacto" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getIdContacto();?>
-">
-                    <?php }?>
-                    <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
-                </form>
+            <h3>Editar clientes</h3>    
+            <form id="formeditar" novalidate action="gestion-clientes.php" method="post"> 
+                <div class="row">
+                <div class="col-lg-6">
+                   <div class="form-group">
+                       <label class="control-label" for="dni_e">Dni <span class="asterisco">*</span></label>
+                          <div class="input-group">	 
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                             <input type="text" class="form-control" id="dni_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getDniContacto();
+}?>" name="dni_e" maxlength="9" placeholder="10000000X">
+                          </div>
+                      </div>
+                 </div>
+                 <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="control-label" for="nombre_e">Apellidos, Nombre <span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="nombre_e" name="nombre_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getNombreContacto();
+}?>" class="form-control" placeholder="Nombre Apellidos" minlength="3">
+                    </div>
+                    </div>
+                 </div>
+                 <div class="col-lg-12">
+                   <div class="form-group">
+                      <label class="control-label" for="direccion_e">Dirección<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="direccion_e" name="direccion_e" id="direccion_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getDireccionContacto();
+}?>" class="form-control" placeholder="Dirección completa" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                   <div class="form-group">
+                      <label class="control-label" for="ciudad_e">Ciudad<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="ciudad_e" name="ciudad_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getCiudadContacto();
+}?>" class="form-control" placeholder="Ciudad" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="cod_postal_e">Código postal <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                             <input type="text" id="cod_postal_e" name="cod_postal_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getCodPostalContacto();
+}?>" class="form-control" placeholder="50000" maxlength="5">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email_e">Email <span class="asterisco">*</span></label>
+                        <div class="input-group">	 
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
+                            <input type="email" id="email_e" name="email_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getEmailContacto();
+}?>" class="form-control" placeholder="Email">
+                        </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="telefono_e">Teléfono <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="tel" id="telefono_e" name="telefono_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getTelefonoContacto();
+}?>" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="pull-right">
+                        <input type="hidden" name="id_contacto_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['cliente']->value)) {
+echo $_smarty_tpl->tpl_vars['cliente']->value->getIdContacto();
+}?>">
+                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Cliente</button> 
+                        <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </div>  
+                </div>
+               </div>
+              </form>
             </div>
+           <div class="col-lg-6">
+                <h3>Registros</h3>
             <div class="row">
                     <div class="col-lg-6">
                         <div class="progress-group">
@@ -319,90 +327,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                       </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-lg-6">
-            <h3>Editar clientes</h3>
-            <form id="formn" novalidate action="gestion-clientes.php" method="post"> 
-            <div class="row">
-                <input type="hidden" class="form-control" id="id_contacto_e" name="id_contacto">
-                <div class="col-lg-6">
-                   <div class="form-group">
-                       <label class="control-label" for="dni">Dni <span class="asterisco">*</span></label>
-                          <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                             <input type="text" class="form-control" id="dni_e" name="dni" maxlength="9" placeholder="10000000X">
-                          </div>
-                      </div>
-                 </div>
-                 <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                      <label class="control-label" for="nombre">Apellidos, Nombre <span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="nombre_e" name="nombre" class="form-control" placeholder="Nombre Apellidos" minlength="3">
-                    </div>
-                    </div>
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                      <label class="control-label" for="direccion">Dirección<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="direccion_e" name="direccion" id="direccion" class="form-control" placeholder="Dirección completa" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                   <div class="form-group">
-                      <label class="control-label" for="ciudad">Ciudad<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="ciudad_e" name="ciudad" class="form-control" placeholder="Ciudad" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="cod_postal">Código postal <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                             <input type="text" id="cod_postal_e" name="cod_postal" class="form-control" placeholder="50000" maxlength="5">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="control-label" for="temail">Email <span class="asterisco">*</span></label>
-
-                        <div class="input-group">	 
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
-                            <input type="email" id="email_e" name="email" class="form-control" placeholder="Email">
-                        </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="telefono">Teléfono <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="tel" id="telefono_e" name="telefono" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-12"> 
-                    <div class="form-group pull-right">
-                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
-                    </div>  
-                </div>
             </div>
-           </form>
-          </div>
-        </div>
-       <?php }?>
+       </div>
+    </div>
     </div>
   </div>
   </div>
-</div>
 </div>
 </section><?php }
 }

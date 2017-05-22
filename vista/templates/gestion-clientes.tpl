@@ -22,7 +22,7 @@
               xajax_cargarDetalle(id_contacto);
           }
  </script>
- <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <script>
@@ -37,7 +37,7 @@
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
 <script src="../plugins/jQueryvalidate/jquery.validate.js"></script>
-<script src="../dist/js/gestion.js"></script>
+<!--<script src="../dist/js/gestion.js"></script>-->
 <script src="../dist/js/bootstrap-filestyle.js"></script>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">

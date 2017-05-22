@@ -46,6 +46,17 @@ class DB_contacto{
        return $lastId;
  
     }
+    
+    //Obtiene un array con todos los contactos
+    public static function obtieneContactos() {
+        $consulta ="select * from contactos";
+        $resultado = self::ejecutaConsulta($consulta);
+        while ($c = $resultado->fetch_assoc()) {
+            $texto.="" .$c['nombre'].$c['dni'].'",';
+        }
+        return $texto;
+    }
+    
     /*=============CLIENTES==================*/
     
     //Todos los campos son obligatorios.
@@ -103,9 +114,20 @@ class DB_contacto{
         $resultado = self::ejecutaConsulta($consulta, $valores);
         $c = $resultado->fetch();
         if($c!=null){
-            $cliente = new Contacto($c);
+            $contacto = new Contacto($c);
         }
-        return $cliente;
+        return $contacto;
+    }
+    
+   //Sirve para prov y cliente
+    public static function buscarContactoId($id_contacto){
+        $consulta ="select * from contactos where id_contacto=:id_contacto";
+        $valor[":id_contacto"]=$id_contacto;
+        $resultado = self::ejecutaConsulta($consulta, $valor);
+        while ($c = $resultado->fetch()) {
+            $contacto = new Contacto($c);
+        }
+        return $contacto;
     }
     
     public static function anadirProveedor($valores_1,$telefono,$sector,$contacto){
@@ -226,3 +248,4 @@ class DB_contacto{
         return $resultado;
     }
 }
+?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-02 21:21:10
+/* Smarty version 3.1.30, created on 2017-05-19 19:39:21
   from "/var/www/html/gestion/vista/templates/inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5908dc26299bb5_41077447',
+  'unifunc' => 'content_591f2dc9084921_65827730',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7dbcb3861b640fb0ab1a3dc0105bee57677b24c' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/inicio.tpl',
-      1 => 1493752852,
+      1 => 1495215041,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:contenido-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_5908dc26299bb5_41077447 (Smarty_Internal_Template $_smarty_tpl) {
+function content_591f2dc9084921_65827730 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -72,7 +72,7 @@ function content_5908dc26299bb5_41077447 (Smarty_Internal_Template $_smarty_tpl)
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
         </div>
         <div class="pull-left info">
           <p><?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
@@ -138,9 +138,8 @@ function content_5908dc26299bb5_41077447 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="../plugins/atle/js/app.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
- src="../plugins/atle/js/pages/dashboard.js"><?php echo '</script'; ?>
->
+<!--script src="../plugins/atle/js/pages/dashboard.js"><?php echo '</script'; ?>
+>-->
 <?php echo '<script'; ?>
  src="../plugins/atle/js/demo.js"><?php echo '</script'; ?>
 >

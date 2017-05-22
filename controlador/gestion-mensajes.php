@@ -10,15 +10,15 @@ session_start();
 
 // Y comprobamos que el usuario se haya autentificado, para evitar que puedan acceder directamente
 //a esta pagina sin pasar por el login
-if (!isset($_SESSION['usuario']))
-    
+if (!isset($_SESSION['usuario'])) {
 //header("Location: error.php");
     die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+}
+
 // Cargamos la librería de Smarty
 $usuario=$_SESSION['usuario'];
 $smarty = new Smarty;
 
-$smarty = new Smarty;
 $smarty->template_dir = '.././vista/templates/';
 $smarty->compile_dir = '.././vista/templates_c/';
 $smarty->config_dir = '.././vista/configs/';
@@ -168,12 +168,12 @@ function dameContenido($mensajes){
                    . '<b>'.$m->getNombreEmisor().'</b></a></td><td class="mailbox-subject">'
                    . '<b>'.$m->getMensajeCorto().'</b></td>';
        }else{
-           $cadena .= '<td class="mailbox-name">'
+           $cadena .='<td class="mailbox-name">'
                    . '<a name="cargar" onclick="cargar(\''.$m->getIdMensaje().'\')" />'
                    . '<b>'.$m->getNombreEmisor().'</a></td><td class="mailbox-subject">'
                    . '<b>'.$m->getMensajeCorto().'</td>';
        }
-       $cadena .= '<td class="mailbox-date">'.$m->time_elapsed_string($m->getFecha()).'</td></tr>';
+       $cadena .= '<td class="mailbox-date">'.$m->getFecha().'</td></tr>';
        $cadenas[]=$cadena;
     }
     return $cadenas;
@@ -196,4 +196,5 @@ function responder($id_usuario_m){
 }
 $smarty->display("gestion-mensajes.tpl");
 
+   
 ?>

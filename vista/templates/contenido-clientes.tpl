@@ -45,13 +45,13 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               {if empty($cliente)}
-              <li class="active"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
-              <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
-              <li><a href="#detalle" data-toggle="tab">Detalle</a></li>
+              <li id="p_listado" class="active"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
+              <li id="p_nuevo"><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
+              <li id="p_detalle"><a href="#detalle" data-toggle="tab">Detalle</a></li>
               {else}
-              <li><a href="#listado" data-toggle="tab">Listado clientes</a></li>
-              <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
-              <li class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
+              <li id="p_listado"><a href="#listado" data-toggle="tab">Listado clientes</a></li>
+              <li id="p_nuevo"><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
+              <li id="p_detalle" class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
               {/if}
             </ul>
             <div class="tab-content">
@@ -96,8 +96,12 @@
                 </div>
                  
               <div class="tab-pane" id="nuevo">
-                <form id="formn" novalidate action="gestion-clientes.php" method="post">         
-                
+                  <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Añadir cliente</h3>
+                    </div>
+                </div>
+                <form id="formn" novalidate action="gestion-clientes.php" method="post">  
                 <div class="row">
                    <div class="col-lg-6">
                        <div class="form-group">
@@ -173,82 +177,86 @@
               </div>
                               
               {if empty ($cliente)}<div class="tab-pane" id="detalle">{else}<div class="active tab-pane" id="detalle">{/if}
-        {if empty($mostrarClientes)}
-        <p>No hay mensajes disponibles</p>
-        {else}
           <div class="row">
             <div class="col-lg-6">
-                <h3>Detalle clientes</h3>
-        {if empty($cliente)}
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Dni</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getDniContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Apellidos, Nombre</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getNombreContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getDireccionContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getCodPostalContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getEmailContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right">{$mostrarClientes[0]->getTelefonoContacto()}</div>
-                </li>
-            </ul>
-        {else}
-            <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                    <b>Dni</b>
-                    <div class="pull-right">{$cliente->getDniContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Apellidos, Nombre</b>
-                    <div class="pull-right">{$cliente->getNombreContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Dirección</b>
-                    <div class="pull-right">{$cliente->getDireccionContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Código postal</b>
-                    <div class="pull-right">{$cliente->getCiudadContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Email</b>
-                    <div class="pull-right">{$cliente->getEmailContacto()}</div>
-                </li>
-                <li class="list-group-item">
-                    <b>Telefono</b>
-                    <div class="pull-right">{$cliente->getTelefonoContacto()}</div>
-                </li>
-            </ul>
-        {/if}
-            <div class="pull-right">
-                {if empty($cliente)}
-                    <button type="button" onclick="editar('{$mostrarClientes[0]->getIdContacto()}')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                {else}
-                     <button type="button" onclick="editar('{$cliente->getIdContacto()}')" name="editar" class="btn btn-default"><i class="fa fa-reply"></i> Editar</button>
-                {/if}
-                <form class="pull-right" action="gestion-clientes.php" method="post"> 
-                    {if empty($cliente)}
-                        <input type="hidden" name="id_contacto" value="{$mostrarClientes[0]->getIdContacto()}">
-                    {else}
-                        <input type="hidden" name="id_contacto" value="{$cliente->getIdContacto()}">
-                    {/if}
-                    <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
-                </form>
+            <h3>Editar clientes</h3>    
+            <form id="formeditar" novalidate action="gestion-clientes.php" method="post"> 
+                <div class="row">
+                <div class="col-lg-6">
+                   <div class="form-group">
+                       <label class="control-label" for="dni_e">Dni <span class="asterisco">*</span></label>
+                          <div class="input-group">	 
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                             <input type="text" class="form-control" id="dni_e" value="{if !empty ($cliente)}{$cliente->getDniContacto()}{/if}" name="dni_e" maxlength="9" placeholder="10000000X">
+                          </div>
+                      </div>
+                 </div>
+                 <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="control-label" for="nombre_e">Apellidos, Nombre <span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="nombre_e" name="nombre_e" value="{if !empty ($cliente)}{$cliente->getNombreContacto()}{/if}" class="form-control" placeholder="Nombre Apellidos" minlength="3">
+                    </div>
+                    </div>
+                 </div>
+                 <div class="col-lg-12">
+                   <div class="form-group">
+                      <label class="control-label" for="direccion_e">Dirección<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="direccion_e" name="direccion_e" id="direccion_e" value="{if !empty ($cliente)}{$cliente->getDireccionContacto()}{/if}" class="form-control" placeholder="Dirección completa" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                   <div class="form-group">
+                      <label class="control-label" for="ciudad_e">Ciudad<span class="asterisco">*</span></label>
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input type="text" id="ciudad_e" name="ciudad_e" value="{if !empty ($cliente)}{$cliente->getCiudadContacto()}{/if}" class="form-control" placeholder="Ciudad" minlength="3">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="cod_postal_e">Código postal <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                             <input type="text" id="cod_postal_e" name="cod_postal_e" value="{if !empty ($cliente)}{$cliente->getCodPostalContacto()}{/if}" class="form-control" placeholder="50000" maxlength="5">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email_e">Email <span class="asterisco">*</span></label>
+                        <div class="input-group">	 
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
+                            <input type="email" id="email_e" name="email_e" value="{if !empty ($cliente)}{$cliente->getEmailContacto()}{/if}" class="form-control" placeholder="Email">
+                        </div>
+                     </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                     <div class="form-group">
+                         <label class="control-label" for="telefono_e">Teléfono <span class="asterisco">*</span></label>
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                             <input type="tel" id="telefono_e" name="telefono_e" value="{if !empty ($cliente)}{$cliente->getTelefonoContacto()}{/if}" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="pull-right">
+                        <input type="hidden" name="id_contacto_e" value="{if !empty ($cliente)}{$cliente->getIdContacto()}{/if}">
+                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Cliente</button> 
+                        <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </div>  
+                </div>
+               </div>
+              </form>
             </div>
+           <div class="col-lg-6">
+                <h3>Registros</h3>
             <div class="row">
                     <div class="col-lg-6">
                         <div class="progress-group">
@@ -260,89 +268,11 @@
                       </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-lg-6">
-            <h3>Editar clientes</h3>
-            <form id="formn" novalidate action="gestion-clientes.php" method="post"> 
-            <div class="row">
-                <input type="hidden" class="form-control" id="id_contacto_e" name="id_contacto">
-                <div class="col-lg-6">
-                   <div class="form-group">
-                       <label class="control-label" for="dni">Dni <span class="asterisco">*</span></label>
-                          <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                             <input type="text" class="form-control" id="dni_e" name="dni" maxlength="9" placeholder="10000000X">
-                          </div>
-                      </div>
-                 </div>
-                 <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                      <label class="control-label" for="nombre">Apellidos, Nombre <span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="nombre_e" name="nombre" class="form-control" placeholder="Nombre Apellidos" minlength="3">
-                    </div>
-                    </div>
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                      <label class="control-label" for="direccion">Dirección<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="direccion_e" name="direccion" id="direccion" class="form-control" placeholder="Dirección completa" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                   <div class="form-group">
-                      <label class="control-label" for="ciudad">Ciudad<span class="asterisco">*</span></label>
-                      <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input type="text" id="ciudad_e" name="ciudad" class="form-control" placeholder="Ciudad" minlength="3">
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="cod_postal">Código postal <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                             <input type="text" id="cod_postal_e" name="cod_postal" class="form-control" placeholder="50000" maxlength="5">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                    <div class="form-group">
-                        <label class="control-label" for="temail">Email <span class="asterisco">*</span></label>
-
-                        <div class="input-group">	 
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>	
-                            <input type="email" id="email_e" name="email" class="form-control" placeholder="Email">
-                        </div>
-                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
-                     <div class="form-group">
-                         <label class="control-label" for="telefono">Teléfono <span class="asterisco">*</span></label>
-                         <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                             <input type="tel" id="telefono_e" name="telefono" class="form-control" maxlength="9" placeholder="(+34) 666 666 666">
-                         </div>
-                     </div>
-                </div>
-                <div class="col-lg-12"> 
-                    <div class="form-group pull-right">
-                        <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
-                    </div>  
-                </div>
             </div>
-           </form>
-          </div>
-        </div>
-       {/if}
+       </div>
+    </div>
     </div>
   </div>
   </div>
-</div>
 </div>
 </section>

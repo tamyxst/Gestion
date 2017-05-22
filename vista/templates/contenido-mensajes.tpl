@@ -59,7 +59,7 @@
                                     <td class="mailbox-name"><a  href="javascript:void(0);" name='cargar' onclick="cargar('{$mi->getIdMensaje()}')" />{$mi->getNombreEmisor()}</a></td>
                                     <td class="mailbox-subject">{$mi->getMensajeCorto()}</td>
                                 {/if}
-                                <td class="mailbox-date">{$mi->time_elapsed_string($mi->getFecha())}</td>
+                                <td class="mailbox-date">{$mi->getFecha()}</td>
                             </tr>
                         {/foreach}
                   </tbody>

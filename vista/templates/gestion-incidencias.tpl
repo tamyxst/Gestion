@@ -21,9 +21,13 @@
           function cargarDetalle(id_registro){
               xajax_cargarDetalle(id_registro);
           }
+          function borrarImagen(imagen,id_registro){
+              xajax_borrarImagen(imagen,id_registro);
+          }
  </script>
- <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../plugins/jQuery/jquery-ui.js"></script>
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -32,13 +36,15 @@
 <script src="../dist/bootstrap/js/bootstrap.min.js"></script>
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../plugins/atle/js/app.js"></script>
-<!--<script src="../plugins/atle/js/pages/dashboard.js"></script>-->
 <script src="../plugins/atle/js/demo.js"></script>
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
 <script src="../plugins/jQueryvalidate/jquery.validate.js"></script>
 <script src="../dist/js/gestion.js"></script>
+<script src="../dist/js/gestion_plugins.js"></script>
 <script src="../dist/js/bootstrap-filestyle.js"></script>
+<script src="../dist/js/autocomplete.js"></script>
+
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">

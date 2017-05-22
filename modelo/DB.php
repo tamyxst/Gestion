@@ -239,6 +239,7 @@ FIN;
         return $cliente;
     }
     
+    
     public static function anadirContacto($valores_1,$telefono){
         try{
             $consulta_1 ="insert into contactos (dni, nombre, direccion, ciudad, cod_postal, email, tipo) values (?,?,?,?,?,?,?)";

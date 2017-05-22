@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-24 20:22:54
+/* Smarty version 3.1.30, created on 2017-05-21 12:28:17
   from "/var/www/html/gestion/vista/templates/contenido-mensajes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fe427e715575_64078994',
+  'unifunc' => 'content_59216bc16afb28_70005068',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f2e401d356d207a42870ae09eaa1acbb50aa2009' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-mensajes.tpl',
-      1 => 1493058171,
+      1 => 1495362495,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58fe427e715575_64078994 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59216bc16afb28_70005068 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Main content -->
     <section class="content">
@@ -94,7 +94,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
                                     <td class="mailbox-subject"><?php echo $_smarty_tpl->tpl_vars['mi']->value->getMensajeCorto();?>
 </td>
                                 <?php }?>
-                                <td class="mailbox-date"><?php echo $_smarty_tpl->tpl_vars['mi']->value->time_elapsed_string($_smarty_tpl->tpl_vars['mi']->value->getFecha());?>
+                                <td class="mailbox-date"><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFecha();?>
 </td>
                             </tr>
                         <?php
@@ -111,7 +111,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                   <button type="submit" name="eliminarv" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
                 </div>
                 <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-mensajes.php'"><i class="fa fa-refresh"></i></button>
              </div>
             </div>    
           </div>
