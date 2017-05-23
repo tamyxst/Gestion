@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:16:07
+/* Smarty version 3.1.30, created on 2017-05-23 20:39:41
   from "/var/www/html/gestion/vista/templates/gestion-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59247c674a6446_41025102',
+  'unifunc' => 'content_592481ed1a2dc5_04523512',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0724d4e52fa4538c365b6a00bcc0171cdaa0709' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-incidencias.tpl',
-      1 => 1495563300,
+      1 => 1495564677,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:header.tpl' => 1,
     'file:contenido-incidencias.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_59247c674a6446_41025102 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592481ed1a2dc5_04523512 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -131,14 +132,9 @@ function content_59247c674a6446_41025102 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
 </body>
 </html>

@@ -1,30 +1,29 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-19 19:39:21
+/* Smarty version 3.1.30, created on 2017-05-23 20:44:36
   from "/var/www/html/gestion/vista/templates/inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_591f2dc9084921_65827730',
+  'unifunc' => 'content_592483147e68c5_72813164',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7dbcb3861b640fb0ab1a3dc0105bee57677b24c' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/inicio.tpl',
-      1 => 1495215041,
+      1 => 1495565006,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:mensajes.tpl' => 1,
-    'file:cuenta-usuario.tpl' => 1,
-    'file:menu-lateral.tpl' => 1,
+    'file:header.tpl' => 1,
     'file:contenido-inicio.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_591f2dc9084921_65827730 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592483147e68c5_72813164 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -45,46 +44,9 @@ function content_591f2dc9084921_65827730 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
-  <header class="main-header">
-    <a href="inicio.php" class="logo">
-      <span class="logo-mini"><b>ALGO</b></span>
-      <span class="logo-lg"><b>Admin</b>ALGO</span>
-    </a>
-    <nav class="navbar navbar-static-top">
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only"></span>
-      </a>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Mensajes-->
-          <?php $_smarty_tpl->_subTemplateRender("file:mensajes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+  <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-          <!-- Cuenta Usuario -->
-          <?php $_smarty_tpl->_subTemplateRender("file:cuenta-usuario.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <aside class="main-sidebar">
-    <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
-</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
-        </div>
-      </div>
-        <?php $_smarty_tpl->_subTemplateRender("file:menu-lateral.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-    </section>
-  </aside>
   <div class="content-wrapper">
     <!-- Contenido header -->
     <section class="content-header">
@@ -102,14 +64,9 @@ function content_591f2dc9084921_65827730 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
+  <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
 <?php echo '<script'; ?>
  src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
@@ -137,6 +94,9 @@ function content_591f2dc9084921_65827730 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="../plugins/atle/js/app.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/atle/js/autocomplete.js"><?php echo '</script'; ?>
 >
 <!--script src="../plugins/atle/js/pages/dashboard.js"><?php echo '</script'; ?>
 >-->

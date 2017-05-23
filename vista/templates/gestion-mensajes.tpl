@@ -49,18 +49,10 @@
     <!-- Contenido Mensajes -->
         {include file="contenido-mensajes.tpl"}
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <!-- Control sidebar -->
-  <div class="control-sidebar-bg"></div>
+    {include file="footer.tpl"}
 </div>
-<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../plugins/dataTables/jquery-1.12.4.js"></script>
+<script src="../plugins/jQuery/jquery-ui.js"></script>
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -74,6 +66,7 @@
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
 <script src="../dist/js/gestion.js"></script>
+<script src="../dist/js/autocomplete.js"></script>
 
 </body>
 </html>

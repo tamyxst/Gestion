@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-20 20:38:23
+/* Smarty version 3.1.30, created on 2017-05-23 20:52:44
   from "/var/www/html/gestion/vista/templates/gestion-mensajes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59208d1f019c80_68052336',
+  'unifunc' => 'content_592484fc262c26_58507464',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd02703cdb387a89a552f3e2ed575df21bb4818d7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-mensajes.tpl',
-      1 => 1495305435,
+      1 => 1495565557,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:header.tpl' => 1,
     'file:contenido-mensajes.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_59208d1f019c80_68052336 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592484fc262c26_58507464 (Smarty_Internal_Template $_smarty_tpl) {
 echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 
 <!DOCTYPE html>
@@ -81,21 +82,15 @@ echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 ?>
 
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <!-- Control sidebar -->
-  <div class="control-sidebar-bg"></div>
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
 <?php echo '<script'; ?>
- src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+ src="../plugins/dataTables/jquery-1.12.4.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"><?php echo '</script'; ?>
+ src="../plugins/jQuery/jquery-ui.js"><?php echo '</script'; ?>
 >
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <?php echo '<script'; ?>

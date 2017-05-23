@@ -4,7 +4,11 @@ $(document).ready(function(){
     $("#contacto").autocomplete({
         source: ".././modelo/DB_buscarContacto.php",
         minLength: 1
-    });  
-  } );
+    })
+    $("#search").autocomplete({
+        source: ".././modelo/DB_buscarContacto.php",
+        minLength: 1
+    }); 
+  });
 });
 

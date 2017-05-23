@@ -17,39 +17,7 @@
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
-  <header class="main-header">
-    <a href="inicio.php" class="logo">
-      <span class="logo-mini"><b>ALGO</b></span>
-      <span class="logo-lg"><b>Admin</b>ALGO</span>
-    </a>
-    <nav class="navbar navbar-static-top">
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only"></span>
-      </a>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Mensajes-->
-          {include file="mensajes.tpl"}
-          <!-- Cuenta Usuario -->
-          {include file="cuenta-usuario.tpl"}
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <aside class="main-sidebar">
-    <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/icono_usuario.png" class="img-circle" alt="Imagen de Usuario">
-        </div>
-        <div class="pull-left info">
-          <p>{$usuario}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
-        </div>
-      </div>
-        {include file="menu-lateral.tpl"}
-    </section>
-  </aside>
+  {include file='header.tpl'}
   <div class="content-wrapper">
     <!-- Contenido header -->
     <section class="content-header">
@@ -65,14 +33,7 @@
     <!-- Contenido Inicio -->
         {include file="contenido-inicio.tpl"}
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
+  {include file="footer.tpl"}
 </div>
 <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -85,6 +46,7 @@
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../plugins/atle/js/app.js"></script>
+<script src="../plugins/atle/js/autocomplete.js"></script>
 <!--script src="../plugins/atle/js/pages/dashboard.js"></script>-->
 <script src="../plugins/atle/js/demo.js"></script>
 </body>

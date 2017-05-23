@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:25:34
+/* Smarty version 3.1.30, created on 2017-05-23 20:53:39
   from "/var/www/html/gestion/vista/templates/gestion-proveedores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59247e9e4572e4_20095524',
+  'unifunc' => 'content_59248533efe9c9_96564938',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ed6434a984112e43b2dd1b1bbfd13d1e232aacec' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-proveedores.tpl',
-      1 => 1495563915,
+      1 => 1495565608,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:contenido-proveedores.tpl' => 1,
   ),
 ),false)) {
-function content_59247e9e4572e4_20095524 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59248533efe9c9_96564938 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -41,6 +41,8 @@ function content_59247e9e4572e4_20095524 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
+<?php echo '<script'; ?>
+ type="text/javascript">
           function editar(id_contacto){
               xajax_editar(id_contacto);
           }
@@ -50,10 +52,10 @@ function content_59247e9e4572e4_20095524 (Smarty_Internal_Template $_smarty_tpl)
  <?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+ src="../plugins/dataTables/jquery-1.12.4.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"><?php echo '</script'; ?>
+ src="../plugins/jQuery/jquery-ui.js"><?php echo '</script'; ?>
 >
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <?php echo '<script'; ?>
@@ -98,6 +100,9 @@ function content_59247e9e4572e4_20095524 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="../dist/js/bootstrap-filestyle.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">

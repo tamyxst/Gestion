@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:23:20
+/* Smarty version 3.1.30, created on 2017-05-23 21:04:56
   from "/var/www/html/gestion/vista/templates/gestion-clientes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59247e18e8e710_01142970',
+  'unifunc' => 'content_592487d8cfc9b6_95567269',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c1d7c02ec0cc2a3fe7c4ae028399a699691094f6' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-clientes.tpl',
-      1 => 1495563790,
+      1 => 1495565528,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:header.tpl' => 1,
     'file:contenido-clientes.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_59247e18e8e710_01142970 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592487d8cfc9b6_95567269 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -51,12 +52,19 @@ function content_59247e18e8e710_01142970 (Smarty_Internal_Template $_smarty_tpl)
           }
  <?php echo '</script'; ?>
 >
+ <?php echo '<script'; ?>
+ src="../plugins/dataTables/jquery-1.12.4.js"><?php echo '</script'; ?>
+>
 <?php echo '<script'; ?>
+ src="../plugins/jQuery/jquery-ui.js"><?php echo '</script'; ?>
+>
+<!-- Resuelve conflicto de jQuery UI con Bootstrap -->
+<!--<?php echo '<script'; ?>
  src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
+>-->
+<!--<?php echo '<script'; ?>
  src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"><?php echo '</script'; ?>
->
+>-->
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <?php echo '<script'; ?>
 >
@@ -101,6 +109,9 @@ function content_59247e18e8e710_01142970 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="../dist/js/bootstrap-filestyle.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
+>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
@@ -124,14 +135,9 @@ function content_59247e18e8e710_01142970 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://www.algodecoracion.com">Algo Decoración, S.A.</a>.</strong> All rights
-    reserved.
-  </footer>
-  <div class="control-sidebar-bg"></div>
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
 </body>
 </html>
