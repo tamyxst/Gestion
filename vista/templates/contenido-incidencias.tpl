@@ -65,14 +65,15 @@
                       </div>
                     <div class="box-body">
                       <div class="mailbox-messages">
-                        <table id="tabmen" class="display table table-bordered table-hover">
+                        <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
                                 <th></th>
+                                <th>Autor</th>
                                 <th>Prioridad</th>
                                 <th>Fecha</th>
-                                <th>Autor</th>
                                 <th>Asignado a</th>
+                                <th></th>
                                 <th>Estado</th>
                             </tr>
                            </thead>
@@ -80,10 +81,11 @@
                                {foreach from=$mostrarIncidencias item=$mi}
                                     <tr>
                                         <td>{if ($mi->getPrioridadReg()==='alta')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getPrioridadReg()==='media')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</td>
+                                        <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
                                         <td>{$mi->getPrioridadReg()}</a></td>
                                         <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
-                                        <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
                                         <td>{$mi->getIdUsuarioReg()}</td>
+                                        <th>{if ($mi->getEstadoReg()==='Pendiente')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getEstadoReg()==='Modificada')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</th>
                                         <td>{$mi->getEstadoReg()}</td>
                                     </tr>
                                 {/foreach}
@@ -100,14 +102,14 @@
                  <div class="row">
                      <div class="col-lg-6">
                      <h3>Añadir incidencia</h3>
-                   <form id="formn" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data"> 
+                   <form id="formreg" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data"> 
                      <div class="row">
                        <div class="col-lg-6">
                           <div class="form-group">
                              <label class="control-label" for="estado">Estado <span class="asterisco">*</span></label>
                              <div class="input-group">
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-                                 <select class="form-control" name="estado">
+                                 <select class="form-control" id="estado" name="estado">
                                       <option value="0">Pendiente</option>
                                       <option value="1">Modificada</option>
                                       <option value="2">Finalizada</option>
@@ -120,7 +122,7 @@
                             <label class="control-label" for="prioridad">Prioridad <span class="asterisco">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                                <select class="form-control" name="prioridad">
+                                <select class="form-control" id="prioridad" name="prioridad">
                                      <option value="alta">Alta</option>
                                      <option value="media">Media</option>
                                      <option value="baja">Baja</option>
@@ -128,22 +130,19 @@
                             </div>
                          </div>
                      </div>
-                     <div class="col-lg-6 col-xs-12">
-                        <div class="form-group">
-                          <label class="control-label" for="material">Material<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
-                          <input type="text" id="material" name="material" class="form-control" placeholder="Material empleado" minlength="3">
+                         
+                     <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="material">Material</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" value="" name="material" id="material" class="form-control" placeholder="Material"></textarea>
                         </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                          <label class="control-label" for="observaciones">Observaciones<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-                          <input type="text" id="observaciones" name="observaciones" id="observaciones" class="form-control" placeholder="Observaciones" minlength="3">
-                          </div>
+                    </div>
+                    <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="observaciones">Observaciones</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" name="observaciones" value="" id="observaciones" class="form-control" placeholder="Observaciones"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-6 col-xs-12">
@@ -180,7 +179,7 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <button type="submit" name="enviar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
+                            <button type="submit" name="enviar" class="btn btn-default" onsubmit="validarFormuregistro()">Enviar</button> 
                         </div>  
                     </div>
                   </div>
@@ -213,17 +212,8 @@
                          </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-label" for="id_usuario_r_e">Asignado</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" name="id_usuario_r_e" id="id_usuario_r_e" value="{if !empty ($incidencia)}{$incidencia->getIdUsuarioReg()}{/if}" class="form-control" />
-                            </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-6">
                        <div class="form-group">
-                            <label class="control-label" for="estado">Estado<span class="asterisco">*</span></label>
+                            <label class="control-label" for="estado">Estado</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
                                 <select class="form-control" id="estado_e" name="estado_e">
@@ -236,9 +226,9 @@
                             </div>
                          </div>
                      </div>
-                    <div class="col-lg-6">
+                     <div class="col-lg-6">
                        <div class="form-group">
-                            <label class="control-label" for="prioridad">Prioridad <span class="asterisco">*</span></label>
+                            <label class="control-label" for="prioridad">Prioridad</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
                                 <select class="form-control" id="estado_e" name="prioridad_e">
@@ -251,38 +241,52 @@
                             </div>
                          </div>
                      </div>
-                     <div class="col-lg-6 col-xs-12">
-                        <div class="form-group">
-                          <label class="control-label" for="material">Material<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
-                          <input type="text" id="material_e" name="material_e" value="{if !empty ($incidencia)}{$incidencia->getMaterialReg()}{/if}" class="form-control" placeholder="Material empleado" minlength="3">
+                     <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="material">Material</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material">{if !empty ($incidencia)}{$incidencia->getMaterialReg()}{/if}</textarea>
                         </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                          <label class="control-label" for="observaciones">Observaciones<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                           <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-                          <input type="text" id="observaciones_e" name="observaciones_e" value="{if !empty ($incidencia)}{$incidencia->getObservacionesReg()}{/if}" class="form-control" placeholder="Observaciones" minlength="3">
-                          </div>
+                    </div>
+                    <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="observaciones">Observaciones</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones">{if !empty ($incidencia)}{$incidencia->getObservacionesReg()}{/if}</textarea>
                         </div>
                     </div>
                     <div class="col-lg-12 block-img-registro">
                           <div class="row" id="img-registro">
-                            {if !empty ($incidencia->getImagenRegArreglo())}
+                            {if !empty ($incidencia->getImagenReg())}
                                 {foreach $incidencia->getImagenRegArreglo() as $imagen}
                                     <div class="col-lg-4">Imagen incidencia: 
                                         <a href="{$imagen}" alt="{$incidencia->getIdContactoReg()}" target="_blank"><img class="img-responsive" src="{$imagen}" alt="imagen" /></a>
                                         <button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen('{$imagen}','{$incidencia->getIdReg()}')">Borrar Imagen</button> 
                                     </div>
-                                    
                                 {/foreach}
                             {/if}
                            </div>
                          </div>
                      </div>
+                     <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="control-label" for="id_usuario_r_e">Asignado a</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <select class="form-control" name="id_usuario_r_e" id="id_usuario_r_e">
+                                     {if !empty ($incidencia)}
+                                       {foreach from=$usuarios item=$u}
+                                           {if ($incidencia->getIdUsuarioReg()===$u->getNombreCompleto())}
+                                               <option value="{$u->getIdUsuario()}" selected>{$u->getNombreCompleto()}</option>
+                                           {else}
+                                               <option value="{$u->getIdUsuario()}">{$u->getNombreCompleto()}</option>
+                                           {/if}
+                                       {/foreach}
+                                     {/if}
+                                </select>
+                            </div>
+                         </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                          <label class="control-label" for="imagen">Adjuntar imagen</label>
@@ -319,55 +323,7 @@
             </div>
       </div>
     </div>
-   </div>
-    <div class="col-lg-12">
-     <section class="col-lg-5 connectedSortable">
-     <div class="box box-primary">
-     <div class="box-header">
-       <i class="ion ion-clipboard"></i>
-
-       <h3 class="box-title">To Do List</h3>
-
-       <div class="box-tools pull-right">
-         <ul class="pagination pagination-sm inline">
-           <li><a href="#">&laquo;</a></li>
-           <li><a href="#">1</a></li>
-           <li><a href="#">2</a></li>
-           <li><a href="#">3</a></li>
-           <li><a href="#">&raquo;</a></li>
-         </ul>
-       </div>
-     </div>
-     <!-- /.box-header -->
-     <div class="box-body">
-       <ul class="todo-list">
-         {foreach from=$mostrarIncidencias item=$mi}
-           <li>
-            <span class="handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-            </span>
-           <input type="checkbox" value="">
-           <span class="text"><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getPrioridadReg()}</b></a></span>
-           <span class="text">{$mi->getIdContactoReg()}</span>
-           <small class="label label-danger"><i class="fa fa-clock-o"></i><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></small>
-           <span class="text">{$mi->getIdUsuarioReg()}</span>
-           <span class="text">{$mi->getIdUsuarioReg()}</span>
-           <div class="tools">
-             <i class="fa fa-edit"></i>
-             <i class="fa fa-trash-o"></i>
-           </div>
-         </li>
-         {/foreach}
-       </ul>
-     </div>
-     <!-- /.box-body -->
-     <div class="box-footer clearfix no-border">
-       <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-     </div>
-    </div>
-    </section>  
-    </div>     
+   </div>    
   </div>                    
 </div>                        
 </div>                      

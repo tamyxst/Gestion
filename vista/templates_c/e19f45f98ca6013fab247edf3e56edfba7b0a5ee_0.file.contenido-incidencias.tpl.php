@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-22 20:33:28
+/* Smarty version 3.1.30, created on 2017-05-23 20:13:45
   from "/var/www/html/gestion/vista/templates/contenido-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59232ef878c486_22521417',
+  'unifunc' => 'content_59247bd9235904_70762166',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e19f45f98ca6013fab247edf3e56edfba7b0a5ee' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-incidencias.tpl',
-      1 => 1495477994,
+      1 => 1495563221,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_59232ef878c486_22521417 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59247bd9235904_70762166 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -92,14 +92,15 @@ function content_59232ef878c486_22521417 (Smarty_Internal_Template $_smarty_tpl)
                       </div>
                     <div class="box-body">
                       <div class="mailbox-messages">
-                        <table id="tabmen" class="display table table-bordered table-hover">
+                        <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
                                 <th></th>
+                                <th>Autor</th>
                                 <th>Prioridad</th>
                                 <th>Fecha</th>
-                                <th>Autor</th>
                                 <th>Asignado a</th>
+                                <th></th>
                                 <th>Estado</th>
                             </tr>
                            </thead>
@@ -111,16 +112,17 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
 ?>
                                     <tr>
                                         <td><?php if (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'alta')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'media')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></td>
+                                        <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
+" /><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
+</a></td>
                                         <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg();?>
 </a></td>
                                         <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
 " /><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFechaReg();?>
 </b></a></td>
-                                        <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
-" /><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
-</a></td>
                                         <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
 </td>
+                                        <th><?php if (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Pendiente')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Modificada')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></th>
                                         <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getEstadoReg();?>
 </td>
                                     </tr>
@@ -143,14 +145,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                  <div class="row">
                      <div class="col-lg-6">
                      <h3>Añadir incidencia</h3>
-                   <form id="formn" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data"> 
+                   <form id="formreg" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data"> 
                      <div class="row">
                        <div class="col-lg-6">
                           <div class="form-group">
                              <label class="control-label" for="estado">Estado <span class="asterisco">*</span></label>
                              <div class="input-group">
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-                                 <select class="form-control" name="estado">
+                                 <select class="form-control" id="estado" name="estado">
                                       <option value="0">Pendiente</option>
                                       <option value="1">Modificada</option>
                                       <option value="2">Finalizada</option>
@@ -163,7 +165,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                             <label class="control-label" for="prioridad">Prioridad <span class="asterisco">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                                <select class="form-control" name="prioridad">
+                                <select class="form-control" id="prioridad" name="prioridad">
                                      <option value="alta">Alta</option>
                                      <option value="media">Media</option>
                                      <option value="baja">Baja</option>
@@ -171,22 +173,19 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                             </div>
                          </div>
                      </div>
-                     <div class="col-lg-6 col-xs-12">
-                        <div class="form-group">
-                          <label class="control-label" for="material">Material<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
-                          <input type="text" id="material" name="material" class="form-control" placeholder="Material empleado" minlength="3">
+                         
+                     <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="material">Material</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" value="" name="material" id="material" class="form-control" placeholder="Material"></textarea>
                         </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                          <label class="control-label" for="observaciones">Observaciones<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-                          <input type="text" id="observaciones" name="observaciones" id="observaciones" class="form-control" placeholder="Observaciones" minlength="3">
-                          </div>
+                    </div>
+                    <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="observaciones">Observaciones</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" name="observaciones" value="" id="observaciones" class="form-control" placeholder="Observaciones"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-6 col-xs-12">
@@ -234,7 +233,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <button type="submit" name="enviar" class="btn btn-default" onsubmit="validarFormuContacto()">Enviar</button> 
+                            <button type="submit" name="enviar" class="btn btn-default" onsubmit="validarFormuregistro()">Enviar</button> 
                         </div>  
                     </div>
                   </div>
@@ -271,19 +270,8 @@ echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdContactoReg();
                          </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-label" for="id_usuario_r_e">Asignado</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" name="id_usuario_r_e" id="id_usuario_r_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
-echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg();
-}?>" class="form-control" />
-                            </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-6">
                        <div class="form-group">
-                            <label class="control-label" for="estado">Estado<span class="asterisco">*</span></label>
+                            <label class="control-label" for="estado">Estado</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
                                 <select class="form-control" id="estado_e" name="estado_e">
@@ -296,9 +284,9 @@ echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg();
                             </div>
                          </div>
                      </div>
-                    <div class="col-lg-6">
+                     <div class="col-lg-6">
                        <div class="form-group">
-                            <label class="control-label" for="prioridad">Prioridad <span class="asterisco">*</span></label>
+                            <label class="control-label" for="prioridad">Prioridad</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
                                 <select class="form-control" id="estado_e" name="prioridad_e">
@@ -311,31 +299,27 @@ echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg();
                             </div>
                          </div>
                      </div>
-                     <div class="col-lg-6 col-xs-12">
-                        <div class="form-group">
-                          <label class="control-label" for="material">Material<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
-                          <input type="text" id="material_e" name="material_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                     <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="material">Material</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getMaterialReg();
-}?>" class="form-control" placeholder="Material empleado" minlength="3">
+}?></textarea>
                         </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                          <label class="control-label" for="observaciones">Observaciones<span class="asterisco">*</span></label>
-                          <div class="input-group">
-                           <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-                          <input type="text" id="observaciones_e" name="observaciones_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                    </div>
+                    <div class="col-lg-6 form-group required-field-block">
+                         <label class="control-label" for="observaciones">Observaciones</label>
+                        <div class="col-md-12 input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                            <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getObservacionesReg();
-}?>" class="form-control" placeholder="Observaciones" minlength="3">
-                          </div>
+}?></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12 block-img-registro">
                           <div class="row" id="img-registro">
-                            <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value->getImagenRegArreglo())) {?>
+                            <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value->getImagenReg())) {?>
                                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['incidencia']->value->getImagenRegArreglo(), 'imagen');
 if ($_from !== null) {
@@ -350,7 +334,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['imagen']->value) {
 ','<?php echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdReg();?>
 ')">Borrar Imagen</button> 
                                     </div>
-                                    
                                 <?php
 }
 }
@@ -361,6 +344,38 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                            </div>
                          </div>
                      </div>
+                     <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="control-label" for="id_usuario_r_e">Asignado a</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <select class="form-control" name="id_usuario_r_e" id="id_usuario_r_e">
+                                     <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
+                                       <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['usuarios']->value, 'u');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['u']->value) {
+?>
+                                           <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg() === $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto())) {?>
+                                               <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
+" selected><?php echo $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto();?>
+</option>
+                                           <?php } else { ?>
+                                               <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
+"><?php echo $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto();?>
+</option>
+                                           <?php }?>
+                                       <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                                     <?php }?>
+                                </select>
+                            </div>
+                         </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                          <label class="control-label" for="imagen">Adjuntar imagen</label>
@@ -405,71 +420,7 @@ echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdReg();
             </div>
       </div>
     </div>
-   </div>
-    <div class="col-lg-12">
-     <section class="col-lg-5 connectedSortable">
-     <div class="box box-primary">
-     <div class="box-header">
-       <i class="ion ion-clipboard"></i>
-
-       <h3 class="box-title">To Do List</h3>
-
-       <div class="box-tools pull-right">
-         <ul class="pagination pagination-sm inline">
-           <li><a href="#">&laquo;</a></li>
-           <li><a href="#">1</a></li>
-           <li><a href="#">2</a></li>
-           <li><a href="#">3</a></li>
-           <li><a href="#">&raquo;</a></li>
-         </ul>
-       </div>
-     </div>
-     <!-- /.box-header -->
-     <div class="box-body">
-       <ul class="todo-list">
-         <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mostrarIncidencias']->value, 'mi');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
-?>
-           <li>
-            <span class="handle">
-              <i class="fa fa-ellipsis-v"></i>
-              <i class="fa fa-ellipsis-v"></i>
-            </span>
-           <input type="checkbox" value="">
-           <span class="text"><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
-" /><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg();?>
-</b></a></span>
-           <span class="text"><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
-</span>
-           <small class="label label-danger"><i class="fa fa-clock-o"></i><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
-" /><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFechaReg();?>
-</b></a></small>
-           <span class="text"><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
-</span>
-           <span class="text"><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
-</span>
-           <div class="tools">
-             <i class="fa fa-edit"></i>
-             <i class="fa fa-trash-o"></i>
-           </div>
-         </li>
-         <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
-
-       </ul>
-     </div>
-     <!-- /.box-body -->
-     <div class="box-footer clearfix no-border">
-       <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-     </div>
-    </div>
-    </section>  
-    </div>     
+   </div>    
   </div>                    
 </div>                        
 </div>                      

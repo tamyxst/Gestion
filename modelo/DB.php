@@ -190,7 +190,8 @@ FIN;
      public static function enviarMensaje($cuerpomensaje,$destinatario){
         $id_usuario=$_SESSION['id_usuario'];
         $mensaje='Cambios realizados';
-        $fecha = date('Y-m-d h:i:s');
+        //H mayúscula para formato 24 horas
+        $fecha = date('Y-m-d H:i:s');
         try{
             $consulta ="insert into mensajes (mensaje, archivar, fecha, destinatario, id_usuario_m) values (?,?,?,?,?)";
             $valores[]=$cuerpomensaje;

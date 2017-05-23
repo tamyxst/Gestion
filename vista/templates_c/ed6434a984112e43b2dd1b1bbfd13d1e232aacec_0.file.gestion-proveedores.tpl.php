@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-06 14:15:47
+/* Smarty version 3.1.30, created on 2017-05-23 20:25:34
   from "/var/www/html/gestion/vista/templates/gestion-proveedores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_590dbe735730c0_83238277',
+  'unifunc' => 'content_59247e9e4572e4_20095524',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ed6434a984112e43b2dd1b1bbfd13d1e232aacec' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-proveedores.tpl',
-      1 => 1494072922,
+      1 => 1495563915,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:contenido-proveedores.tpl' => 1,
   ),
 ),false)) {
-function content_590dbe735730c0_83238277 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59247e9e4572e4_20095524 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -40,8 +40,7 @@ function content_590dbe735730c0_83238277 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
-<?php echo '<script'; ?>
- type="text/javascript">
+<link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
           function editar(id_contacto){
               xajax_editar(id_contacto);
           }
@@ -50,7 +49,7 @@ function content_590dbe735730c0_83238277 (Smarty_Internal_Template $_smarty_tpl)
           }
  <?php echo '</script'; ?>
 >
- <?php echo '<script'; ?>
+<?php echo '<script'; ?>
  src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
@@ -84,6 +83,12 @@ function content_590dbe735730c0_83238277 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="../plugins/dataTables/dataTables.bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/dataTables.responsive.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/responsive.bootstrap.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../plugins/jQueryvalidate/jquery.validate.js"><?php echo '</script'; ?>

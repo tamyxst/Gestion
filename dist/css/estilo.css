@@ -5017,3 +5017,7 @@ display: none;
 .block-img-registro img{
     width:110px;
 }
+span.asterisco{
+    color:red;
+    padding-left: 3px;
+}

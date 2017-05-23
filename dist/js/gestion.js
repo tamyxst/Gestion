@@ -13,8 +13,10 @@ $(document).ready(function(){
     //Valido formulario
     validarFormuContacto();
     validarFormuEditar();
+    validarFormuregistro();
     /*DataTables*/
     $('#tabmen').DataTable( {
+        "responsive": true,
 	"pageLength": 5,
 	"oLanguage": {
          	"sEmptyTable": "No hay datos disponibles",
@@ -112,6 +114,32 @@ function validarFormuEditar(){
 	cod_postal_e: "El campo código postal es obligatorio",
         email_e: "El campo es obligatorio",
         telefono_e: "El campo teléfono es obligatorio"
+	},
+    errorLabelContainer: "#errores",
+    wrapper: "li",
+    invalidHandler: function(event, validator) {
+    // 'this' refers to the form
+    var errors = validator.numberOfInvalids();
+    if (errors) {
+        $(".errores_formu").css('display','block');
+    }
+    }
+   })        
+}
+
+function validarFormuregistro(){	
+   $("#formreg").validate({
+     rules: { 
+        estado: "required",
+        prioridad : "required",
+	id_usuario_r: "required",
+        contacto: "required"
+    },
+    messages: { 
+	estado: "No se ha asignado ningún estado",
+	prioridad: "Se debe escoger una prioridad para el registro",
+	id_usuario_r: "No se ha asignado el registro a ningún empleado",
+        contacto: "No se ha asignado el registro a ningún Cliente o Proveedor"
 	},
     errorLabelContainer: "#errores",
     wrapper: "li",

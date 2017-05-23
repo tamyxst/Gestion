@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-19 18:30:46
+/* Smarty version 3.1.30, created on 2017-05-23 20:23:20
   from "/var/www/html/gestion/vista/templates/gestion-clientes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_591f1db68d8f51_48039358',
+  'unifunc' => 'content_59247e18e8e710_01142970',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c1d7c02ec0cc2a3fe7c4ae028399a699691094f6' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-clientes.tpl',
-      1 => 1495211400,
+      1 => 1495563790,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:contenido-clientes.tpl' => 1,
   ),
 ),false)) {
-function content_591f1db68d8f51_48039358 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59247e18e8e710_01142970 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -40,6 +40,7 @@ function content_591f1db68d8f51_48039358 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">
           function editar(id_contacto){
@@ -84,6 +85,12 @@ function content_591f1db68d8f51_48039358 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="../plugins/dataTables/dataTables.bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/dataTables.responsive.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/responsive.bootstrap.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../plugins/jQueryvalidate/jquery.validate.js"><?php echo '</script'; ?>

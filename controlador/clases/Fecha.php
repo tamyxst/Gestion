@@ -44,13 +44,15 @@ class Fecha {
             }
         }
 
-        if (!$full)
+        if (!$full) {
             $string = array_slice($string, 0, 1);
+        }
         return $string ? ' hace ' . implode(', ', $string) : 'justo ahora';
     }
 
     public function cambiaFmysql($datetime) {
         $fechaSql = date("Y-m-d H:i:s'", strtotime($datetime));
+        //$fechaSql =  date("d/m/Y h:i:s", time());
         return $fechaSql;
     }
     public function getFecha(){

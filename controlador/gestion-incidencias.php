@@ -56,20 +56,20 @@ $ajax->configure('debug',true);
         $observaciones = filter_input(INPUT_POST, 'observaciones');
         
         //Por defecto
-        $fecha = $fecha = date('Y-m-d h:i:s'); //Fecha actual
+        $fecha = date('Y-m-d H:i:s'); //H mayúscula para formato 24 horas
         $archivar=(int)0; 
         $tipo_reg="incidencia"; 
-        
-        
         
         //Datos del autor de la incidencia
         $contacto = filter_input(INPUT_POST, 'contacto'); //Recogemos los datos del autor
         $dni = explode('-', $contacto); //Separamos
         $id_contacto=DB_contacto::buscarContacto($dni[0]); //Buscamos la id_contacto por dni
-        
+        if($id_contacto===null){
+            //Si no encuentra el contacto error
+            header("Location: gestion-incidencias.php?state=no");
+        }
         //Incidencia asignada
         $id_usuario_r = filter_input(INPUT_POST, 'id_usuario_r');
-        
         $valores[] = $fecha;
         $valores[] = $estado;
         $valores[] = $material;
@@ -135,8 +135,10 @@ $ajax->configure('debug',true);
         $imagenes=$reg->getImagenReg();
         if($imagenes!==null){
             $imagenes.="+".$dir_destino;
-            //$valores[] = $dir_destino; //imagen 
             $valores[]=$imagenes;    
+        }else{
+            $imagenes=$dir_destino;
+            $valores[]=$imagenes;  
         }
         }
         $valores[] = $id_usuario;

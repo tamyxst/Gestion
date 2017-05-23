@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <script type="text/javascript">
           function editar(id_contacto){
               xajax_editar(id_contacto);
@@ -36,8 +37,10 @@
 <script src="../plugins/atle/js/demo.js"></script>
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/dataTables/dataTables.responsive.min.js"></script>
+<script src="../plugins/dataTables/responsive.bootstrap.min.js"></script>
 <script src="../plugins/jQueryvalidate/jquery.validate.js"></script>
-<!--<script src="../dist/js/gestion.js"></script>-->
+<script src="../dist/js/gestion.js"></script>
 <script src="../dist/js/bootstrap-filestyle.js"></script>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">

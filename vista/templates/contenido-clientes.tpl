@@ -65,7 +65,7 @@
                       </div>
                     <div class="box-body">
                       <div class="mailbox-messages">
-                        <table id="tabmen" class="display table table-bordered table-hover">
+                            <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
                                 <th>Dni</th>

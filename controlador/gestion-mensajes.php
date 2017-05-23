@@ -8,6 +8,7 @@ require_once('xajax_core/xajax.inc.php');
 // Recuperamos la información de la sesión
 session_start();
 
+
 // Y comprobamos que el usuario se haya autentificado, para evitar que puedan acceder directamente
 //a esta pagina sin pasar por el login
 if (!isset($_SESSION['usuario'])) {

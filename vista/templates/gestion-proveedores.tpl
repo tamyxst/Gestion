@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
-<script type="text/javascript">
+<link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
           function editar(id_contacto){
               xajax_editar(id_contacto);
           }
@@ -22,7 +22,7 @@
               xajax_cargarDetalle(id_contacto);
           }
  </script>
- <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <script>
@@ -36,6 +36,8 @@
 <script src="../plugins/atle/js/demo.js"></script>
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/dataTables/dataTables.responsive.min.js"></script>
+<script src="../plugins/dataTables/responsive.bootstrap.min.js"></script>
 <script src="../plugins/jQueryvalidate/jquery.validate.js"></script>
 <script src="../dist/js/gestion.js"></script>
 <script src="../dist/js/bootstrap-filestyle.js"></script>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-22 19:24:19
+/* Smarty version 3.1.30, created on 2017-05-23 20:16:07
   from "/var/www/html/gestion/vista/templates/gestion-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59231ec3355758_48541647',
+  'unifunc' => 'content_59247c674a6446_41025102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0724d4e52fa4538c365b6a00bcc0171cdaa0709' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-incidencias.tpl',
-      1 => 1495472103,
+      1 => 1495563300,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:contenido-incidencias.tpl' => 1,
   ),
 ),false)) {
-function content_59231ec3355758_48541647 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59247c674a6446_41025102 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -40,6 +40,7 @@ function content_59231ec3355758_48541647 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">
           function editar(id_registro){
@@ -53,9 +54,8 @@ function content_59231ec3355758_48541647 (Smarty_Internal_Template $_smarty_tpl)
           }
  <?php echo '</script'; ?>
 >
-
 <?php echo '<script'; ?>
- src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+ src="../plugins/dataTables/jquery-1.12.4.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../plugins/jQuery/jquery-ui.js"><?php echo '</script'; ?>
@@ -85,6 +85,12 @@ function content_59231ec3355758_48541647 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="../plugins/dataTables/dataTables.bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/dataTables.responsive.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/dataTables/responsive.bootstrap.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../plugins/jQueryvalidate/jquery.validate.js"><?php echo '</script'; ?>

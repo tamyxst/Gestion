@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-15 20:07:14
+/* Smarty version 3.1.30, created on 2017-05-23 20:17:40
   from "/var/www/html/gestion/vista/templates/contenido-clientes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5919ee520f23d1_23586191',
+  'unifunc' => 'content_59247cc47a8c62_47999129',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e58ff06bf4c1bac1b779b14e29d6ec557d7516a7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-clientes.tpl',
-      1 => 1494871630,
+      1 => 1495563454,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_5919ee520f23d1_23586191 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59247cc47a8c62_47999129 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -92,7 +92,7 @@ function content_5919ee520f23d1_23586191 (Smarty_Internal_Template $_smarty_tpl)
                       </div>
                     <div class="box-body">
                       <div class="mailbox-messages">
-                        <table id="tabmen" class="display table table-bordered table-hover">
+                            <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
                                 <th>Dni</th>
