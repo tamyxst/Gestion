@@ -106,8 +106,14 @@ if (!isset($_SESSION['usuario'])) {
 
     if (isset($_POST['eliminar'])) {
         $id_contacto = filter_input(INPUT_POST, 'id_contacto_e');
-        $msjAdd = DB_contacto::eliminarProveedor($id_contacto);
-        comprueba($msjAdd);
+        
+        $registros = DB_registro::obtieneRegistrosPorId($id_contacto);
+        if(empty($registros)){
+           $msjAdd = DB_contacto::eliminarProveedor($id_contacto);
+           comprueba($msjAdd);
+        }else{
+            header("Location: gestion-proveedores.php?state=no"); 
+        }
     }
 
 //Ver detalle clientes
@@ -115,6 +121,9 @@ if (!isset($_SESSION['usuario'])) {
         $id_contacto = $_GET['id'];
         $proveedor = DB_contacto::obtieneProveedor($id_contacto);
         $smarty->assign("proveedor", $proveedor);
+        //Obtener registros del prov seleccionado
+        $registros = DB_registro::obtieneRegistrosPorId($id_contacto);
+        $smarty->assign("registros", $registros);
     }
 
     function comprueba($msjTxt) {

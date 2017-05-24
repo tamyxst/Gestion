@@ -47,6 +47,9 @@ $ajax->configure('debug',true);
     $mostrarIncidencias = DB_registro::obtieneIncidencias();
     $smarty->assign("mostrarIncidencias", $mostrarIncidencias);
 
+    //Si es administrador
+    $mostrarIncidenciasAdmin = DB_registro::obtieneIncidenciasConArchivar();
+    $smarty->assign("mostrarIncidenciasAdmin", $mostrarIncidenciasAdmin);
 
 //Añadir contacto PENDIENTE
     if (isset($_POST['enviar'])) {
@@ -97,7 +100,8 @@ $ajax->configure('debug',true);
         $valores[] = (int) $id_contacto->getIdContacto(); //id_contacto del autor
         $valores[] = (int) $id_usuario_r;
         $valores[] = $tipo_reg; //Incidencia
-        DB_registro::anadirIncidencia($valores, $prioridad, $archivar);
+        $msjAdd = DB_registro::anadirIncidencia($valores, $prioridad, $archivar);
+        comprueba($msjAdd);
     }
 //Se escriben los datos y se envian
     if (isset($_POST['editar'])) {
@@ -149,16 +153,11 @@ $ajax->configure('debug',true);
         }else{
             $msjAdd = DB_registro::editarIncidenciaSI($valores, $prioridad, $archivar, $id_registro);
         }
-        
-        
-        
-       
         comprueba($msjAdd);
     }
 
     if (isset($_POST['eliminar'])) {
-        $id_registro = filter_input(INPUT_POST, 'id_registro');
-
+        $id_registro = filter_input(INPUT_POST, 'id_registro_e');
         $msjAdd = DB_registro::eliminarIncidencia($id_registro);
         comprueba($msjAdd);
     }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:25:34
+/* Smarty version 3.1.30, created on 2017-05-24 20:09:52
   from "/var/www/html/gestion/vista/templates/contenido-proveedores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59247e9e4868f4_96855718',
+  'unifunc' => 'content_5925cc7048ddb0_49908054',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a82427fcc8180dd7682c354302d66f95c69cac1a' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-proveedores.tpl',
-      1 => 1495563929,
+      1 => 1495649390,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_59247e9e4868f4_96855718 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5925cc7048ddb0_49908054 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -91,7 +91,7 @@ function content_59247e9e4868f4_96855718 (Smarty_Internal_Template $_smarty_tpl)
                         </div>
                       </div>
                     <div class="box-body">
-                      <div class="mailbox-messages">
+                      <div class="box-tools">
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
@@ -100,6 +100,7 @@ function content_59247e9e4868f4_96855718 (Smarty_Internal_Template $_smarty_tpl)
                                 <th>Direccion</th>
                                 <th>Ciudad</th>
                                 <th>Código Postal</th>
+                                <th>Nº Registros</th>
                             </tr>
                            </thead>
                            <tbody>
@@ -121,6 +122,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mp']->value) {
 </td>
                                         <td><?php echo $_smarty_tpl->tpl_vars['mp']->value->getCodPostalContacto();?>
 </td>
+                                        <td><span class="badge bg-light-blue"><?php echo $_smarty_tpl->tpl_vars['mp']->value->getNumReg();?>
+</span></td>
                                     </tr>
                                 <?php
 }
@@ -345,7 +348,6 @@ echo $_smarty_tpl->tpl_vars['proveedor']->value->getIdContacto();
                         <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar proveedor</button> 
                         <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
                     </div>
-                        
                 </div>
             </div>
            </form>
@@ -353,14 +355,63 @@ echo $_smarty_tpl->tpl_vars['proveedor']->value->getIdContacto();
             <div class="col-lg-6">
                 <h3>Registros</h3>
             <div class="row">
-                    <div class="col-lg-6">
-                        <div class="progress-group">
-                            <span class="progress-text">Registros</span>
-                            <span class="progress-number"><b>5</b>/50</span>
-                            <div class="progress sm">
-                              <div class="progress-bar progress-bar-yellow" style="width: 10%"></div>
+                    <div class="col-lg-12">
+                        <?php if (!empty($_smarty_tpl->tpl_vars['registros']->value)) {?>
+                        <form method="POST" action="gestion-proveedores.php">
+                          <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                              <input type="text" id="buscador-reg" class="form-control input-sm" placeholder="Buscar registros">
+                              <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                      </div>
+                          </div>  
+                        <div class="box-body">
+                          <div class="box-tools">
+                            <table id="tabreg" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
+                               <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Autor</th>
+                                    <th>Prioridad</th>
+                                    <th>Fecha</th>
+                                    <th>Asignado a</th>
+                                    <th>Estado</th>
+                                </tr>
+                               </thead>
+                               <tbody>
+                                   <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['registros']->value, 'mi');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
+?>
+                                        <tr>
+                                            <td><?php if (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'alta')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'media')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></td>
+                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
+" /><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
+</a></td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg();?>
+</a></td>
+                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
+" /><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFechaReg();?>
+</b></a></td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
+</td>
+                                            <th><?php if (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Pendiente')) {?><span class="label label-danger">Pendiente</span><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Modificada')) {?><span class="label label-warning">Modificada</span><?php } else { ?><span class="label label-success">Finalizada</span><?php }?></th>
+                                        </tr>
+                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-proveedores.php'"><i class="fa fa-refresh"></i></button>
+                         </div>
+                        </div> 
+                      </form>
+                      <?php }?>
                     </div>
                 </div>
             </div>

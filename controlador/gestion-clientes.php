@@ -99,11 +99,18 @@ if (!isset($_SESSION['usuario'])) {
         comprueba($msjAdd);
     }
 
+    //Antes de eliminar comprobamos si el cliente tiene registros
     if (isset($_POST['eliminar'])) {
         $id_contacto = filter_input(INPUT_POST, 'id_contacto_e');
-
-        $msjAdd = DB_contacto::eliminarCliente($id_contacto);
-        comprueba($msjAdd);
+        
+        //Comprobamos si el cliente tiene registros
+        $registros = DB_registro::obtieneRegistrosPorId($id_contacto);
+        if(empty($registros)){
+           $msjAdd = DB_contacto::eliminarCliente($id_contacto);
+           comprueba($msjAdd);
+        }else{
+           header("Location: gestion-clientes.php?state=no"); 
+        }
     }
 
 //Ver detalle clientes
@@ -111,6 +118,9 @@ if (!isset($_SESSION['usuario'])) {
         $id_contacto = $_GET['id'];
         $cliente = DB_contacto::obtieneCliente($id_contacto);
         $smarty->assign("cliente", $cliente);
+        //Obtener registros del cliente seleccionado
+        $registros = DB_registro::obtieneRegistrosPorId($id_contacto);
+        $smarty->assign("registros", $registros);
     }
 
     function comprueba($msjTxt) {

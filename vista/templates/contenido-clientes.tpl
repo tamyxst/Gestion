@@ -64,7 +64,7 @@
                         </div>
                       </div>
                     <div class="box-body">
-                      <div class="mailbox-messages">
+                      <div class="box-tools">
                             <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                            <thead>
                             <tr>
@@ -73,6 +73,7 @@
                                 <th>Direccion</th>
                                 <th>Ciudad</th>
                                 <th>Código Postal</th>
+                                <th>Nº Registros</th>
                             </tr>
                            </thead>
                            <tbody>
@@ -83,6 +84,7 @@
                                         <td>{$mc->getDireccionContacto()}</td>
                                         <td>{$mc->getCiudadContacto()}</td>
                                         <td>{$mc->getCodPostalContacto()}</td>
+                                        <td><span class="badge bg-light-blue">{$mc->getNumReg()}</span></td>
                                     </tr>
                                 {/foreach}
                           </tbody>
@@ -258,14 +260,48 @@
            <div class="col-lg-6">
                 <h3>Registros</h3>
             <div class="row">
-                    <div class="col-lg-6">
-                        <div class="progress-group">
-                            <span class="progress-text">Registros</span>
-                            <span class="progress-number"><b>5</b>/50</span>
-                            <div class="progress sm">
-                              <div class="progress-bar progress-bar-yellow" style="width: 10%"></div>
+                    <div class="col-lg-12">
+                        {if !empty($registros)}
+                        <form method="POST" action="gestion-clientes.php">
+                          <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                              <input type="text" id="buscador-reg" class="form-control input-sm" placeholder="Buscar registros">
+                              <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                      </div>
+                          </div>  
+                        <div class="box-body">
+                          <div class="box-tools">
+                            <table id="tabreg" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
+                               <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Autor</th>
+                                    <th>Prioridad</th>
+                                    <th>Fecha</th>
+                                    <th>Asignado a</th>
+                                    <th>Estado</th>
+                                </tr>
+                               </thead>
+                               <tbody>
+                                   {foreach from=$registros item=$mi}
+                                        <tr>
+                                            <td>{if ($mi->getPrioridadReg()==='alta')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getPrioridadReg()==='media')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</td>
+                                            <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
+                                            <td>{$mi->getPrioridadReg()}</a></td>
+                                            <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
+                                            <td>{$mi->getIdUsuarioReg()}</td>
+                                            <th>{if ($mi->getEstadoReg()==='Pendiente')}<span class="label label-danger">Pendiente</span>{elseif ($mi->getEstadoReg()==='Modificada')}<span class="label label-warning">Modificada</span>{else}<span class="label label-success">Finalizada</span>{/if}</th>
+                                        </tr>
+                                    {/foreach}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-clientes.php'"><i class="fa fa-refresh"></i></button>
+                         </div>
+                        </div> 
+                      </form>
+                      {/if}
                     </div>
                 </div>
             </div>

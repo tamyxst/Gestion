@@ -64,16 +64,36 @@
                         </div>
                       </div>
                     <div class="box-body">
-                      <div class="mailbox-messages">
+                      <div class="box-tools">
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
-                           <thead>
+                           {if ($usuario==='admin')}
+                              <thead>
+                                <tr>
+                                    <th>Autor</th>
+                                    <th>Fecha</th>
+                                    <th>Asignado a</th>
+                                    <th>Archivado</th>
+                                </tr>
+                               </thead>
+                               <tbody>
+                                   {foreach from=$mostrarIncidenciasAdmin item=$ma}
+                                        <tr>
+                                            <td><a href="gestion-incidencias.php?id={$ma->getIdReg()}" />{$ma->getIdContactoReg()}</a></td>
+                                            <td><a href="gestion-incidencias.php?id={$ma->getIdReg()}" /><b>{$ma->getFechaReg()}</b></a></td>
+                                            <td>{$ma->getIdUsuarioReg()}</td>
+                                            <td>{$ma->getArchivarReg()}</td>
+                                        </tr>
+                                    {/foreach}
+                               </tbody>
+                              </table>
+                           {else}
+                            <thead>
                             <tr>
                                 <th></th>
                                 <th>Autor</th>
                                 <th>Prioridad</th>
                                 <th>Fecha</th>
                                 <th>Asignado a</th>
-                                <th></th>
                                 <th>Estado</th>
                             </tr>
                            </thead>
@@ -85,12 +105,12 @@
                                         <td>{$mi->getPrioridadReg()}</a></td>
                                         <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
                                         <td>{$mi->getIdUsuarioReg()}</td>
-                                        <th>{if ($mi->getEstadoReg()==='Pendiente')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getEstadoReg()==='Modificada')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</th>
-                                        <td>{$mi->getEstadoReg()}</td>
+                                        <th>{if ($mi->getEstadoReg()==='Pendiente')}<span class="label label-danger">Pendiente</span>{elseif ($mi->getEstadoReg()==='Modificada')}<span class="label label-warning">Modificada</span>{else}<span class="label label-success">Finalizada</span>{/if}</th>
                                     </tr>
                                 {/foreach}
-                          </tbody>
-                        </table>
+                           </tbody>
+                          </table>
+                          {/if}
                       </div>
                       <div class="mailbox-controls">
                         <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-incidencias.php'"><i class="fa fa-refresh"></i></button>
@@ -298,7 +318,7 @@
 			</div>
                     </div>
                     {if ($usuario==='admin')}      
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="form-group">
                          <label class="control-label" for="archivar_e">Archivar incidencia</label>
                          <div id="archivar_e"></div>

@@ -50,10 +50,23 @@ class DB_registro{
     }
     
     /*=============Registros==================*/
-    //Todos los campos son obligatorios.
+    //Se obtienen los registros de tipo incidencia que no estan archivadas.
     public static function obtieneIncidencias() {
+        $consulta ="select * from registros JOIN incidencias on registros.id_registro = incidencias.id_incidencia WHERE incidencias.archivar=?";
+        $valores[]=0;
+        $resultado = self::ejecutaConsulta($consulta,$valores);
+        while ($reg = $resultado->fetch()) {
+        //Se crea un objeto de la clase Producto y lo añadimos al array.
+        //$p tiene filas.
+            $registros[] = new Registro($reg);
+        }
+        return $registros;
+    }
+    //Se obtiene todas las incidencias archivadas y no archivadas. 
+    public static function obtieneIncidenciasConArchivar() {
         $consulta ="select * from registros JOIN incidencias on registros.id_registro = incidencias.id_incidencia";
-        $resultado = self::ejecutaConsulta($consulta);
+        $valores[]=0;
+        $resultado = self::ejecutaConsulta($consulta,$valores);
         while ($reg = $resultado->fetch()) {
         //Se crea un objeto de la clase Producto y lo añadimos al array.
         //$p tiene filas.
@@ -62,6 +75,19 @@ class DB_registro{
         return $registros;
     }
     
+    //Todos los campos son obligatorios. De momento incidencias
+    public static function obtieneRegistrosPorId($id_contacto) {
+        $consulta ="select * from registros JOIN incidencias on registros.id_registro = incidencias.id_incidencia WHERE id_contacto=?";
+        $valores[] = $id_contacto;
+        $resultado = self::ejecutaConsulta($consulta,$valores);
+        while ($reg = $resultado->fetch()) {
+        //Se crea un objeto de la clase Producto y lo añadimos al array.
+        //$p tiene filas.
+            $registros[] = new Registro($reg);
+        }
+        return $registros;
+    }
+    //Obtiene el registro de tipo incidencia por ID de registro
     public static function obtieneIncidencia($id_registro) {
         $consulta ="select * from registros JOIN incidencias on registros.id_registro = incidencias.id_incidencia where id_registro=:id_registro";
         $valores[":id_registro"]=$id_registro;
@@ -71,7 +97,7 @@ class DB_registro{
         
         return $registro;
     }
-    
+    //Añade un registro de tipo incidencia
     public static function anadirIncidencia($valores_1,$prioridad,$archivar){
         try{
             $consulta_1 ="insert into registros (fecha, estado, material, observaciones, imagen, id_contacto, id_usuario_r, tipo_reg) values (?,?,?,?,?,?,?,?)";            //Devuelve el id de la ultima inserccion-
@@ -90,7 +116,7 @@ class DB_registro{
         } 
         return $resultado;
     }
-    
+    //Edita un registro de tipo incidencia que contiene imagen a editar
     public static function editarIncidenciaCI($valores_1,$prioridad,$archivar,$id_incidencia){
         try{
             $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?,imagen=?, id_usuario_r=? WHERE id_registro=?";
@@ -109,7 +135,7 @@ class DB_registro{
         } 
         return $resultado;
     }
-    
+    //Edita un registro de tipo incidencia que no contiene imagen
     public static function editarIncidenciaSI($valores_1,$prioridad,$archivar,$id_incidencia){
         try{
             $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?, id_usuario_r=?, WHERE id_registro=?";
@@ -143,6 +169,22 @@ class DB_registro{
         } 
         return $resultado;
     }
+    //Eliminar registro de tipo incidencia
+    public static function eliminarIncidencia($id_registro){
+        try{
+            $consulta_1 ="DELETE FROM incidencias WHERE id_incidencia=?";
+            $valores[]=$id_registro;
+            self::ejecutaConsulta($consulta_1, $valores);
+            $consulta_2="DELETE FROM registros WHERE id_registro=?";
+            $resultado = self::ejecutaConsulta($consulta_2,$valores);
+            
+        }catch(PDOException $e){
+            echo "No se ha podido";
+            return null;
+        } 
+        return $resultado;
+    }
+    
     
     //OTROS REGISTROS
     public static function obtieneOtrosRegistros() {
@@ -157,7 +199,7 @@ class DB_registro{
         return $registros;
     }
     
-    public static function obtieneRegistro($id_contacto) {
+    public static function obtieneRegistro() {
         $consulta ="select * from registros where tipo_reg=:tipo_reg";
         $valores[":tipo_reg"]='otro';
         $resultado = self::ejecutaConsulta($consulta, $valores);

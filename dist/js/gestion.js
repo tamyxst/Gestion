@@ -34,6 +34,26 @@ $(document).ready(function(){
 	$('#buscador').on( 'keyup', function () {
 	    table.search( this.value ).draw();
 	});
+        
+    $('#tabreg').DataTable( {
+        "responsive": true,
+	"pageLength": 5,
+	"oLanguage": {
+         	"sEmptyTable": "No hay datos disponibles",
+		"sInfoEmpty": "No hay datos",
+		"sInfo": "Total: _TOTAL_ entradas (_START_ de _END_)",
+      		"oPaginate": {
+			"sNext": "Siguiente",
+			"sPrevious": "Anterior"
+      			}
+    	},
+	"lengthChange": false,
+	"sSearch": "Filter"
+    });
+	var table = $('#tabreg').DataTable();
+	$('#buscador-reg').on( 'keyup', function () {
+	    table.search( this.value ).draw();
+	});
 });
 
 function marcar_desmarcar(){

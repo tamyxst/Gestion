@@ -4944,6 +4944,9 @@ table.text-center th {
 
 #tabmen_filter {
 display: none;
+}
+#tabreg_filter {
+display: none;
 } 
 #emisor, #fecha, #responder, #archivar, #eliminar{
     display: inline;

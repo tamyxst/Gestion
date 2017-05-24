@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:13:45
+/* Smarty version 3.1.30, created on 2017-05-24 20:34:24
   from "/var/www/html/gestion/vista/templates/contenido-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59247bd9235904_70762166',
+  'unifunc' => 'content_5925d2300d0d30_38837907',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e19f45f98ca6013fab247edf3e56edfba7b0a5ee' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-incidencias.tpl',
-      1 => 1495563221,
+      1 => 1495650709,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_59247bd9235904_70762166 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5925d2300d0d30_38837907 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -91,16 +91,51 @@ function content_59247bd9235904_70762166 (Smarty_Internal_Template $_smarty_tpl)
                         </div>
                       </div>
                     <div class="box-body">
-                      <div class="mailbox-messages">
+                      <div class="box-tools">
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
-                           <thead>
+                           <?php if (($_smarty_tpl->tpl_vars['usuario']->value === 'admin')) {?>
+                              <thead>
+                                <tr>
+                                    <th>Autor</th>
+                                    <th>Fecha</th>
+                                    <th>Asignado a</th>
+                                    <th>Archivado</th>
+                                </tr>
+                               </thead>
+                               <tbody>
+                                   <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mostrarIncidenciasAdmin']->value, 'ma');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['ma']->value) {
+?>
+                                        <tr>
+                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['ma']->value->getIdReg();?>
+" /><?php echo $_smarty_tpl->tpl_vars['ma']->value->getIdContactoReg();?>
+</a></td>
+                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['ma']->value->getIdReg();?>
+" /><b><?php echo $_smarty_tpl->tpl_vars['ma']->value->getFechaReg();?>
+</b></a></td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['ma']->value->getIdUsuarioReg();?>
+</td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['ma']->value->getArchivarReg();?>
+</td>
+                                        </tr>
+                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                               </tbody>
+                              </table>
+                           <?php } else { ?>
+                            <thead>
                             <tr>
                                 <th></th>
                                 <th>Autor</th>
                                 <th>Prioridad</th>
                                 <th>Fecha</th>
                                 <th>Asignado a</th>
-                                <th></th>
                                 <th>Estado</th>
                             </tr>
                            </thead>
@@ -122,9 +157,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
 </b></a></td>
                                         <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
 </td>
-                                        <th><?php if (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Pendiente')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Modificada')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></th>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getEstadoReg();?>
-</td>
+                                        <th><?php if (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Pendiente')) {?><span class="label label-danger">Pendiente</span><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Modificada')) {?><span class="label label-warning">Modificada</span><?php } else { ?><span class="label label-success">Finalizada</span><?php }?></th>
                                     </tr>
                                 <?php
 }
@@ -132,8 +165,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-                          </tbody>
-                        </table>
+                           </tbody>
+                          </table>
+                          <?php }?>
                       </div>
                       <div class="mailbox-controls">
                         <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-incidencias.php'"><i class="fa fa-refresh"></i></button>
@@ -389,7 +423,7 @@ echo $_smarty_tpl->tpl_vars['incidencia']->value->getImagenReg();
 			</div>
                     </div>
                     <?php if (($_smarty_tpl->tpl_vars['usuario']->value === 'admin')) {?>      
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="form-group">
                          <label class="control-label" for="archivar_e">Archivar incidencia</label>
                          <div id="archivar_e"></div>

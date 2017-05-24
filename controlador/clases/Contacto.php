@@ -1,5 +1,5 @@
 <?php
-
+require_once('../modelo/DB_registro.php');
 /**
  * Description of Contacto
  *
@@ -17,6 +17,7 @@ class Contacto {
     protected $tipo;
     protected $sector;
     protected $contacto;
+    protected $numReg;
     
     public function __construct($row) {
         $this->id_contacto = $row['id_contacto'];
@@ -32,7 +33,7 @@ class Contacto {
              $this->sector = $row['sector'];
              $this->contacto=$row['contacto'];
         }
-       
+        $this->numReg = self::numeroRegistrosContacto($this->id_contacto);
     }
     public function getIdContacto(){
         return $this->id_contacto;
@@ -66,5 +67,13 @@ class Contacto {
     }
     public function getPersonaContacto(){
         return $this->contacto;
+    }
+    public function getNumReg(){
+        return $this->numReg;
+    }
+    public function numeroRegistrosContacto($id_contacto){
+        $registros=DB_registro::obtieneRegistrosPorId($this->id_contacto);
+        $numReg=count($registros);
+        return $numReg;
     }
 }
