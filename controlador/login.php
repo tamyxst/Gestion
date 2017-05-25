@@ -42,4 +42,3 @@ if (isset($_POST['enviar'])) {
 }
 // Muestro la plantilla
 $smarty->display('login.tpl');
-?>

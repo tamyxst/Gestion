@@ -197,5 +197,4 @@ function responder($id_usuario_m){
 }
 $smarty->display("gestion-mensajes.tpl");
 
-   
-?>
+  

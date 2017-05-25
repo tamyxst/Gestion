@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ALGO Gestor - Gestión clientes</title>
+<title>ALGO Gestor - Gestión Registros</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Tamara Gascon">
 <link rel="stylesheet" href="../dist/bootstrap/css/bootstrap.min.css">
@@ -14,20 +14,15 @@
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/jQuery/jquery-ui.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <script type="text/javascript">
-          /*function editar(id_contacto){
-              xajax_editar(id_contacto);
-          }*/
-          /*function cargarDetalle(id_contacto){
-              xajax_cargarDetalle(id_contacto);
-          }*/
+          function borrarImagen(imagen,id_registro){
+              xajax_borrarImagen(imagen,id_registro);
+          }
  </script>
- <script src="../plugins/dataTables/jquery-1.12.4.js"></script>
+<script src="../plugins/dataTables/jquery-1.12.4.js"></script>
 <script src="../plugins/jQuery/jquery-ui.js"></script>
-<!-- Resuelve conflicto de jQuery UI con Bootstrap -->
-<!--<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -36,7 +31,6 @@
 <script src="../dist/bootstrap/js/bootstrap.min.js"></script>
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../plugins/atle/js/app.js"></script>
-<!--<script src="../plugins/atle/js/pages/dashboard.js"></script>-->
 <script src="../plugins/atle/js/demo.js"></script>
 <script src="../plugins/dataTables/jquery.dataTables.min.js"></script>
 <script src="../plugins/dataTables/dataTables.bootstrap.min.js"></script>
@@ -44,12 +38,13 @@
 <script src="../plugins/dataTables/responsive.bootstrap.min.js"></script>
 <script src="../plugins/jQueryvalidate/jquery.validate.js"></script>
 <script src="../dist/js/gestion.js"></script>
+<script src="../dist/js/gestion_plugins.js"></script>
 <script src="../dist/js/bootstrap-filestyle.js"></script>
 <script src="../dist/js/autocomplete.js"></script>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
-  {include file='header.tpl'}
+    {include file='header.tpl'}
   <div class="content-wrapper">
     <!-- Contenido header -->
     <section class="content-header">
@@ -63,7 +58,7 @@
       </ol>
     </section>
     <!-- Contenido Inicio -->
-        {include file="contenido-clientes.tpl"}
+        {include file="contenido-registros.tpl"}
   </div>
     {include file="footer.tpl"}
 </div>

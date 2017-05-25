@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:52:44
+/* Smarty version 3.1.30, created on 2017-05-25 20:38:49
   from "/var/www/html/gestion/vista/templates/gestion-mensajes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_592484fc262c26_58507464',
+  'unifunc' => 'content_592724b966c1e3_10472485',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd02703cdb387a89a552f3e2ed575df21bb4818d7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-mensajes.tpl',
-      1 => 1495565557,
+      1 => 1495565614,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_592484fc262c26_58507464 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592724b966c1e3_10472485 (Smarty_Internal_Template $_smarty_tpl) {
 echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 
 <!DOCTYPE html>
@@ -124,6 +124,9 @@ echo $_smarty_tpl->tpl_vars['codigoJS']->value;?>
 >
 <?php echo '<script'; ?>
  src="../dist/js/gestion.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
 
 </body>

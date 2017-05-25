@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-19 17:02:45
+/* Smarty version 3.1.30, created on 2017-05-24 21:39:09
   from "/var/www/html/gestion/vista/templates/sidebar-inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_591f09155efd50_05169762',
+  'unifunc' => 'content_5925e15d0cb190_80218425',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '99d0f199be883d37b8e0207f22417cbeee755523' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/sidebar-inicio.tpl',
-      1 => 1495206090,
+      1 => 1495654745,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_591f09155efd50_05169762 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5925e15d0cb190_80218425 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="col-lg-3 col-xs-6">
     <!-- Caja clientes -->
@@ -56,7 +56,8 @@ function content_591f09155efd50_05169762 (Smarty_Internal_Template $_smarty_tpl)
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
+        <h3><?php echo $_smarty_tpl->tpl_vars['numPedidos']->value;?>
+</h3>
         <p>Pedidos</p>
       </div>
       <div class="icon">

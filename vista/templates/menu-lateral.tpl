@@ -1,7 +1,7 @@
 <ul class="sidebar-menu">
     <li class="header">Registros</li>
     <li>
-      <a href="gestion-registros-incidencias.php">
+      <a href="gestion-incidencias.php">
         <i class="fa fa-edit"></i> <span>Incidencias</span>
         <span class="pull-right-container">
           <small class="label pull-right bg-yellow"></small>
@@ -11,7 +11,7 @@
       </a>
     </li>
     <li>
-      <a href="gestion-registros-pedidos.php">
+      <a href="gestion-pedidos.php">
         <i class="fa fa-edit"></i> <span>Pedidos</span>
         <span class="pull-right-container">
           <small class="label pull-right bg-yellow"></small>

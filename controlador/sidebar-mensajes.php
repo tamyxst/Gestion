@@ -11,4 +11,3 @@ if (!isset($_SESSION['usuario'])) {
 $mensajes = DB::obtieneMensajesNuevos();
 $numMensajes = count($mensajes);
 
-?>

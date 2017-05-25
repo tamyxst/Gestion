@@ -28,7 +28,7 @@ if (!isset($_SESSION['usuario'])) {
 
 //Preparamos XAJAX
     $ajax = new xajax();
-$ajax->configure('debug',true);
+    $ajax->configure('debug',true);
     $ajax->register(XAJAX_FUNCTION, 'editar');
     $ajax->register(XAJAX_FUNCTION, 'cargarDetalle');    
     $ajax->register(XAJAX_FUNCTION, 'borrarImagen');
@@ -37,31 +37,32 @@ $ajax->configure('debug',true);
 
     $smarty->assign("codigoJS", $ajax->getJavascript());
 
-//Cargamos el usuario conectado
-    $smarty->assign("usuario", $usuario);
-
-
+//Cargamos todos los empleados en el select
+    $usuarios = DB::obtieneUsuarios();
+    $smarty->assign("usuarios", $usuarios);
+    $smarty->assign("usuario",$usuario);
+    
 //Añadir contacto PENDIENTE
     if (isset($_POST['enviar'])) {
         $estado = filter_input(INPUT_POST, 'estado');
-        $prioridad = filter_input(INPUT_POST, 'prioridad');
         $material = filter_input(INPUT_POST, 'material');
         $observaciones = filter_input(INPUT_POST, 'observaciones');
         
         //Por defecto
         $fecha = date('Y-m-d H:i:s'); //H mayúscula para formato 24 horas
-        $archivar=(int)0; 
-        $tipo_reg="incidencia"; 
+        $fecha_entrega = filter_input(INPUT_POST, 'fecha_entrega');
+        $fechaSql = date("Y-m-d H:i:s", strtotime($fecha_entrega));
+        $tipo_reg="pedido"; 
         
-        //Datos del autor de la incidencia
+        //Datos del autor de la pedido
         $contacto = filter_input(INPUT_POST, 'contacto'); //Recogemos los datos del autor
         $dni = explode('-', $contacto); //Separamos
         $id_contacto=DB_contacto::buscarContacto($dni[0]); //Buscamos la id_contacto por dni
         if($id_contacto===null){
             //Si no encuentra el contacto error
-            header("Location: gestion-incidencias.php?state=no");
+            header("Location: gestion-pedidos.php?state=no");
         }
-        //Incidencia asignada
+        //Pedido asignada
         $id_usuario_r = filter_input(INPUT_POST, 'id_usuario_r');
         $valores[] = $fecha;
         $valores[] = $estado;
@@ -89,19 +90,20 @@ $ajax->configure('debug',true);
         }
         $valores[] = (int) $id_contacto->getIdContacto(); //id_contacto del autor
         $valores[] = (int) $id_usuario_r;
-        $valores[] = $tipo_reg; //Incidencia
-        $msjAdd = DB_incidencia::anadirIncidencia($valores, $prioridad, $archivar);
+        $valores[] = $tipo_reg; //Pedido
+        $msjAdd = DB_pedido::anadirPedido($valores, $fechaSql);
         comprueba($msjAdd);
     }
 //Se escriben los datos y se envian
     if (isset($_POST['editar'])) {
         $id_registro = filter_input(INPUT_POST, 'id_registro_e');
         $estado = filter_input(INPUT_POST, 'estado_e');
-        $prioridad = filter_input(INPUT_POST, 'prioridad_e');
         $material = filter_input(INPUT_POST, 'material_e');
         $observaciones = filter_input(INPUT_POST, 'observaciones_e');
-        $archivar = filter_input(INPUT_POST, 'archivar_e');
         $id_usuario_r = filter_input(INPUT_POST, 'id_usuario_r_e');
+        $fecha_entrega = filter_input(INPUT_POST, 'fecha_entrega_e');
+        $fechaSql = date("Y-m-d H:i:s", strtotime($fecha_entrega));
+        //$nombre=DB::dameNombreUsuario($id_usuario_r);
 
         $valores[] = $estado;
         $valores[] = $material;
@@ -122,7 +124,7 @@ $ajax->configure('debug',true);
             }
         }
         
-        $reg=DB_incidencia::obtieneIncidencia($id_registro);
+        $reg=DB_pedido::obtienePedido($id_registro);
         //Recojo las imagenes almacenadas
         $imagenes=$reg->getImagenReg();
         if($imagenes!==null){
@@ -137,34 +139,35 @@ $ajax->configure('debug',true);
         $valores[] = $id_registro;
         
         if($_FILES['imagen_e']['name']!==''){
-            $msjAdd = DB_incidencia::editarIncidenciaCI($valores, $prioridad, $archivar, $id_registro);
+            $msjAdd = DB_pedido::editarPedidoCI($valores, $fechaSql, $id_registro);
         }else{
-            $msjAdd = DB_incidencia::editarIncidenciaSI($valores, $prioridad, $archivar, $id_registro);
+            $msjAdd = DB_pedido::editarPedidoSI($valores, $fechaSql, $id_registro);
         }
         comprueba($msjAdd);
     }
 
     if (isset($_POST['eliminar'])) {
         $id_registro = filter_input(INPUT_POST, 'id_registro_e');
-        $msjAdd = DB_incidencia::eliminarIncidencia($id_registro);
+        $msjAdd = DB_pedido::eliminarPedido($id_registro);
         comprueba($msjAdd);
     }
 
-//Ver detalle incidencia
+//Ver detalle pedido
     if (isset($_GET['id'])) {
         $id_registro = $_GET['id'];
-        $incidencia = DB_incidencia::obtieneIncidencia($id_registro);
+        $pedido = DB_pedido::obtienePedido($id_registro);
         //Recogemos todos los datos para filtrar luego si es proveedor o si es cliente
-        $cont = DB_contacto::obtieneContacto($incidencia->getIdContactoRegId());
+        $cont = DB_contacto::obtieneContacto($pedido->getIdContactoRegId());
         $smarty->assign("cont", $cont);
-        $smarty->assign("incidencia", $incidencia);
+        $smarty->assign("pedido", $pedido);
+        
     }
 
     function comprueba($msjTxt) {
         if ($msjTxt != null) {
-            header("Location: gestion-incidencias.php?state=si");
+            header("Location: gestion-pedidos.php?state=si");
         } else {
-            header("Location: gestion-incidencias.php?state=no");
+            header("Location: gestion-pedidos.php?state=no");
         }
     }
 
@@ -182,29 +185,29 @@ $ajax->configure('debug',true);
 
     function cargarDetalle($id_contacto) {
         $respuesta = new xajaxResponse();
-        $r = DB_incidencia::obtieneIncidencia($id_contacto);
+        $r = DB_pedido::obtienePedido($id_contacto);
         asignarIdRegistro($r);
         return $respuesta;
     }
     function borrarImagen($imagen,$id_registro){
         $respuesta = new xajaxResponse();
-        $incidencia = DB_incidencia::obtieneIncidencia($id_registro);
-        $cadena = creaCadena($incidencia,$imagen);
-        DB_incidencia::editarRegistroImagen($cadena,$id_registro);
-        $incidenciaN = DB_incidencia::obtieneIncidencia($id_registro);
+        $pedido = DB_pedido::obtienePedido($id_registro);
+        $cadena = creaCadena($pedido,$imagen);
+        DB_pedido::editarRegistroImagen($cadena,$id_registro);
+        $pedidoN = DB_pedido::obtienePedido($id_registro);
         $respuesta->assign('img-registro','innerHTML','');
         $respuesta->append('img-registro', 'innerHTML', "<input type='hidden' name='imagen_e' value='$cadena'>");
         
-        foreach($incidenciaN->getImagenRegArreglo() as $i){
-            $respuesta->append('img-registro', 'innerHTML',"<div class='col-lg-4'>Imagen incidencia: <a href='$i' alt='$incidenciaN->getIdContactoReg()' target='_blank'>"
+        foreach($pedidoN->getImagenRegArreglo() as $i){
+            $respuesta->append('img-registro', 'innerHTML',"<div class='col-lg-4'>Imagen pedido: <a href='$i' alt='$pedidoN->getIdContactoReg()' target='_blank'>"
                     . "<img class='img-responsive' src='$i'></a>"
-                    . '<button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen(\''.$i.'\',\''.$incidencia->getIdReg().'\')" />Borrar Imagen</button> </div>');
+                    . '<button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen(\''.$i.'\',\''.$pedido->getIdReg().'\')" />Borrar Imagen</button> </div>');
         }
         return $respuesta;
     }
     
-    function creaCadena($incidencia,$imagen){
-       foreach ($incidencia->getImagenRegArreglo() as $i){
+    function creaCadena($pedido,$imagen){
+       foreach ($pedido->getImagenRegArreglo() as $i){
             if($imagen!==$i){
                 if($cadena===null){
                     $cadena.=$i;
@@ -215,41 +218,35 @@ $ajax->configure('debug',true);
         }
         return $cadena;
     }
+//Cargamos el usuario conectado
+    $smarty->assign("usuario", $usuario);
 
 //Cargamos el sidebar-mensajes
     include 'sidebar-mensajes.php';
     $smarty->assign("mensajes", $mensajes);
     $smarty->assign("numMensajes", $numMensajes);
 
-//Obtener todos los incidencia
-    $mostrarIncidencias = DB_incidencia::obtieneIncidencias();
-    $smarty->assign("mostrarIncidencias", $mostrarIncidencias);
-
-//Si es administrador
-    $mostrarIncidenciasAdmin = DB_incidencia::obtieneIncidenciasConArchivar();
-    $smarty->assign("mostrarIncidenciasAdmin", $mostrarIncidenciasAdmin);
-    
-
-//Cargamos todos los empleados en el select
-    $usuarios = DB::obtieneUsuarios();
-    $smarty->assign("usuarios", $usuarios);
-    $smarty->assign("usuario",$usuario);
+//Obtener todos los pedido
+    $mostrarPedidos = DB_pedido::obtienePedidos();
+    $smarty->assign("mostrarPedidos", $mostrarPedidos);
+ 
 //Sidebar inicio
     
-    $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);
-    $smarty->assign("numPedidos", $numPedidos);
+    $smarty->assign("numPedidos", $numPedidos); 
     
+    
+    $mostrarIncidencias= DB_incidencia::obtieneIncidencias();
     $numIncidencias = count($mostrarIncidencias);
-    $smarty->assign("numIncidencias", $numIncidencias);
-    
-    $mostrarProveedores = DB_contacto::obtieneProveedores();
-    $numProveedores = count($mostrarProveedores);
-    $smarty->assign("numProveedores", $numProveedores);
+    $smarty->assign("numIncidencias", $numIncidencias); //Incidencias
     
     $mostrarClientes = DB_contacto::obtieneClientes();
     $numClientes = count($mostrarClientes);
     $smarty->assign("numClientes", $numClientes);
+    
+    $mostrarProveedores = DB_contacto::obtieneProveedores();
+    $numProveedores = count($mostrarProveedores);
+    $smarty->assign("numProveedores", $numProveedores);
 
-    $smarty->display("gestion-incidencias.tpl");
+    $smarty->display("gestion-pedidos.tpl");
 

@@ -45,8 +45,8 @@ class Registro {
             $this->prioridad = $row['prioridad'];
             $this->archivar = $row['archivar'];
         }
-        if ($row['tipo'] == 'pedido') {
-            $this->fecha_entrega = $row['fecha_entrega'];
+        if ($row['tipo_reg'] == 'pedido') {
+            $this->fecha_entrega = new Fecha($row['fecha_entrega']);
         }
     }
 
@@ -118,7 +118,7 @@ class Registro {
     }
 
     public function getFechaEntregaReg() {
-        return $this->fecha_entrega;
+        return $this->fecha->getFechaNormal();
     }
     public function dameNombreContacto($id_contacto){
         $contacto=DB_contacto::buscarContactoId($id_contacto);

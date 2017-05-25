@@ -21,7 +21,7 @@
                 <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-warning"></i> Alerta!</h4>
-                Error: Ya existe un incidencia registrado con el mismo Dni!
+                Error: Ya existe un pedido registrado con el mismo Dni!
               </div>  
              {/if}
         {/if}
@@ -38,76 +38,54 @@
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              {if empty($incidencia)}
-              <li class="active"><a href="#listado" data-toggle="tab">Listado incidencias</a></li>
+              {if empty($pedido)}
+              <li class="active"><a href="#listado" data-toggle="tab">Listado pedidos</a></li>
               <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
               <li><a href="#detalle" data-toggle="tab">Detalle</a></li>
               {else}
-              <li><a href="#listado" data-toggle="tab">Listado incidencias</a></li>
+              <li><a href="#listado" data-toggle="tab">Listado pedidos</a></li>
               <li><a href="#nuevo" id="titulo" data-toggle="tab">Añadir nuevo</a></li>
               <li class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
               {/if}
             </ul>
             <div class="tab-content">
-               {if empty($incidencia)}<div class="active tab-pane" id="listado">{else}<div class="tab-pane" id="listado">{/if}    
-                <form method="POST" action="gestion-incidencias.php">
+               {if empty($pedido)}<div class="active tab-pane" id="listado">{else}<div class="tab-pane" id="listado">{/if}    
+                <form method="POST" action="gestion-pedidos.php">
                       <div class="box-tools pull-right">
                         <div class="has-feedback">
-                          <input type="text" id="buscador" class="form-control input-sm" placeholder="Buscar incidencias">
+                          <input type="text" id="buscador" class="form-control input-sm" placeholder="Buscar pedidos">
                           <span class="glyphicon glyphicon-search form-control-feedback"></span>
                         </div>
                       </div>
                     <div class="box-body">
                       <div class="box-tools">
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
-                           {if ($usuario==='admin')}
-                              <thead>
-                                <tr>
-                                    <th>Autor</th>
-                                    <th>Fecha</th>
-                                    <th>Asignado a</th>
-                                    <th>Archivado</th>
-                                </tr>
-                               </thead>
-                               <tbody>
-                                   {foreach from=$mostrarIncidenciasAdmin item=$ma}
-                                        <tr>
-                                            <td><a href="gestion-incidencias.php?id={$ma->getIdReg()}" />{$ma->getIdContactoReg()}</a></td>
-                                            <td><a href="gestion-incidencias.php?id={$ma->getIdReg()}" /><b>{$ma->getFechaReg()}</b></a></td>
-                                            <td>{$ma->getIdUsuarioReg()}</td>
-                                            <td>{$ma->getArchivarReg()}</td>
-                                        </tr>
-                                    {/foreach}
-                               </tbody>
-                              </table>
-                           {else}
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Autor</th>
-                                <th>Prioridad</th>
+                                <th>Pedido</th>
+                                <th>Fecha Entrega</th>
+                                <th>Material</th>
                                 <th>Fecha</th>
-                                <th>Asignado a</th>
                                 <th>Estado</th>
                             </tr>
                            </thead>
                            <tbody>
-                               {foreach from=$mostrarIncidencias item=$mi}
+                               {foreach from=$mostrarPedidos item=$mi}
                                     <tr>
                                         <td>{if ($mi->getPrioridadReg()==='alta')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getPrioridadReg()==='media')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</td>
-                                        <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
-                                        <td>{$mi->getPrioridadReg()}</a></td>
-                                        <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
-                                        <td>{$mi->getIdUsuarioReg()}</td>
+                                        <td><a href="gestion-pedidos.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
+                                        <td>{$mi->getFechaEntregaReg()}</a></td>
+                                        <td>{$mi->getMaterialReg()}</td>
+                                        <td><a href="gestion-pedidos.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
                                         <th>{if ($mi->getEstadoReg()==='Pendiente')}<span class="label label-danger">Pendiente</span>{elseif ($mi->getEstadoReg()==='Modificada')}<span class="label label-warning">Modificada</span>{else}<span class="label label-success">Finalizada</span>{/if}</th>
                                     </tr>
                                 {/foreach}
                            </tbody>
                           </table>
-                          {/if}
                       </div>
                       <div class="mailbox-controls">
-                        <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-incidencias.php'"><i class="fa fa-refresh"></i></button>
+                        <button type="button" class="btn btn-default btn-sm" onclick="location.href='gestion-pedidos.php'"><i class="fa fa-refresh"></i></button>
                      </div>
                     </div> 
                   </form>
@@ -115,8 +93,8 @@
               <div class="tab-pane" id="nuevo">
                  <div class="row">
                      <div class="col-lg-6">
-                     <h3>Añadir incidencia</h3>
-                   <form id="formreg" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data"> 
+                     <h3>Añadir pedido</h3>
+                   <form id="formreg" novalidate action="gestion-pedidos.php" method="post" enctype="multipart/form-data"> 
                      <div class="row">
                        <div class="col-lg-6">
                           <div class="form-group">
@@ -132,17 +110,14 @@
                           </div>
                      </div>
                     <div class="col-lg-6">
-                       <div class="form-group">
-                            <label class="control-label" for="prioridad">Prioridad <span class="asterisco">*</span></label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                                <select class="form-control" id="prioridad" name="prioridad">
-                                     <option value="alta">Alta</option>
-                                     <option value="media">Media</option>
-                                     <option value="baja">Baja</option>
-                                </select>
-                            </div>
-                         </div>
+                       <div id="fnac"></div>
+                          <div class="form-group"> 
+			     <label class="control-label">Fecha entrega: <span class="asterisco">*</span></label>
+				<div class="input-group date input-append datepicker" id="filter-date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input type="text" name="fecha_entrega" size="16" class="form-control" placeholder="01/01/2017" />
+                                </div>
+                          </div>
                      </div>
                          
                      <div class="col-lg-6 form-group required-field-block">
@@ -201,28 +176,28 @@
               </div>
              </div>
            </div>
-        {if empty ($incidencia)}<div class="tab-pane" id="detalle">{else} <div class="active tab-pane" id="detalle">{/if}
+        {if empty ($pedido)}<div class="tab-pane" id="detalle">{else} <div class="active tab-pane" id="detalle">{/if}
         <div class="row">
           <div class="col-lg-6">
-              <h3>Detalle incidencias</h3>
-          <form id="formeditar" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data">  
+              <h3>Detalle pedidos</h3>
+          <form id="formeditar" novalidate action="gestion-pedidos.php" method="post" enctype="multipart/form-data">  
               <div class="row">
                    <div class="col-lg-6">
                      <div class="form-group">
                           <label class="control-label" for="fecha">Fecha</label>
                           <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                              <input type="text" disabled value="{if !empty ($incidencia)}{$incidencia->getFechaNormalReg()}{/if}" class="form-control">
+                              <input type="text" disabled value="{if !empty ($pedido)}{$pedido->getFechaNormalReg()}{/if}" class="form-control">
                           </div>
                        </div>
                    </div>
                    <div class="col-lg-6">
                       <div class="form-group">
                           <!-- Si el registro es de cliente o proveedor -->
-                          <label class="control-label" for="contacto">Autor {if !empty ($incidencia)}<a href="{if ($cont->getTipoContacto()==="cliente")}gestion-clientes.php?id={else}gestion-proveedores.php?id={/if}{$incidencia->getIdContactoRegId()}"> Ver ficha</a>{/if}</label>
+                          <label class="control-label" for="contacto">Autor {if !empty ($pedido)}<a href="{if ($cont->getTipoContacto()==="cliente")}gestion-clientes.php?id={else}gestion-proveedores.php?id={/if}{$pedido->getIdContactoRegId()}"> Ver ficha</a>{/if}</label>
                           <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                              <input type="text" value="{if !empty ($incidencia)}{$incidencia->getIdContactoReg()}{/if}" class="form-control" disabled />
+                              <input type="text" value="{if !empty ($pedido)}{$pedido->getIdContactoReg()}{/if}" class="form-control" disabled />
                           </div>
                        </div>
                   </div>
@@ -232,10 +207,10 @@
                           <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
                               <select class="form-control" id="estado_e" name="estado_e">
-                                   {if !empty ($incidencia)}
-                                     {if ($incidencia->getEstadoReg()==='Pendiente')}<option value="0" selected>Pendiente</option>{else}<option value="0">Pendiente</option>{/if}
-                                     {if ($incidencia->getEstadoReg()==='Modificada')}<option value="1" selected>Modificada</option>{else}<option value="1">Modificada</option>{/if}
-                                     {if ($incidencia->getEstadoReg()==='Finalizada')}<option value="2" selected>Finalizada</option>{else}<option value="2">Finalizada</option>{/if}
+                                   {if !empty ($pedido)}
+                                     {if ($pedido->getEstadoReg()==='Pendiente')}<option value="0" selected>Pendiente</option>{else}<option value="0">Pendiente</option>{/if}
+                                     {if ($pedido->getEstadoReg()==='Modificada')}<option value="1" selected>Modificada</option>{else}<option value="1">Modificada</option>{/if}
+                                     {if ($pedido->getEstadoReg()==='Finalizada')}<option value="2" selected>Finalizada</option>{else}<option value="2">Finalizada</option>{/if}
                                    {/if}
                               </select>
                           </div>
@@ -243,16 +218,10 @@
                    </div>
                    <div class="col-lg-6">
                      <div class="form-group">
-                          <label class="control-label" for="prioridad">Prioridad</label>
-                          <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                              <select class="form-control" id="estado_e" name="prioridad_e">
-                                   {if !empty ($incidencia)}
-                                     {if ($incidencia->getPrioridadReg()==='alta')}<option value="alta" selected>Alta</option>{else}<option value="alta">Alta</option>{/if}
-                                     {if ($incidencia->getPrioridadReg()==='media')}<option value="media" selected>Media</option>{else}<option value="media">Media</option>{/if}
-                                     {if ($incidencia->getPrioridadReg()==='baja')}<option value="baja" selected>Baja</option>{else}<option value="baja">Baja</option>{/if}
-                                   {/if}
-                              </select>
+                          <label class="control-label" for="fecha_entrega_e">Fecha entrega</label>
+                          <div class="input-group date input-append datepicker" id="filter-date">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              <input type="text" name="fecha_entrega_e" value="{if !empty ($pedido)}{$pedido->getFechaEntregaReg()}{/if}" class="form-control">
                           </div>
                        </div>
                    </div>
@@ -260,23 +229,23 @@
                        <label class="control-label" for="material">Material</label>
                       <div class="col-md-12 input-group">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
-                          <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material">{if !empty ($incidencia)}{$incidencia->getMaterialReg()}{/if}</textarea>
+                          <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material">{if !empty ($pedido)}{$pedido->getMaterialReg()}{/if}</textarea>
                       </div>
                   </div>
                   <div class="col-lg-6 form-group required-field-block">
                        <label class="control-label" for="observaciones">Observaciones</label>
                       <div class="col-md-12 input-group">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
-                          <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones">{if !empty ($incidencia)}{$incidencia->getObservacionesReg()}{/if}</textarea>
+                          <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones">{if !empty ($pedido)}{$pedido->getObservacionesReg()}{/if}</textarea>
                       </div>
                   </div>
                   <div class="col-lg-12 block-img-registro">
                         <div class="row" id="img-registro">
-                          {if !empty ($incidencia->getImagenReg())}
-                              {foreach $incidencia->getImagenRegArreglo() as $imagen}
-                                  <div class="col-lg-4">Imagen incidencia: 
-                                      <a href="{$imagen}" alt="{$incidencia->getIdContactoReg()}" target="_blank"><img class="img-responsive" src="{$imagen}" alt="imagen" /></a>
-                                      <button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen('{$imagen}','{$incidencia->getIdReg()}')">Borrar Imagen</button> 
+                          {if !empty ($pedido->getImagenReg())}
+                              {foreach $pedido->getImagenRegArreglo() as $imagen}
+                                  <div class="col-lg-4">Imagen pedido: 
+                                      <a href="{$imagen}" alt="{$pedido->getIdContactoReg()}" target="_blank"><img class="img-responsive" src="{$imagen}" alt="imagen" /></a>
+                                      <button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen('{$imagen}','{$pedido->getIdReg()}')">Borrar Imagen</button> 
                                   </div>
                               {/foreach}
                           {/if}
@@ -289,9 +258,9 @@
                           <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                               <select class="form-control" name="id_usuario_r_e" id="id_usuario_r_e">
-                                   {if !empty ($incidencia)}
+                                   {if !empty ($pedido)}
                                      {foreach from=$usuarios item=$u}
-                                         {if ($incidencia->getIdUsuarioReg()===$u->getNombreCompleto())}
+                                         {if ($pedido->getIdUsuarioReg()===$u->getNombreCompleto())}
                                              <option value="{$u->getIdUsuario()}" selected>{$u->getNombreCompleto()}</option>
                                          {else}
                                              <option value="{$u->getIdUsuario()}">{$u->getNombreCompleto()}</option>
@@ -308,28 +277,14 @@
                        <div id="imagen"></div>
                        <div class="input-group">	 
                            <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
-                           <input type="file" id="imagen_e" name="imagen_e" value="{if !empty ($incidencia)}{$incidencia->getImagenReg()}{/if}" class="filestyle" data-size="sm">
+                           <input type="file" id="imagen_e" name="imagen_e" value="{if !empty ($pedido)}{$pedido->getImagenReg()}{/if}" class="filestyle" data-size="sm">
                        </div>
                       </div>
                   </div>
-                  {if ($usuario==='admin')}      
-                  <div class="col-lg-12">
-                      <div class="form-group">
-                       <label class="control-label" for="archivar_e">Archivar incidencia</label>
-                       <div id="archivar_e"></div>
-                       <div class="input-group">	 
-                           <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
-                           <input type="text" id="arcihvar_e" name="archivar_e" value="{if !empty ($incidencia)}{$incidencia->getArchivarReg()}{/if}" class="form-control">
-                       </div>
-                      </div>
-                  </div>
-                  {else}
-                      <input type="hidden" id="arcihvar_e" name="archivar_e" value="{if !empty ($incidencia)}{$incidencia->getArchivarReg()}{/if}" class="form-control">
-                  {/if}
                   <div class="col-lg-12">
                       <div class="pull-right">
-                         <input type="hidden" name="id_registro_e" value="{if !empty ($incidencia)}{$incidencia->getIdReg()}{/if}">
-                         <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Incidencia</button> 
+                         <input type="hidden" name="id_registro_e" value="{if !empty ($pedido)}{$pedido->getIdReg()}{/if}">
+                         <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Pedido</button> 
                          <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
                       </div>
                   </div>

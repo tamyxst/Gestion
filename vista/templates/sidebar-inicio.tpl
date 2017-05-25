@@ -30,7 +30,7 @@
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
+        <h3>{$numPedidos}</h3>
         <p>Pedidos</p>
       </div>
       <div class="icon">

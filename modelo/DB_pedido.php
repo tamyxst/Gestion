@@ -4,9 +4,8 @@ require_once('clases/Registro.php');
 require_once('clases/Usuario.php');
 require_once('Conexion.php');
 
-class DB_registro{
+class DB_pedido{
     
-
 /*======================ejecutaConsulta ($sql,$valores)======================================
     Accion: Ejecuta una consulta preparada con los valores de los parámetros de la consulta preparada
     Parámetros: $sql es la consulta preparada y parametrizada
@@ -47,68 +46,41 @@ class DB_registro{
         }
        return $lastId;
  
-    }
+    }  
     
+    /*=============Pedidos==================*/
     
-    //Sirve para obtener todos los registros de un contacto
-    //Todos los campos son obligatorios. De momento incidencias
-    public static function obtieneRegistrosPorId($id_contacto) {
-        $consulta3 ="select * from registros WHERE id_contacto=?";
-        $valores3[] = $id_contacto;
-        $resultado3 = self::ejecutaConsulta($consulta3,$valores3);
-        while ($reg = $resultado3->fetch()) {
-            $registros[] = new Registro($reg);
-        }
-        return $registros;
-    }
-    
-    //Modifica las imagenes almacenadas en el registro
-    public static function editarRegistroImagen($imagen,$id_registro){
-        try{
-            $consulta_1 ="UPDATE registros SET imagen=? WHERE id_registro=?";
-            $valores[]=$imagen;
-            $valores[]=$id_registro;
-            $resultado=self::ejecutaConsulta($consulta_1, $valores);
-            
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
-    }
-    
-    
-    
-    /*======================Registros [OTROS]======================================*/
-    public static function obtieneRegistros() {
-        $consulta ="select * from registros where tipo_reg=:tipo_reg";
-        $valores[":tipo_reg"]='otro';
-        $resultado = self::ejecutaConsulta($consulta, $valores);
-        while ($reg= $resultado->fetch()) {
-        //Se crea un objeto de la clase Producto y lo añadimos al array.
-        //$p tiene filas.
+    public static function obtienePedidos() {
+        $consulta ="select * from registros JOIN pedidos on registros.id_registro = pedidos.id_pedido";
+        $resultado = self::ejecutaConsulta($consulta);
+        while ($reg = $resultado->fetch()) {
             $registros[] = new Registro($reg);
         }
         return $registros;
     }
     
     
-    //Obtiene el registro de tipo incidencia por ID de registro
-    public static function obtieneRegistro($id_registro) {
-        $consulta ="select * from registros where id_registro=? and tipo_reg=?";
-        $valores[]=$id_registro;
-        $valores[]="otro";
+    //Obtiene el registro de tipo pedido por ID de registro
+    public static function obtienePedido($id_registro) {
+        $consulta ="select * from registros JOIN pedidos on registros.id_registro = pedidos.id_pedido where id_registro=:id_registro";
+        $valores[":id_registro"]=$id_registro;
         $resultado = self::ejecutaConsulta($consulta, $valores);
         $reg = $resultado->fetch();
-            $registro = new Registro($reg);
+        $registro = new Registro($reg);
         return $registro;
     }
-    //Añade un registro de tipo incidencia
-    public static function anadirRegistro($valores_1){
+    //Añade un registro de tipo pedido
+    public static function anadirPedido($valores_1,$fecha_entrega){
         try{
             $consulta_1 ="insert into registros (fecha, estado, material, observaciones, imagen, id_contacto, id_usuario_r, tipo_reg) values (?,?,?,?,?,?,?,?)";            //Devuelve el id de la ultima inserccion-
-            $resultado = self::ejecutaConsultaDev($consulta_1, $valores_1);
+            $lastId = self::ejecutaConsultaDev($consulta_1, $valores_1);
             
+            //Se ingresa el telefono con el mismo id
+            $consulta_2 ="insert into pedidos (id_pedido, fecha_entrega) values (?,?)";
+            
+            $valores_2[]=$lastId;
+            $valores_2[]=$fecha_entrega;
+            $resultado=self::ejecutaConsulta($consulta_2, $valores_2);
         }catch(PDOException $e){
             echo "No se ha podido";
             return null;
@@ -116,34 +88,16 @@ class DB_registro{
         return $resultado;
     }
     //Edita un registro de tipo incidencia que contiene imagen a editar
-    public static function editarReegistroCI($valores_1){
+    public static function editarPedidoCI($valores_1,$fecha_entrega,$id_pedido){
         try{
             $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?,imagen=?, id_usuario_r=? WHERE id_registro=?";
-            $resultado=self::ejecutaConsulta($consulta_1, $valores_1);
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
-    }
-    //Edita un registro de tipo incidencia que no contiene imagen
-    public static function editarRegistroSI($valores_1){
-        try{
-            $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?, id_usuario_r=? WHERE id_registro=?";
-            $resultado=self::ejecutaConsulta($consulta_1, $valores_1);
-        }catch(PDOException $e){
-            echo "No se ha podido";
-            return null;
-        } 
-        return $resultado;
-    }
-    
-    
-    //Eliminar registro de tipo incidencia
-    public static function eliminarRegistro($id_registro){
-        try{
-            $consulta="DELETE FROM registros WHERE id_registro=?";
-            $resultado = self::ejecutaConsulta($consulta,$id_registro);
+            
+            self::ejecutaConsulta($consulta_1, $valores_1);
+            $consulta_2 ="UPDATE pedidos SET fecha_entrega=? WHERE id_pedido=?";
+            $valores_2[]=$fecha_entrega;
+            $valores_2[]=$id_pedido;
+            
+            $resultado=self::ejecutaConsulta($consulta_2, $valores_2);
             
         }catch(PDOException $e){
             echo "No se ha podido";
@@ -151,5 +105,39 @@ class DB_registro{
         } 
         return $resultado;
     }
+    //Edita un registro de tipo incidencia que no contiene imagen
+    public static function editarPedidoSI($valores_1,$fecha_entrega,$id_pedido){
+        try{
+            $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?, id_usuario_r=? WHERE id_registro=?";
+            
+            self::ejecutaConsulta($consulta_1, $valores_1);
+            $consulta_2 ="UPDATE incidencias SET fecha_entrega=? WHERE id_pedido=?";
+            $valores_2[]=$fecha_entrega;
+            $valores_2[]=$id_pedido;
+            
+            $resultado=self::ejecutaConsulta($consulta_2, $valores_2);
+            
+        }catch(PDOException $e){
+            echo "No se ha podido";
+            return null;
+        } 
+        return $resultado;
+    }
+
+    //Eliminar registro de tipo incidencia
+    public static function eliminarPedido($id_registro){
+        try{
+            $consulta_1 ="DELETE FROM pedidos WHERE id_pedido=?";
+            $valores[]=$id_registro;
+            self::ejecutaConsulta($consulta_1, $valores);
+            $consulta_2="DELETE FROM registros WHERE id_registro=?";
+            $resultado = self::ejecutaConsulta($consulta_2,$valores);
+            
+        }catch(PDOException $e){
+            echo "No se ha podido";
+            return null;
+        } 
+        return $resultado;
+    }
+    
 }
-?>

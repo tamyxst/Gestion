@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-24 20:05:40
+/* Smarty version 3.1.30, created on 2017-05-25 21:57:11
   from "/var/www/html/gestion/vista/templates/contenido-clientes.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5925cb745a84f4_76971853',
+  'unifunc' => 'content_59273717e595f2_71732670',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e58ff06bf4c1bac1b779b14e29d6ec557d7516a7' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-clientes.tpl',
-      1 => 1495648647,
+      1 => 1495742229,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_5925cb745a84f4_76971853 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59273717e595f2_71732670 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <!-- Small boxes (Stat box) -->
@@ -334,9 +334,9 @@ echo $_smarty_tpl->tpl_vars['cliente']->value->getIdContacto();
                             <table id="tabreg" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                                <thead>
                                 <tr>
+                                    <th>Tipo</th>
                                     <th></th>
                                     <th>Autor</th>
-                                    <th>Prioridad</th>
                                     <th>Fecha</th>
                                     <th>Asignado a</th>
                                     <th>Estado</th>
@@ -349,15 +349,14 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
 ?>
                                         <tr>
-                                            <td><?php if (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'alta')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'media')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></td>
-                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
-" /><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
-</a></td>
-                                            <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg();?>
-</a></td>
-                                            <td><a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
-" /><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFechaReg();?>
-</b></a></td>
+                                            <td><?php if (($_smarty_tpl->tpl_vars['mi']->value->getTipoReg() === 'incidencia')) {?>Incidencia<?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getTipoReg() === 'pedido')) {?>Pedido<?php } else { ?>Otro registro<?php }?></td>
+                                            <td><a href="<?php if (($_smarty_tpl->tpl_vars['mi']->value->getTipoReg() === 'incidencia')) {?>gestion-incidencias.php?id=<?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getTipoReg() === 'pedido')) {?>gestion-pedidos.php?id=<?php } else { ?>gestion-registros.php?id=<?php }
+echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
+">Ver más</a></td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
+</td>
+                                            <td><b><?php echo $_smarty_tpl->tpl_vars['mi']->value->getFechaReg();?>
+</b></td>
                                             <td><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdUsuarioReg();?>
 </td>
                                             <th><?php if (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Pendiente')) {?><span class="label label-danger">Pendiente</span><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getEstadoReg() === 'Modificada')) {?><span class="label label-warning">Modificada</span><?php } else { ?><span class="label label-success">Finalizada</span><?php }?></th>

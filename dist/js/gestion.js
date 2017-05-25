@@ -14,6 +14,8 @@ $(document).ready(function(){
     validarFormuContacto();
     validarFormuEditar();
     validarFormuregistro();
+    //Calendario gestion-pedidos
+    $('.datepicker input').datepicker({dateFormat: 'dd-mm-yy'});
     /*DataTables*/
     $('#tabmen').DataTable( {
         "responsive": true,

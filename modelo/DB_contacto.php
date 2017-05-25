@@ -57,6 +57,15 @@ class DB_contacto{
         return $texto;
     }
     
+    public static function obtieneContacto($id_contacto) {
+        $consulta ="select * from contactos where id_contacto=:id_contacto";
+        $valores = array('id_contacto' =>$id_contacto);
+        $resultado = self::ejecutaConsulta($consulta,$valores);
+        $c = $resultado->fetch();
+        $contacto = new Contacto($c);
+        return $contacto;
+    }
+    
     /*=============CLIENTES==================*/
     
     //Todos los campos son obligatorios.

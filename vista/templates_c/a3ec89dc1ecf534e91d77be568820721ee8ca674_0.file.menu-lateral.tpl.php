@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-24 20:45:13
+/* Smarty version 3.1.30, created on 2017-05-25 20:51:56
   from "/var/www/html/gestion/vista/templates/menu-lateral.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fe47b9d37c97_56468941',
+  'unifunc' => 'content_592727ccd959b1_20286626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a3ec89dc1ecf534e91d77be568820721ee8ca674' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/menu-lateral.tpl',
-      1 => 1493059511,
+      1 => 1495738313,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58fe47b9d37c97_56468941 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592727ccd959b1_20286626 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <ul class="sidebar-menu">
     <li class="header">Registros</li>
     <li>
-      <a href="gestion-registros-incidencias.php">
+      <a href="gestion-incidencias.php">
         <i class="fa fa-edit"></i> <span>Incidencias</span>
         <span class="pull-right-container">
           <small class="label pull-right bg-yellow"></small>
@@ -35,7 +35,7 @@ function content_58fe47b9d37c97_56468941 (Smarty_Internal_Template $_smarty_tpl)
       </a>
     </li>
     <li>
-      <a href="gestion-registros-pedidos.php">
+      <a href="gestion-pedidos.php">
         <i class="fa fa-edit"></i> <span>Pedidos</span>
         <span class="pull-right-container">
           <small class="label pull-right bg-yellow"></small>

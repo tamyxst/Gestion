@@ -31,6 +31,10 @@ if (!isset($_SESSION['usuario'])) {
     $smarty->assign("numMensajes", $numMensajes);
 
 //Sidebar Inicio
+    $mostrarPedidos= DB_registro::obtienePedidos();
+    $numPedidos = count($mostrarPedidos);
+    $smarty->assign("numPedidos", $numPedidos);
+    
     $mostrarIncidencias= DB_registro::obtieneIncidencias();
     $numIncidencias = count($mostrarIncidencias);
     $smarty->assign("numIncidencias", $numIncidencias);
@@ -43,4 +47,3 @@ if (!isset($_SESSION['usuario'])) {
 
     $smarty->display("inicio.tpl");
 
-?>

@@ -51,14 +51,19 @@ class Fecha {
     }
 
     public function cambiaFmysql($datetime) {
-        $fechaSql = date("Y-m-d H:i:s'", strtotime($datetime));
+        $fechaSql = date("Y-m-d ", strtotime($datetime));
         //$fechaSql =  date("d/m/Y h:i:s", time());
         return $fechaSql;
     }
+    public function getFechaNormal(){
+         $fechaSql = date("d-m-Y", strtotime($this->datetime));
+         return $fechaSql;
+    }
+    
     public function getFecha(){
         return $this->time_elapsed_string($this->datetime);
     }
-    public function getFechaNormal(){
+    public function getFechaN(){
         $fechaN = date("d-m-Y", strtotime($this->datetime));
         return $fechaN;
     }

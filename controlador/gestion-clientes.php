@@ -3,6 +3,8 @@
 require_once('../modelo/DB.php');
 require_once('../modelo/DB_contacto.php');
 require_once('../modelo/DB_registro.php');
+require_once('../modelo/DB_pedido.php');
+require_once('../modelo/DB_incidencia.php');
 require_once('Smarty.class.php');
 require_once('xajax_core/xajax.inc.php');
 
@@ -142,15 +144,19 @@ if (!isset($_SESSION['usuario'])) {
     }
 
 //Sidebar inicio
-    $mostrarIncidencias= DB_registro::obtieneIncidencias();
+    $mostrarPedidos= DB_pedido::obtienePedidos();
+    $numPedidos = count($mostrarPedidos);
+    $smarty->assign("numPedidos", $numPedidos);
+    
+    $mostrarIncidencias= DB_incidencia::obtieneIncidencias();
     $numIncidencias = count($mostrarIncidencias);
-    $smarty->assign("numIncidencias", $numIncidencias);
-    $mostrarProveedores = DB_contacto::obtieneProveedores();
+    $smarty->assign("numIncidencias", $numIncidencias); //Incidencias
+    
     $numClientes = count($mostrarClientes);
     $smarty->assign("numClientes", $numClientes);
+    
+    $mostrarProveedores = DB_contacto::obtieneProveedores();
     $numProveedores = count($mostrarProveedores);
     $smarty->assign("numProveedores", $numProveedores);
 
     $smarty->display("gestion-clientes.tpl");
-
-?>

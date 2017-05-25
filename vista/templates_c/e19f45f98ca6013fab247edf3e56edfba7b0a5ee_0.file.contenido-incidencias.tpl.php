@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-24 20:34:24
+/* Smarty version 3.1.30, created on 2017-05-25 20:37:01
   from "/var/www/html/gestion/vista/templates/contenido-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5925d2300d0d30_38837907',
+  'unifunc' => 'content_5927244d617cc8_16421195',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e19f45f98ca6013fab247edf3e56edfba7b0a5ee' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-incidencias.tpl',
-      1 => 1495650709,
+      1 => 1495737415,
       2 => 'file',
     ),
   ),
@@ -21,20 +21,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_5925d2300d0d30_38837907 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5927244d617cc8_16421195 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
-<!-- Small boxes (Stat box) -->
 <div class="row">
   <?php $_smarty_tpl->_subTemplateRender("file:sidebar-inicio.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-  <!-- ./col -->
 </div>
-<!-- /.row -->
-<!-- Main row -->
 <div class="row">
-  <!-- Left col -->
   <div class="col-md-12" id="msj">
         <?php if (!empty($_smarty_tpl->tpl_vars['msj']->value)) {?>
             <?php if (($_smarty_tpl->tpl_vars['msj']->value == 'no')) {?>
@@ -66,8 +61,7 @@ function content_5925d2300d0d30_38837907 (Smarty_Internal_Template $_smarty_tpl)
                 <div id="errores"></div>
             </div>
         </div>
-    </div>
-        <!-- AQUI-->          
+    </div>  
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -276,184 +270,187 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
              </div>
            </div>
         <?php if (empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?><div class="tab-pane" id="detalle"><?php } else { ?> <div class="active tab-pane" id="detalle"><?php }?>
-          <div class="row">
-            <div class="col-lg-6">
-                <h3>Detalle incidencias</h3>
-            <form id="formeditar" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data">  
-                <div class="row">
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                            <label class="control-label" for="fecha">Fecha</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                <input type="text" disabled value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+        <div class="row">
+          <div class="col-lg-6">
+              <h3>Detalle incidencias</h3>
+          <form id="formeditar" novalidate action="gestion-incidencias.php" method="post" enctype="multipart/form-data">  
+              <div class="row">
+                   <div class="col-lg-6">
+                     <div class="form-group">
+                          <label class="control-label" for="fecha">Fecha</label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              <input type="text" disabled value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getFechaNormalReg();
 }?>" class="form-control">
-                            </div>
-                         </div>
-                     </div>
-                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-label" for="contacto">Autor</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                          </div>
+                       </div>
+                   </div>
+                   <div class="col-lg-6">
+                      <div class="form-group">
+                          <!-- Si el registro es de cliente o proveedor -->
+                          <label class="control-label" for="contacto">Autor <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?><a href="<?php if (($_smarty_tpl->tpl_vars['cont']->value->getTipoContacto() === "cliente")) {?>gestion-clientes.php?id=<?php } else { ?>gestion-proveedores.php?id=<?php }
+echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdContactoRegId();?>
+"> Ver ficha</a><?php }?></label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                              <input type="text" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdContactoReg();
 }?>" class="form-control" disabled />
-                            </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                       <div class="form-group">
-                            <label class="control-label" for="estado">Estado</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-                                <select class="form-control" id="estado_e" name="estado_e">
-                                     <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Pendiente')) {?><option value="0" selected>Pendiente</option><?php } else { ?><option value="0">Pendiente</option><?php }?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Modificada')) {?><option value="1" selected>Modificada</option><?php } else { ?><option value="1">Modificada</option><?php }?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Finalizada')) {?><option value="2" selected>Finalizada</option><?php } else { ?><option value="2">Finalizada</option><?php }?>
-                                     <?php }?>
-                                </select>
-                            </div>
-                         </div>
-                     </div>
-                     <div class="col-lg-6">
-                       <div class="form-group">
-                            <label class="control-label" for="prioridad">Prioridad</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                                <select class="form-control" id="estado_e" name="prioridad_e">
-                                     <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'alta')) {?><option value="alta" selected>Alta</option><?php } else { ?><option value="alta">Alta</option><?php }?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'media')) {?><option value="media" selected>Media</option><?php } else { ?><option value="media">Media</option><?php }?>
-                                       <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'baja')) {?><option value="baja" selected>Baja</option><?php } else { ?><option value="baja">Baja</option><?php }?>
-                                     <?php }?>
-                                </select>
-                            </div>
-                         </div>
-                     </div>
-                     <div class="col-lg-6 form-group required-field-block">
-                         <label class="control-label" for="material">Material</label>
-                        <div class="col-md-12 input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
-                            <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                          </div>
+                       </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="form-group">
+                          <label class="control-label" for="estado">Estado</label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+                              <select class="form-control" id="estado_e" name="estado_e">
+                                   <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Pendiente')) {?><option value="0" selected>Pendiente</option><?php } else { ?><option value="0">Pendiente</option><?php }?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Modificada')) {?><option value="1" selected>Modificada</option><?php } else { ?><option value="1">Modificada</option><?php }?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getEstadoReg() === 'Finalizada')) {?><option value="2" selected>Finalizada</option><?php } else { ?><option value="2">Finalizada</option><?php }?>
+                                   <?php }?>
+                              </select>
+                          </div>
+                       </div>
+                   </div>
+                   <div class="col-lg-6">
+                     <div class="form-group">
+                          <label class="control-label" for="prioridad">Prioridad</label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+                              <select class="form-control" id="estado_e" name="prioridad_e">
+                                   <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'alta')) {?><option value="alta" selected>Alta</option><?php } else { ?><option value="alta">Alta</option><?php }?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'media')) {?><option value="media" selected>Media</option><?php } else { ?><option value="media">Media</option><?php }?>
+                                     <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getPrioridadReg() === 'baja')) {?><option value="baja" selected>Baja</option><?php } else { ?><option value="baja">Baja</option><?php }?>
+                                   <?php }?>
+                              </select>
+                          </div>
+                       </div>
+                   </div>
+                   <div class="col-lg-6 form-group required-field-block">
+                       <label class="control-label" for="material">Material</label>
+                      <div class="col-md-12 input-group">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                          <textarea rows="3" size="30" value="" name="material_e" id="material_e" class="form-control" placeholder="Material"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getMaterialReg();
 }?></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 form-group required-field-block">
-                         <label class="control-label" for="observaciones">Observaciones</label>
-                        <div class="col-md-12 input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
-                            <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                      </div>
+                  </div>
+                  <div class="col-lg-6 form-group required-field-block">
+                       <label class="control-label" for="observaciones">Observaciones</label>
+                      <div class="col-md-12 input-group">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                          <textarea rows="3" size="30" name="observaciones_e" value="" id="observaciones_e" class="form-control" placeholder="Observaciones"><?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getObservacionesReg();
 }?></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 block-img-registro">
-                          <div class="row" id="img-registro">
-                            <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value->getImagenReg())) {?>
-                                <?php
+                      </div>
+                  </div>
+                  <div class="col-lg-12 block-img-registro">
+                        <div class="row" id="img-registro">
+                          <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value->getImagenReg())) {?>
+                              <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['incidencia']->value->getImagenRegArreglo(), 'imagen');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['imagen']->value) {
 ?>
-                                    <div class="col-lg-4">Imagen incidencia: 
-                                        <a href="<?php echo $_smarty_tpl->tpl_vars['imagen']->value;?>
+                                  <div class="col-lg-4">Imagen incidencia: 
+                                      <a href="<?php echo $_smarty_tpl->tpl_vars['imagen']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdContactoReg();?>
 " target="_blank"><img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['imagen']->value;?>
 " alt="imagen" /></a>
-                                        <button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen('<?php echo $_smarty_tpl->tpl_vars['imagen']->value;?>
+                                      <button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen('<?php echo $_smarty_tpl->tpl_vars['imagen']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdReg();?>
 ')">Borrar Imagen</button> 
-                                    </div>
-                                <?php
+                                  </div>
+                              <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-                            <?php }?>
-                           </div>
+                          <?php }?>
                          </div>
-                     </div>
-                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-label" for="id_usuario_r_e">Asignado a</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <select class="form-control" name="id_usuario_r_e" id="id_usuario_r_e">
-                                     <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
-                                       <?php
+                       </div>
+                   </div>
+                   <div class="col-lg-6">
+                      <div class="form-group">
+                          <label class="control-label" for="id_usuario_r_e">Asignado a</label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                              <select class="form-control" name="id_usuario_r_e" id="id_usuario_r_e">
+                                   <?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {?>
+                                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['usuarios']->value, 'u');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['u']->value) {
 ?>
-                                           <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg() === $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto())) {?>
-                                               <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
+                                         <?php if (($_smarty_tpl->tpl_vars['incidencia']->value->getIdUsuarioReg() === $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto())) {?>
+                                             <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
 " selected><?php echo $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto();?>
 </option>
-                                           <?php } else { ?>
-                                               <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
+                                         <?php } else { ?>
+                                             <option value="<?php echo $_smarty_tpl->tpl_vars['u']->value->getIdUsuario();?>
 "><?php echo $_smarty_tpl->tpl_vars['u']->value->getNombreCompleto();?>
 </option>
-                                           <?php }?>
-                                       <?php
+                                         <?php }?>
+                                     <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-                                     <?php }?>
-                                </select>
-                            </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                         <label class="control-label" for="imagen">Adjuntar imagen</label>
-                         <div id="imagen"></div>
-                         <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
-                             <input type="file" id="imagen_e" name="imagen_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                                   <?php }?>
+                              </select>
+                          </div>
+                       </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="form-group">
+                       <label class="control-label" for="imagen">Adjuntar imagen</label>
+                       <div id="imagen"></div>
+                       <div class="input-group">	 
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
+                           <input type="file" id="imagen_e" name="imagen_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getImagenReg();
 }?>" class="filestyle" data-size="sm">
-                         </div>
-			</div>
-                    </div>
-                    <?php if (($_smarty_tpl->tpl_vars['usuario']->value === 'admin')) {?>      
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                         <label class="control-label" for="archivar_e">Archivar incidencia</label>
-                         <div id="archivar_e"></div>
-                         <div class="input-group">	 
-                             <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
-                             <input type="text" id="arcihvar_e" name="archivar_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                       </div>
+                      </div>
+                  </div>
+                  <?php if (($_smarty_tpl->tpl_vars['usuario']->value === 'admin')) {?>      
+                  <div class="col-lg-12">
+                      <div class="form-group">
+                       <label class="control-label" for="archivar_e">Archivar incidencia</label>
+                       <div id="archivar_e"></div>
+                       <div class="input-group">	 
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>		
+                           <input type="text" id="arcihvar_e" name="archivar_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getArchivarReg();
 }?>" class="form-control">
-                         </div>
-			</div>
-                    </div>
-                    <?php } else { ?>
-                        <input type="hidden" id="arcihvar_e" name="archivar_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                       </div>
+                      </div>
+                  </div>
+                  <?php } else { ?>
+                      <input type="hidden" id="arcihvar_e" name="archivar_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getArchivarReg();
 }?>" class="form-control">
-                    <?php }?>
-                    <div class="col-lg-12">
-                        <div class="pull-right">
-                           <input type="hidden" name="id_registro_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
+                  <?php }?>
+                  <div class="col-lg-12">
+                      <div class="pull-right">
+                         <input type="hidden" name="id_registro_e" value="<?php if (!empty($_smarty_tpl->tpl_vars['incidencia']->value)) {
 echo $_smarty_tpl->tpl_vars['incidencia']->value->getIdReg();
 }?>">
-                           <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Incidencia</button> 
-                           <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
-                        </div>
-                    </div>
-                 </form>
-                </div>
-            </div>
-      </div>
-    </div>
+                         <button type="submit" name="editar" class="btn btn-default" onsubmit="validarFormuEditar()">Editar Incidencia</button> 
+                         <button type="submit" name="eliminar" name="eliminar" class="btn btn-default"><i class="fa fa-trash-o"></i> Eliminar</button>
+                      </div>
+                  </div>
+               </form>
+              </div>
+          </div>
+       </div>
+     </div>
    </div>    
   </div>                    
 </div>                        

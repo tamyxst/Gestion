@@ -274,9 +274,9 @@
                             <table id="tabreg" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                                <thead>
                                 <tr>
+                                    <th>Tipo</th>
                                     <th></th>
                                     <th>Autor</th>
-                                    <th>Prioridad</th>
                                     <th>Fecha</th>
                                     <th>Asignado a</th>
                                     <th>Estado</th>
@@ -285,10 +285,10 @@
                                <tbody>
                                    {foreach from=$registros item=$mi}
                                         <tr>
-                                            <td>{if ($mi->getPrioridadReg()==='alta')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getPrioridadReg()==='media')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</td>
-                                            <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
-                                            <td>{$mi->getPrioridadReg()}</a></td>
-                                            <td><a href="gestion-incidencias.php?id={$mi->getIdReg()}" /><b>{$mi->getFechaReg()}</b></a></td>
+                                            <td>{if ($mi->getTipoReg()==='incidencia')}Incidencia{elseif ($mi->getTipoReg()==='pedido')}Pedido{else}Otro registro{/if}</td>
+                                            <td><a href="{if ($mi->getTipoReg()==='incidencia')}gestion-incidencias.php?id={elseif ($mi->getTipoReg()==='pedido')}gestion-pedidos.php?id={else}gestion-registros.php?id={/if}{$mi->getIdReg()}">Ver más</a></td>
+                                            <td>{$mi->getIdContactoReg()}</td>
+                                            <td><b>{$mi->getFechaReg()}</b></td>
                                             <td>{$mi->getIdUsuarioReg()}</td>
                                             <th>{if ($mi->getEstadoReg()==='Pendiente')}<span class="label label-danger">Pendiente</span>{elseif ($mi->getEstadoReg()==='Modificada')}<span class="label label-warning">Modificada</span>{else}<span class="label label-success">Finalizada</span>{/if}</th>
                                         </tr>
