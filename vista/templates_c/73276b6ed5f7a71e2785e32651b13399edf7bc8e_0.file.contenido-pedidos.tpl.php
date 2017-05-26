@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-26 20:30:53
+/* Smarty version 3.1.30, created on 2017-05-26 21:00:11
   from "/var/www/html/gestion/vista/templates/contenido-pedidos.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5928745df30db2_76950534',
+  'unifunc' => 'content_59287b3b29f911_85898529',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '73276b6ed5f7a71e2785e32651b13399edf7bc8e' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-pedidos.tpl',
-      1 => 1495823361,
+      1 => 1495825209,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_5928745df30db2_76950534 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59287b3b29f911_85898529 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <div class="row">
@@ -89,7 +89,6 @@ function content_5928745df30db2_76950534 (Smarty_Internal_Template $_smarty_tpl)
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                             <thead>
                             <tr>
-                                <th></th>
                                 <th>Pedido</th>
                                 <th>Fecha Entrega</th>
                                 <th>Material</th>
@@ -104,7 +103,6 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['mi']->value) {
 ?>
                                     <tr>
-                                        <td><?php if (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'alta')) {?><i class="fa fa-circle-o text-red"></i><?php } elseif (($_smarty_tpl->tpl_vars['mi']->value->getPrioridadReg() === 'media')) {?><i class="fa fa-circle-o text-yellow"></i><?php } else { ?><i class="fa fa-circle-o text-aqua"></i><?php }?></td>
                                         <td><a href="gestion-pedidos.php?id=<?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdReg();?>
 " /><?php echo $_smarty_tpl->tpl_vars['mi']->value->getIdContactoReg();?>
 </a></td>

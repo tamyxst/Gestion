@@ -3,118 +3,59 @@
     {include file="sidebar-inicio.tpl"}
 </div>
 <div class="row">
-  <section class="col-lg-5 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
     <div class="box box-primary">
     <div class="box-header">
       <i class="ion ion-clipboard"></i>
-
-      <h3 class="box-title">To Do List</h3>
-
-      <div class="box-tools pull-right">
-        <ul class="pagination pagination-sm inline">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
+      <h3 class="box-title">Últimos registros</h3>
     </div>
-    <!-- /.box-header -->
     <div class="box-body">
       <ul class="todo-list">
-        <li>
-          <!-- drag handle -->
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <!-- checkbox -->
-          <input type="checkbox" value="">
-          <!-- todo text -->
-          <span class="text">Design a nice theme</span>
-          <!-- Emphasis label -->
-          <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-          <!-- General tools such as edit or delete-->
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Make the theme responsive</span>
-          <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Check your messages and notifications</span>
-          <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
+        {foreach from=$ultimosReg item=$uReg}
+            <li>
+                  <span class="handle">
+                    <i class="fa fa-ellipsis-v"></i>
+                    <i class="fa fa-ellipsis-v"></i>
+                  </span>
+              <input type="checkbox" value="">
+              <span class="text">{if ($uReg->getTipoReg()==="incidencia")}<small class="label label-danger">Incidencia </small>{elseif ($uReg->getTipoReg()==="pedido")}
+              <small class="label label-info">Pedido </small>{else}<small class="label label-primary">Otro </small>{/if}</span>
+              <span class="text"><strong>De:</strong> {$uReg->getIdContactoReg()}    </span>
+              <span class="text"><strong>Asignado a:</strong> {$uReg->getIdUsuarioReg()}</span>
+              <div class="tools">
+              {if ($uReg->getTipoReg()==="incidencia")}
+                  <a href="gestion-incidencias.php?id={$uReg->getIdReg()}"><i class="fa fa-edit"></i></a>
+              {elseif ($uReg->getTipoReg()==="pedido")}
+                  <a href="gestion-pedidos.php?id={$uReg->getIdReg()}"><i class="fa fa-edit"></i></a>
+              {else}
+                  <a href="gestion-registros.php?id={$uReg->getIdReg()}"><i class="fa fa-edit"></i></a>
+              {/if}
+              </div>
+            </li>
+        {/foreach}
       </ul>
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer clearfix no-border">
-      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
     </div>
   </div>
 </section>
-  <section class="col-lg-5 connectedSortable">
+    <section class="col-lg-6 connectedSortable">
+        <div class="box box-solid bg-aqua-gradient">
+            <div class="box-header">
+              <i class="fa fa-calendar"></i>
+              <h3 class="box-title">Calendario</h3>
+              <div class="pull-right box-tools">
+               
+                <button type="button" class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <div id="calendar" style="width: 100%"></div>
+            </div>
+          </div>
+    </section>  
+  <section class="col-lg-6 connectedSortable">
     <div class="box box-body">
      <div class="box-body">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

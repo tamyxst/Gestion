@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-26 20:34:03
+/* Smarty version 3.1.30, created on 2017-05-26 20:57:31
   from "/var/www/html/gestion/vista/templates/gestion-pedidos.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5928751b6a2fa2_78755267',
+  'unifunc' => 'content_59287a9b16c298_62259165',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a23cbbafc727ac5445613f7f82c5e73db274b34' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-pedidos.tpl',
-      1 => 1495823623,
+      1 => 1495825045,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:header.tpl' => 1,
-    'file:contenido-incidencias.tpl' => 1,
+    'file:contenido-pedidos.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5928751b6a2fa2_78755267 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59287a9b16c298_62259165 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -128,7 +128,7 @@ function content_5928751b6a2fa2_78755267 (Smarty_Internal_Template $_smarty_tpl)
       </ol>
     </section>
     <!-- Contenido Inicio -->
-        <?php $_smarty_tpl->_subTemplateRender("file:contenido-incidencias.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <?php $_smarty_tpl->_subTemplateRender("file:contenido-pedidos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
   </div>

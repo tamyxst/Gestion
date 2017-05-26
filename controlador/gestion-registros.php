@@ -233,6 +233,23 @@ if (!isset($_SESSION['usuario'])) {
     $smarty->assign("comentarios", $comentarios);
     
 //Sidebar inicio
+    $numReg = count($mostrarRegistros);
+    $smarty->assign("numReg", $numReg);
+    
+    $mostrarPedidos= DB_pedido::obtienePedidos();
+    $numPedidos = count($mostrarPedidos);
+    $smarty->assign("numPedidos", $numPedidos);
+    
+    $mostrarIncidencias= DB_incidencia::obtieneIncidencias();
+    $numIncidencias = count($mostrarIncidencias);
+    $smarty->assign("numIncidencias", $numIncidencias);
+    
+    $mostrarClientes = DB_contacto::obtieneClientes();
+    $numClientes = count($mostrarClientes);
+    $smarty->assign("numClientes", $numClientes);
+    
+    $numProveedores = count($mostrarProveedores);
+    $smarty->assign("numProveedores", $numProveedores);
     
     $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);

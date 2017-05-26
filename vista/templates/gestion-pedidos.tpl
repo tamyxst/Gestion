@@ -64,7 +64,7 @@
       </ol>
     </section>
     <!-- Contenido Inicio -->
-        {include file="contenido-incidencias.tpl"}
+        {include file="contenido-pedidos.tpl"}
   </div>
     {include file="footer.tpl"}
 </div>

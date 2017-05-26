@@ -238,6 +238,9 @@ if (!isset($_SESSION['usuario'])) {
     $smarty->assign("comentarios", $comentarios);
     
 //Sidebar inicio
+    $mostrarReg= DB_registro::obtieneRegistros();
+    $numReg = count($mostrarReg);
+    $smarty->assign("numReg", $numReg);
     
     $numPedidos = count($mostrarPedidos);
     $smarty->assign("numPedidos", $numPedidos); 

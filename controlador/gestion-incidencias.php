@@ -244,6 +244,9 @@ $ajax->configure('debug',true);
     $smarty->assign("comentarios", $comentarios);
 
 //Sidebar inicio
+    $mostrarReg= DB_registro::obtieneRegistros();
+    $numReg = count($mostrarReg);
+    $smarty->assign("numReg", $numReg);
     
     $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);

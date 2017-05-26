@@ -62,6 +62,15 @@ class DB_registro{
         return $registros;
     }
     
+    public static function obtieneUltimosRegistros() {
+        $consulta ="select * from registros order by fecha asc";
+        $resultado = self::ejecutaConsulta($consulta);
+        while ($reg = $resultado->fetch()) {
+            $registros[] = new Registro($reg);
+        }
+        return $registros;
+    }
+    
     //Modifica las imagenes almacenadas en el registro
     public static function editarRegistroImagen($imagen,$id_registro){
         try{

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-26 20:36:24
+/* Smarty version 3.1.30, created on 2017-05-26 23:02:29
   from "/var/www/html/gestion/vista/templates/inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_592875a8b71fa6_78512301',
+  'unifunc' => 'content_592897e5eaed69_32700805',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7dbcb3861b640fb0ab1a3dc0105bee57677b24c' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/inicio.tpl',
-      1 => 1495823782,
+      1 => 1495832545,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_592875a8b71fa6_78512301 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592897e5eaed69_32700805 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -76,15 +76,7 @@ function content_592875a8b71fa6_78512301 (Smarty_Internal_Template $_smarty_tpl)
 >
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <?php echo '<script'; ?>
->
-  $.widget.bridge('uibutton', $.ui.button);
-<?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
  src="../dist/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="../plugins/datepicker/bootstrap-datepicker.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"><?php echo '</script'; ?>
@@ -96,12 +88,25 @@ function content_592875a8b71fa6_78512301 (Smarty_Internal_Template $_smarty_tpl)
  src="../plugins/atle/js/app.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
+ src="../dist/js/gestion_plugins.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
  src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
+
 <!--script src="../plugins/atle/js/pages/dashboard.js"><?php echo '</script'; ?>
 >-->
 <?php echo '<script'; ?>
  src="../plugins/atle/js/demo.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../plugins/datepicker/bootstrap-datepicker.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
+  $.widget.bridge('uibutton', $.ui.button);
+  $("#calendar").datepicker();
+<?php echo '</script'; ?>
 >
 </body>
 </html>

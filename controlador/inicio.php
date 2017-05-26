@@ -32,7 +32,15 @@ if (!isset($_SESSION['usuario'])) {
     $smarty->assign("mensajes", $mensajes);
     $smarty->assign("numMensajes", $numMensajes);
 
+//Ultimos registros
+    $ultimosReg= DB_registro::obtieneUltimosRegistros();
+    $smarty->assign("ultimosReg", $ultimosReg);
+    
 //Sidebar Inicio
+    $mostrarReg= DB_registro::obtieneRegistros();
+    $numReg = count($mostrarReg);
+    $smarty->assign("numReg", $numReg);
+    
     $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);
     $smarty->assign("numPedidos", $numPedidos);

@@ -62,7 +62,6 @@
                         <table id="tabmen" cellspacing="0" width="100%" class="display table table-bordered table-hover responsive nowrap">
                             <thead>
                             <tr>
-                                <th></th>
                                 <th>Pedido</th>
                                 <th>Fecha Entrega</th>
                                 <th>Material</th>
@@ -73,7 +72,6 @@
                            <tbody>
                                {foreach from=$mostrarPedidos item=$mi}
                                     <tr>
-                                        <td>{if ($mi->getPrioridadReg()==='alta')}<i class="fa fa-circle-o text-red"></i>{elseif ($mi->getPrioridadReg()==='media')}<i class="fa fa-circle-o text-yellow"></i>{else}<i class="fa fa-circle-o text-aqua"></i>{/if}</td>
                                         <td><a href="gestion-pedidos.php?id={$mi->getIdReg()}" />{$mi->getIdContactoReg()}</a></td>
                                         <td>{$mi->getFechaEntregaReg()}</a></td>
                                         <td>{$mi->getMaterialReg()}</td>

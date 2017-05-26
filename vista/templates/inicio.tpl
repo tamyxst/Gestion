@@ -38,16 +38,19 @@
 <script src="../plugins/dataTables/jquery-1.12.4.js"></script>
 <script src="../plugins/jQuery/jquery-ui.js"></script>
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
 <script src="../dist/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../plugins/atle/js/app.js"></script>
+<script src="../dist/js/gestion_plugins.js"></script>
 <script src="../dist/js/autocomplete.js"></script>
+
 <!--script src="../plugins/atle/js/pages/dashboard.js"></script>-->
 <script src="../plugins/atle/js/demo.js"></script>
+<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+  $("#calendar").datepicker();
+</script>
 </body>
 </html>

@@ -4,9 +4,7 @@
       <a href="gestion-incidencias.php">
         <i class="fa fa-edit"></i> <span>Incidencias</span>
         <span class="pull-right-container">
-          <small class="label pull-right bg-yellow"></small>
-          <small class="label pull-right bg-green">16</small>
-          <small class="label pull-right bg-red">5</small>
+          <small class="label pull-right bg-red">{$numIncidencias}</small>
         </span>
       </a>
     </li>
@@ -14,9 +12,7 @@
       <a href="gestion-pedidos.php">
         <i class="fa fa-edit"></i> <span>Pedidos</span>
         <span class="pull-right-container">
-          <small class="label pull-right bg-yellow"></small>
-          <small class="label pull-right bg-green">16</small>
-          <small class="label pull-right bg-red">5</small>
+          <small class="label pull-right bg-yellow">{$numPedidos}</small>
         </span>
       </a>
     </li>
@@ -24,9 +20,7 @@
       <a href="gestion-registros.php">
         <i class="fa fa-edit"></i> <span>Otros</span>
         <span class="pull-right-container">
-          <small class="label pull-right bg-yellow">12</small>
-          <small class="label pull-right bg-green">16</small>
-          <small class="label pull-right bg-red">5</small>
+          <small class="label pull-right bg-blue">{$numReg}</small>
         </span>
       </a>
     </li>
@@ -35,7 +29,7 @@
       <a href="gestion-clientes.php">
         <i class="fa fa-table"></i> <span>Clientes</span>
         <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
+          <small class="label pull-right bg-aqua">{$numClientes}</small>
         </span>
       </a>
     </li>
@@ -43,7 +37,7 @@
       <a href="gestion-proveedores.php">
         <i class="fa fa-table"></i> <span>Proveedores</span>
         <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
+          <small class="label pull-right bg-green">{$numProveedores}</small>
         </span>
       </a>
     </li>
@@ -56,8 +50,4 @@
         </span>
       </a>
     </li>
-    <li class="header">LABELS</li>
-    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Alta</span></a></li>
-    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Media</span></a></li>
-    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Baja</span></a></li>
 </ul>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-19 19:17:31
+/* Smarty version 3.1.30, created on 2017-05-26 22:57:44
   from "/var/www/html/gestion/vista/templates/contenido-inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_591f28abea1cc1_05347325',
+  'unifunc' => 'content_592896c8b48495_19261710',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '040c7ca256f8315cde9049dedd9dddda84766f20' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-inicio.tpl',
-      1 => 1495214249,
+      1 => 1495832262,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_591f28abea1cc1_05347325 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592896c8b48495_19261710 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <div class="row">
@@ -30,118 +30,73 @@ function content_591f28abea1cc1_05347325 (Smarty_Internal_Template $_smarty_tpl)
 
 </div>
 <div class="row">
-  <section class="col-lg-5 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
     <div class="box box-primary">
     <div class="box-header">
       <i class="ion ion-clipboard"></i>
-
-      <h3 class="box-title">To Do List</h3>
-
-      <div class="box-tools pull-right">
-        <ul class="pagination pagination-sm inline">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
+      <h3 class="box-title">Últimos registros</h3>
     </div>
-    <!-- /.box-header -->
     <div class="box-body">
       <ul class="todo-list">
-        <li>
-          <!-- drag handle -->
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <!-- checkbox -->
-          <input type="checkbox" value="">
-          <!-- todo text -->
-          <span class="text">Design a nice theme</span>
-          <!-- Emphasis label -->
-          <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-          <!-- General tools such as edit or delete-->
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Make the theme responsive</span>
-          <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Check your messages and notifications</span>
-          <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
-        <li>
-              <span class="handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-              </span>
-          <input type="checkbox" value="">
-          <span class="text">Let theme shine like a star</span>
-          <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-          <div class="tools">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash-o"></i>
-          </div>
-        </li>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['ultimosReg']->value, 'uReg');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['uReg']->value) {
+?>
+            <li>
+                  <span class="handle">
+                    <i class="fa fa-ellipsis-v"></i>
+                    <i class="fa fa-ellipsis-v"></i>
+                  </span>
+              <input type="checkbox" value="">
+              <span class="text"><?php if (($_smarty_tpl->tpl_vars['uReg']->value->getTipoReg() === "incidencia")) {?><small class="label label-danger">Incidencia </small><?php } elseif (($_smarty_tpl->tpl_vars['uReg']->value->getTipoReg() === "pedido")) {?>
+              <small class="label label-info">Pedido </small><?php } else { ?><small class="label label-primary">Otro </small><?php }?></span>
+              <span class="text"><strong>De:</strong> <?php echo $_smarty_tpl->tpl_vars['uReg']->value->getIdContactoReg();?>
+    </span>
+              <span class="text"><strong>Asignado a:</strong> <?php echo $_smarty_tpl->tpl_vars['uReg']->value->getIdUsuarioReg();?>
+</span>
+              <div class="tools">
+              <?php if (($_smarty_tpl->tpl_vars['uReg']->value->getTipoReg() === "incidencia")) {?>
+                  <a href="gestion-incidencias.php?id=<?php echo $_smarty_tpl->tpl_vars['uReg']->value->getIdReg();?>
+"><i class="fa fa-edit"></i></a>
+              <?php } elseif (($_smarty_tpl->tpl_vars['uReg']->value->getTipoReg() === "pedido")) {?>
+                  <a href="gestion-pedidos.php?id=<?php echo $_smarty_tpl->tpl_vars['uReg']->value->getIdReg();?>
+"><i class="fa fa-edit"></i></a>
+              <?php } else { ?>
+                  <a href="gestion-registros.php?id=<?php echo $_smarty_tpl->tpl_vars['uReg']->value->getIdReg();?>
+"><i class="fa fa-edit"></i></a>
+              <?php }?>
+              </div>
+            </li>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
       </ul>
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer clearfix no-border">
-      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
     </div>
   </div>
 </section>
-  <section class="col-lg-5 connectedSortable">
+    <section class="col-lg-6 connectedSortable">
+        <div class="box box-solid bg-aqua-gradient">
+            <div class="box-header">
+              <i class="fa fa-calendar"></i>
+              <h3 class="box-title">Calendario</h3>
+              <div class="pull-right box-tools">
+               
+                <button type="button" class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <div id="calendar" style="width: 100%"></div>
+            </div>
+          </div>
+    </section>  
+  <section class="col-lg-6 connectedSortable">
     <div class="box box-body">
      <div class="box-body">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

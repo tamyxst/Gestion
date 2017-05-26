@@ -1,5 +1,9 @@
 <?php
 require_once('../modelo/DB.php');
+require_once('../modelo/DB_contacto.php');
+require_once('../modelo/DB_registro.php');
+require_once('../modelo/DB_pedido.php');
+require_once('../modelo/DB_incidencia.php');
 require_once('Smarty.class.php');
 require_once('xajax_core/xajax.inc.php');
 
@@ -195,6 +199,25 @@ function responder($id_usuario_m){
     $respuesta->append('destino','innerHTML','<select class="form-control" name="usuarios">');
     return $respuesta;
 }
+$mostrarReg= DB_registro::obtieneRegistros();
+$numReg = count($mostrarReg);
+$smarty->assign("numReg", $numReg);
+
+$mostrarPedidos= DB_pedido::obtienePedidos();
+$numPedidos = count($mostrarPedidos);
+$smarty->assign("numPedidos", $numPedidos);
+
+$mostrarIncidencias= DB_incidencia::obtieneIncidencias();
+$numIncidencias = count($mostrarIncidencias);
+$smarty->assign("numIncidencias", $numIncidencias);
+
+$mostrarClientes = DB_contacto::obtieneClientes();
+$numClientes = count($mostrarClientes);
+$smarty->assign("numClientes", $numClientes);
+
+$numProveedores = count($mostrarProveedores);
+$smarty->assign("numProveedores", $numProveedores);
+
 $smarty->display("gestion-mensajes.tpl");
 
   

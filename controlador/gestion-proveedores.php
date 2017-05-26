@@ -147,6 +147,10 @@ if (!isset($_SESSION['usuario'])) {
     }
 
 //Sidebar inicio
+    $mostrarReg= DB_registro::obtieneRegistros();
+    $numReg = count($mostrarReg);
+    $smarty->assign("numReg", $numReg);
+    
     $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);
     $smarty->assign("numPedidos", $numPedidos);
