@@ -190,8 +190,12 @@ $ajax->configure('debug',true);
         $respuesta = new xajaxResponse();
         $incidencia = DB_incidencia::obtieneIncidencia($id_registro);
         $cadena = creaCadena($incidencia,$imagen);
-        DB_incidencia::editarRegistroImagen($cadena,$id_registro);
+        DB_registro::editarRegistroImagen($cadena,$id_registro);
         $incidenciaN = DB_incidencia::obtieneIncidencia($id_registro);
+        if($incidenciaN->getImagenReg()===null){
+          $respuesta->assign('img-registro','innerHTML','No hay imágenes');
+        }else{
+        
         $respuesta->assign('img-registro','innerHTML','');
         $respuesta->append('img-registro', 'innerHTML', "<input type='hidden' name='imagen_e' value='$cadena'>");
         
@@ -199,6 +203,7 @@ $ajax->configure('debug',true);
             $respuesta->append('img-registro', 'innerHTML',"<div class='col-lg-4'>Imagen incidencia: <a href='$i' alt='$incidenciaN->getIdContactoReg()' target='_blank'>"
                     . "<img class='img-responsive' src='$i'></a>"
                     . '<button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen(\''.$i.'\',\''.$incidencia->getIdReg().'\')" />Borrar Imagen</button> </div>');
+            }
         }
         return $respuesta;
     }

@@ -193,8 +193,11 @@ if (!isset($_SESSION['usuario'])) {
         $respuesta = new xajaxResponse();
         $pedido = DB_pedido::obtienePedido($id_registro);
         $cadena = creaCadena($pedido,$imagen);
-        DB_pedido::editarRegistroImagen($cadena,$id_registro);
+        DB_registro::editarRegistroImagen($cadena,$id_registro);
         $pedidoN = DB_pedido::obtienePedido($id_registro);
+        if($pedidoN->getImagenReg()===null){
+            $respuesta->assign('img-registro','innerHTML','No hay imágenes');
+        }else{
         $respuesta->assign('img-registro','innerHTML','');
         $respuesta->append('img-registro', 'innerHTML', "<input type='hidden' name='imagen_e' value='$cadena'>");
         
@@ -202,6 +205,7 @@ if (!isset($_SESSION['usuario'])) {
             $respuesta->append('img-registro', 'innerHTML',"<div class='col-lg-4'>Imagen pedido: <a href='$i' alt='$pedidoN->getIdContactoReg()' target='_blank'>"
                     . "<img class='img-responsive' src='$i'></a>"
                     . '<button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen(\''.$i.'\',\''.$pedido->getIdReg().'\')" />Borrar Imagen</button> </div>');
+            }
         }
         return $respuesta;
     }

@@ -3,6 +3,8 @@
 require_once('../modelo/DB.php');
 require_once('../modelo/DB_contacto.php');
 require_once('../modelo/DB_registro.php');
+require_once('../modelo/DB_pedido.php');
+require_once('../modelo/DB_incidencia.php');
 require_once('Smarty.class.php');
 include 'sidebar-mensajes.php';
 
@@ -31,11 +33,11 @@ if (!isset($_SESSION['usuario'])) {
     $smarty->assign("numMensajes", $numMensajes);
 
 //Sidebar Inicio
-    $mostrarPedidos= DB_registro::obtienePedidos();
+    $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);
     $smarty->assign("numPedidos", $numPedidos);
     
-    $mostrarIncidencias= DB_registro::obtieneIncidencias();
+    $mostrarIncidencias= DB_incidencia::obtieneIncidencias();
     $numIncidencias = count($mostrarIncidencias);
     $smarty->assign("numIncidencias", $numIncidencias);
     $mostrarClientes = DB_contacto::obtieneClientes();

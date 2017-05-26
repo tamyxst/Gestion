@@ -116,7 +116,7 @@ class DB_registro{
         return $resultado;
     }
     //Edita un registro de tipo incidencia que contiene imagen a editar
-    public static function editarReegistroCI($valores_1){
+    public static function editarRegistroCI($valores_1){
         try{
             $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?,imagen=?, id_usuario_r=? WHERE id_registro=?";
             $resultado=self::ejecutaConsulta($consulta_1, $valores_1);

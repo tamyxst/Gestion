@@ -134,7 +134,7 @@ if (!isset($_SESSION['usuario'])) {
         $valores[] = $id_registro;
         
         if($_FILES['imagen_e']['name']!==''){
-            $msjAdd = DB_registro::editarRegistroCI($valores,$id_registro);
+            $msjAdd = DB_registro::editarRegistroCI($valores, $id_registro);
         }else{
             $msjAdd = DB_registro::editarRegistroSI($valores, $id_registro);
         }
@@ -190,6 +190,9 @@ if (!isset($_SESSION['usuario'])) {
         $cadena = creaCadena($registro,$imagen);
         DB_registro::editarRegistroImagen($cadena,$id_registro);
         $registroN = DB_registro::obtieneRegistro($id_registro);
+        if($registroN->getImagenReg()===null){
+          $respuesta->assign('img-registro','innerHTML','No hay imágenes');
+        }else{
         $respuesta->assign('img-registro','innerHTML','');
         $respuesta->append('img-registro', 'innerHTML', "<input type='hidden' name='imagen_e' value='$cadena'>");
         
@@ -197,6 +200,7 @@ if (!isset($_SESSION['usuario'])) {
             $respuesta->append('img-registro', 'innerHTML',"<div class='col-lg-4'>Imagen registro: <a href='$i' alt='$registroN->getIdContactoReg()' target='_blank'>"
                     . "<img class='img-responsive' src='$i'></a>"
                     . '<button type="button" name="borrar" class="btn btn-default btn-del" onclick="borrarImagen(\''.$i.'\',\''.$registro->getIdReg().'\')" />Borrar Imagen</button> </div>');
+        }
         }
         return $respuesta;
     }
@@ -227,11 +231,11 @@ if (!isset($_SESSION['usuario'])) {
  
 //Sidebar inicio
     
-    $mostrarPedidos= DB_registro::obtienePedidos();
+    $mostrarPedidos= DB_pedido::obtienePedidos();
     $numPedidos = count($mostrarPedidos);
     $smarty->assign("numPedidos", $numPedidos);
     
-    $mostrarIncidencias= DB_registro::obtieneIncidencias();
+    $mostrarIncidencias= DB_incidencia::obtieneIncidencias();
     $numIncidencias = count($mostrarIncidencias);
     $smarty->assign("numIncidencias", $numIncidencias); //Incidencias
     
