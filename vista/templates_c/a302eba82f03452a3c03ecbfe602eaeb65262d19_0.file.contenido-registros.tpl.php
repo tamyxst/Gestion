@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-26 17:52:42
+/* Smarty version 3.1.30, created on 2017-05-26 20:24:52
   from "/var/www/html/gestion/vista/templates/contenido-registros.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59284f4aa49c51_43266242',
+  'unifunc' => 'content_592872f4630e31_50988489',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a302eba82f03452a3c03ecbfe602eaeb65262d19' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/contenido-registros.tpl',
-      1 => 1495813953,
+      1 => 1495823028,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar-inicio.tpl' => 1,
   ),
 ),false)) {
-function content_59284f4aa49c51_43266242 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592872f4630e31_50988489 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="content">
 <div class="row">
@@ -361,6 +361,68 @@ echo $_smarty_tpl->tpl_vars['registro']->value->getIdReg();
                   </div>
                </form>
               </div>
+              <div class="col-md-6">
+              <h3>Comentarios</h3>
+              <div class="box box-primary direct-chat direct-chat-primary">
+                <div class="box-body">
+                  <div class="direct-chat-messages">
+                    <?php if (!empty($_smarty_tpl->tpl_vars['comentarios']->value)) {?>
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['comentarios']->value, 'com');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['com']->value) {
+?>
+                            <?php if (($_smarty_tpl->tpl_vars['com']->value->nomUsuarioComentario() !== $_smarty_tpl->tpl_vars['usuario']->value)) {?>    
+                            <div class="direct-chat-msg">
+                              <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-left"><?php echo $_smarty_tpl->tpl_vars['com']->value->nomUsuarioComentario();?>
+</span>
+                                <span class="direct-chat-timestamp pull-right"><?php echo $_smarty_tpl->tpl_vars['com']->value->getFechaComentario();?>
+</span>
+                              </div>
+                              <div class="direct-chat-text">
+                                <?php echo $_smarty_tpl->tpl_vars['com']->value->getTextoComentario();?>
+
+                              </div>
+                            </div>
+                            <?php } else { ?>
+                            <div class="direct-chat-msg right">
+                              <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-right"><?php echo $_smarty_tpl->tpl_vars['com']->value->nomUsuarioComentario();?>
+</span>
+                                <span class="direct-chat-timestamp pull-left"><?php echo $_smarty_tpl->tpl_vars['com']->value->getFechaComentario();?>
+</span>
+                              </div>
+                              <div class="direct-chat-text">
+                                <?php echo $_smarty_tpl->tpl_vars['com']->value->getTextoComentario();?>
+
+                              </div>
+                            </div>
+                            <?php }?>
+                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                    <?php }?>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <form action="gestion-registros.php" method="post">
+                    <div class="input-group">
+                      <input type="text" name="comentario" placeholder="Escribir comentario" class="form-control">
+                      <input type="hidden" name="id_registro_com" value="<?php if (!empty($_smarty_tpl->tpl_vars['registro']->value)) {
+echo $_smarty_tpl->tpl_vars['registro']->value->getIdReg();
+}?>">
+                          <span class="input-group-btn">
+                            <button type="submit" name="enviar_comentario" class="btn btn-warning btn-flat">Enviar</button>
+                          </span>
+                    </div>
+                  </form>
+                </div>
+              </div>           
           </div>
        </div>
      </div>

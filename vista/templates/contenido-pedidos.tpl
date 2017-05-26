@@ -290,6 +290,51 @@
                   </div>
                </form>
               </div>
+              <div class="col-md-6">
+              <h3>Comentarios</h3>
+              <div class="box box-warning direct-chat direct-chat-warning">
+                <div class="box-body">
+                  <div class="direct-chat-messages">
+                    {if !empty ($comentarios)}
+                        {foreach from=$comentarios item=$com}
+                            {if ($com->nomUsuarioComentario()!== $usuario)}    
+                            <div class="direct-chat-msg">
+                              <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-left">{$com->nomUsuarioComentario()}</span>
+                                <span class="direct-chat-timestamp pull-right">{$com->getFechaComentario()}</span>
+                              </div>
+                              <div class="direct-chat-text">
+                                {$com->getTextoComentario()}
+                              </div>
+                            </div>
+                            {else}
+                            <div class="direct-chat-msg right">
+                              <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-right">{$com->nomUsuarioComentario()}</span>
+                                <span class="direct-chat-timestamp pull-left">{$com->getFechaComentario()}</span>
+                              </div>
+                              <div class="direct-chat-text">
+                                {$com->getTextoComentario()}
+                              </div>
+                            </div>
+                            {/if}
+                        {/foreach}
+                    {/if}
+                    </div>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <form action="gestion-pedidos.php" method="post">
+                    <div class="input-group">
+                      <input type="text" name="comentario" placeholder="Escribir comentario" class="form-control">
+                      <input type="hidden" name="id_registro_com" value="{if !empty ($pedido)}{$pedido->getIdReg()}{/if}">
+                          <span class="input-group-btn">
+                            <button type="submit" name="enviar_comentario" class="btn btn-warning btn-flat">Enviar</button>
+                          </span>
+                    </div>
+                  </form>
+                </div>
+              </div>             
           </div>
        </div>
      </div>

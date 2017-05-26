@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-25 22:01:15
+/* Smarty version 3.1.30, created on 2017-05-26 20:34:04
   from "/var/www/html/gestion/vista/templates/gestion-registros.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5927380bb18476_79063737',
+  'unifunc' => 'content_5928751ccfcf80_67506690',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81d41416b2f73e70eb0c11cc531208e6484dc970' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-registros.tpl',
-      1 => 1495737833,
+      1 => 1495823639,
       2 => 'file',
     ),
   ),
@@ -23,14 +23,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5927380bb18476_79063737 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5928751ccfcf80_67506690 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ALGO Gestor - Gestión Registros</title>
+<title>ALGO Gestor - Gestión Incidencias</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Tamara Gascon">
 <link rel="stylesheet" href="../dist/bootstrap/css/bootstrap.min.css">
@@ -41,10 +41,15 @@ function content_5927380bb18476_79063737 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
-<link rel="stylesheet" href="../plugins/jQuery/jquery-ui.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">
+          /*function editar(id_registro){
+              xajax_editar(id_registro);
+          }
+          function cargarDetalle(id_registro){
+              xajax_cargarDetalle(id_registro);
+          }*/
           function borrarImagen(imagen,id_registro){
               xajax_borrarImagen(imagen,id_registro);
           }
@@ -103,6 +108,7 @@ function content_5927380bb18476_79063737 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
+
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">

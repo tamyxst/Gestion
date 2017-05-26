@@ -1,5 +1,5 @@
 <?php
-
+require_once('enviar-comentarios.php');
 require_once('../modelo/DB.php');
 require_once('../modelo/DB_contacto.php');
 require_once('../modelo/DB_registro.php');
@@ -219,7 +219,7 @@ if (!isset($_SESSION['usuario'])) {
     }
 //Cargamos el usuario conectado
     $smarty->assign("usuario", $usuario);
-
+    
 //Cargamos el sidebar-mensajes
     include 'sidebar-mensajes.php';
     $smarty->assign("mensajes", $mensajes);
@@ -229,6 +229,9 @@ if (!isset($_SESSION['usuario'])) {
     $mostrarRegistros = DB_registro::obtieneRegistros();
     $smarty->assign("mostrarRegistros", $mostrarRegistros);
  
+//Comentarios
+    $smarty->assign("comentarios", $comentarios);
+    
 //Sidebar inicio
     
     $mostrarPedidos= DB_pedido::obtienePedidos();

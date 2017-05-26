@@ -16,12 +16,12 @@
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <script type="text/javascript">
-          function editar(id_registro){
+          /*function editar(id_registro){
               xajax_editar(id_registro);
           }
           function cargarDetalle(id_registro){
               xajax_cargarDetalle(id_registro);
-          }
+          }*/
           function borrarImagen(imagen,id_registro){
               xajax_borrarImagen(imagen,id_registro);
           }

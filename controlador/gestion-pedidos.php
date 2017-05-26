@@ -1,5 +1,5 @@
 <?php
-
+require_once('enviar-comentarios.php');
 require_once('../modelo/DB.php');
 require_once('../modelo/DB_contacto.php');
 require_once('../modelo/DB_incidencia.php');
@@ -233,7 +233,10 @@ if (!isset($_SESSION['usuario'])) {
 //Obtener todos los pedido
     $mostrarPedidos = DB_pedido::obtienePedidos();
     $smarty->assign("mostrarPedidos", $mostrarPedidos);
- 
+
+//Comentarios
+    $smarty->assign("comentarios", $comentarios);
+    
 //Sidebar inicio
     
     $numPedidos = count($mostrarPedidos);

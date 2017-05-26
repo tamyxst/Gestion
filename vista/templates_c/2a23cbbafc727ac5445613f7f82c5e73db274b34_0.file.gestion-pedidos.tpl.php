@@ -1,36 +1,36 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-25 20:51:56
+/* Smarty version 3.1.30, created on 2017-05-26 20:34:03
   from "/var/www/html/gestion/vista/templates/gestion-pedidos.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_592727ccd92bc5_08211935',
+  'unifunc' => 'content_5928751b6a2fa2_78755267',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a23cbbafc727ac5445613f7f82c5e73db274b34' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-pedidos.tpl',
-      1 => 1495737824,
+      1 => 1495823623,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:header.tpl' => 1,
-    'file:contenido-pedidos.tpl' => 1,
+    'file:contenido-incidencias.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_592727ccd92bc5_08211935 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5928751b6a2fa2_78755267 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ALGO Gestor - Gestión Pedidos</title>
+<title>ALGO Gestor - Gestión Incidencias</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Tamara Gascon">
 <link rel="stylesheet" href="../dist/bootstrap/css/bootstrap.min.css">
@@ -41,10 +41,15 @@ function content_592727ccd92bc5_08211935 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
-<link rel="stylesheet" href="../plugins/jQuery/jquery-ui.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">
+          /*function editar(id_registro){
+              xajax_editar(id_registro);
+          }
+          function cargarDetalle(id_registro){
+              xajax_cargarDetalle(id_registro);
+          }*/
           function borrarImagen(imagen,id_registro){
               xajax_borrarImagen(imagen,id_registro);
           }
@@ -103,6 +108,7 @@ function content_592727ccd92bc5_08211935 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
+
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
@@ -122,7 +128,7 @@ function content_592727ccd92bc5_08211935 (Smarty_Internal_Template $_smarty_tpl)
       </ol>
     </section>
     <!-- Contenido Inicio -->
-        <?php $_smarty_tpl->_subTemplateRender("file:contenido-pedidos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <?php $_smarty_tpl->_subTemplateRender("file:contenido-incidencias.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
   </div>

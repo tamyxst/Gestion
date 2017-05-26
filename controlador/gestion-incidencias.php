@@ -1,5 +1,5 @@
 <?php
-
+require_once('enviar-comentarios.php');
 require_once('../modelo/DB.php');
 require_once('../modelo/DB_contacto.php');
 require_once('../modelo/DB_incidencia.php');
@@ -239,6 +239,10 @@ $ajax->configure('debug',true);
     $usuarios = DB::obtieneUsuarios();
     $smarty->assign("usuarios", $usuarios);
     $smarty->assign("usuario",$usuario);
+
+//Comentarios
+    $smarty->assign("comentarios", $comentarios);
+
 //Sidebar inicio
     
     $mostrarPedidos= DB_pedido::obtienePedidos();

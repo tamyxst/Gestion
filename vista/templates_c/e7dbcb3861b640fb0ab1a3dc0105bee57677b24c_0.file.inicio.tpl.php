@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:44:36
+/* Smarty version 3.1.30, created on 2017-05-26 20:36:24
   from "/var/www/html/gestion/vista/templates/inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_592483147e68c5_72813164',
+  'unifunc' => 'content_592875a8b71fa6_78512301',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7dbcb3861b640fb0ab1a3dc0105bee57677b24c' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/inicio.tpl',
-      1 => 1495565006,
+      1 => 1495823782,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_592483147e68c5_72813164 (Smarty_Internal_Template $_smarty_tpl) {
+function content_592875a8b71fa6_78512301 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -69,10 +69,10 @@ function content_592483147e68c5_72813164 (Smarty_Internal_Template $_smarty_tpl)
 
 </div>
 <?php echo '<script'; ?>
- src="../plugins/jQuery/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+ src="../plugins/dataTables/jquery-1.12.4.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"><?php echo '</script'; ?>
+ src="../plugins/jQuery/jquery-ui.js"><?php echo '</script'; ?>
 >
 <!-- Resuelve conflicto de jQuery UI con Bootstrap -->
 <?php echo '<script'; ?>
@@ -96,7 +96,7 @@ function content_592483147e68c5_72813164 (Smarty_Internal_Template $_smarty_tpl)
  src="../plugins/atle/js/app.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="../plugins/atle/js/autocomplete.js"><?php echo '</script'; ?>
+ src="../dist/js/autocomplete.js"><?php echo '</script'; ?>
 >
 <!--script src="../plugins/atle/js/pages/dashboard.js"><?php echo '</script'; ?>
 >-->

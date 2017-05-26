@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-23 20:39:41
+/* Smarty version 3.1.30, created on 2017-05-26 20:27:14
   from "/var/www/html/gestion/vista/templates/gestion-incidencias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_592481ed1a2dc5_04523512',
+  'unifunc' => 'content_59287382ec1eb4_99895456',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0724d4e52fa4538c365b6a00bcc0171cdaa0709' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-incidencias.tpl',
-      1 => 1495564677,
+      1 => 1495823208,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_592481ed1a2dc5_04523512 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59287382ec1eb4_99895456 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -44,12 +44,12 @@ function content_592481ed1a2dc5_04523512 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">
-          function editar(id_registro){
+          /*function editar(id_registro){
               xajax_editar(id_registro);
           }
           function cargarDetalle(id_registro){
               xajax_cargarDetalle(id_registro);
-          }
+          }*/
           function borrarImagen(imagen,id_registro){
               xajax_borrarImagen(imagen,id_registro);
           }
