@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/jQuery/jquery-ui.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <script type="text/javascript">
           /*function editar(id_registro){

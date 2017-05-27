@@ -118,7 +118,7 @@ class Registro {
     }
 
     public function getFechaEntregaReg() {
-        return $this->fecha->getFechaNormal();
+        return $this->fecha_entrega->getFechaNormal();
     }
     public function dameNombreContacto($id_contacto){
         $contacto=DB_contacto::buscarContactoId($id_contacto);

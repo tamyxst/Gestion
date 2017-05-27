@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-26 20:57:31
+/* Smarty version 3.1.30, created on 2017-05-27 20:40:25
   from "/var/www/html/gestion/vista/templates/gestion-pedidos.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59287a9b16c298_62259165',
+  'unifunc' => 'content_5929c819b53423_11168044',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a23cbbafc727ac5445613f7f82c5e73db274b34' => 
     array (
       0 => '/var/www/html/gestion/vista/templates/gestion-pedidos.tpl',
-      1 => 1495825045,
+      1 => 1495910421,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_59287a9b16c298_62259165 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5929c819b53423_11168044 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -41,6 +41,7 @@ function content_59287a9b16c298_62259165 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../plugins/jQuery/jquery-ui.min.css">
 <link rel="stylesheet" href="../plugins/dataTables/responsive.dataTables.min.css">
 <?php echo '<script'; ?>
  type="text/javascript">

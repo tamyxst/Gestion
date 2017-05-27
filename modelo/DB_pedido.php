@@ -111,7 +111,7 @@ class DB_pedido{
             $consulta_1 ="UPDATE registros SET estado=?, material=?,observaciones=?, id_usuario_r=? WHERE id_registro=?";
             
             self::ejecutaConsulta($consulta_1, $valores_1);
-            $consulta_2 ="UPDATE incidencias SET fecha_entrega=? WHERE id_pedido=?";
+            $consulta_2 ="UPDATE pedidos SET fecha_entrega=? WHERE id_pedido=?";
             $valores_2[]=$fecha_entrega;
             $valores_2[]=$id_pedido;
             
